@@ -110,6 +110,232 @@ bun run build              # Build for production
 bun run preview            # Preview production build
 ```
 
+## Playwright MCP Integration
+
+The application integrates the Playwright Model Context Protocol (MCP) server to enable automated browser testing and end-to-end (E2E) validation. Playwright MCP acts as a bridge between Claude Code (AI assistant) and browser automation tools, allowing comprehensive E2E tests to run automatically.
+
+### What is Playwright MCP?
+
+Playwright MCP provides:
+- **Browser Automation**: Programmatic control of browsers for testing user workflows
+- **Screenshot Capture**: Visual evidence of functionality and UI state
+- **Video Recording**: Recordings of test executions for debugging
+- **E2E Testing**: Automated validation of complete user journeys
+
+### Setup
+
+#### 1. Copy MCP Configuration
+
+Create your local MCP configuration from the sample:
+
+```bash
+cp .mcp.json.sample .mcp.json
+```
+
+The `.mcp.json` file is user-specific and excluded from git. It configures the Playwright MCP server with the following settings:
+- Command: `npx @playwright/mcp@latest`
+- Isolated mode: Ensures clean browser sessions
+- Config path: `./playwright-mcp-config.json`
+
+#### 2. Install Playwright
+
+Install Playwright and the required browser:
+
+```bash
+npm install -D playwright
+npx playwright install chromium
+```
+
+#### 3. Verify Setup
+
+The Playwright MCP server will automatically start when Claude Code runs. You can verify by checking that `.mcp.json` exists and is valid JSON.
+
+### Configuration
+
+#### Browser Settings
+
+Edit `playwright-mcp-config.json` to customize browser behavior:
+
+```json
+{
+  "browser": {
+    "browserName": "chromium",  // Options: "chromium", "firefox", "webkit"
+    "launchOptions": {
+      "headless": true,  // Set to false for debugging
+      "slowMo": 0        // Milliseconds to slow down operations
+    }
+  }
+}
+```
+
+#### Video Recording
+
+Videos are automatically recorded during test execution and saved to the `./videos/` directory. Each test creates a separate video file.
+
+To disable video recording, edit `playwright-mcp-config.json`:
+
+```json
+{
+  "contextOptions": {
+    "recordVideo": null
+  }
+}
+```
+
+#### Viewport Size
+
+Default viewport is 1920x1080. To customize:
+
+```json
+{
+  "contextOptions": {
+    "viewport": {
+      "width": 1280,
+      "height": 720
+    }
+  }
+}
+```
+
+### Running E2E Tests
+
+#### Using Claude Code CLI
+
+Run E2E tests using the `/test_e2e` command:
+
+```bash
+claude /test_e2e .claude/commands/e2e/test_basic_query.md
+```
+
+This will:
+1. Launch the Playwright browser
+2. Navigate to the application
+3. Execute test steps defined in the test file
+4. Capture screenshots at key points
+5. Generate a test report with results
+
+#### Available Tests
+
+E2E test files are located in `.claude/commands/e2e/`:
+- `test_basic_query.md` - Tests natural language query functionality
+- `test_playwright_mcp_integration.md` - Validates MCP integration
+
+#### Test Output
+
+Test results include:
+- **Status**: `passed` or `failed`
+- **Screenshots**: Saved to `agents/<adw_id>/<agent_name>/img/<test_name>/`
+- **Video**: Saved to `videos/` directory
+- **Error Details**: Detailed failure information if test fails
+
+### Troubleshooting
+
+#### MCP Server Won't Start
+
+**Symptoms**: Claude Code reports MCP server connection errors
+
+**Solutions**:
+- Verify Node.js is installed: `node --version`
+- Test MCP installation: `npx @playwright/mcp@latest --version`
+- Check `.mcp.json` syntax with `cat .mcp.json | jq .`
+- Ensure `playwright-mcp-config.json` exists in repository root
+
+#### Browser Launch Fails
+
+**Symptoms**: Tests fail with "Browser not found" or "Failed to launch browser"
+
+**Solutions**:
+- Install Playwright browsers: `npx playwright install chromium`
+- Install system dependencies: `npx playwright install-deps`
+- Check available browsers: `npx playwright list-browsers`
+
+#### Videos Not Recording
+
+**Symptoms**: No video files appear in `videos/` directory after tests
+
+**Solutions**:
+- Verify `videos/` directory exists: `mkdir -p videos`
+- Check `recordVideo` config in `playwright-mcp-config.json`
+- Ensure sufficient disk space: `df -h`
+- Check file permissions: `ls -la videos/`
+
+#### Screenshot Path Issues
+
+**Symptoms**: Screenshots fail to save or appear in wrong location
+
+**Solutions**:
+- Ensure agent directory structure exists
+- Check absolute paths are used when moving screenshots
+- Verify write permissions on target directory
+
+### Best Practices
+
+#### 1. Headless Mode
+
+- **Production/CI**: Keep `headless: true` for automated workflows
+- **Debugging**: Use `headless: false` to watch tests execute
+
+#### 2. Video Storage
+
+Videos can be large files. Best practices:
+- Keep videos excluded from git (already in `.gitignore`)
+- Review videos after test failures for debugging
+- Delete old videos periodically to save disk space
+
+#### 3. Screenshot Organization
+
+Screenshots are organized by:
+- ADW ID (workflow run identifier)
+- Agent name (e.g., `test_e2e`)
+- Test name (e.g., `basic_query`)
+
+This structure ensures screenshots don't conflict across test runs.
+
+#### 4. Test Stability
+
+Write stable tests using proper waits and selectors:
+
+```typescript
+// Good: Wait for element
+await page.waitForSelector('[data-testid="submit-button"]');
+
+// Bad: Hard-coded timeout
+await page.waitForTimeout(5000);
+```
+
+### Writing New E2E Tests
+
+To create a new E2E test:
+
+1. Create a test file in `.claude/commands/e2e/`:
+   ```markdown
+   # E2E Test: [Test Name]
+
+   ## User Story
+   As a [user role]
+   I want [goal]
+   So that [benefit]
+
+   ## Test Steps
+   1. Navigate to the `Application URL`
+   2. **Verify** [condition]
+   3. Take a screenshot
+   ...
+
+   ## Success Criteria
+   - [Criterion 1]
+   - [Criterion 2]
+   ```
+
+2. Run the test:
+   ```bash
+   claude /test_e2e .claude/commands/e2e/your_test.md
+   ```
+
+3. Review results in the generated JSON output
+
+For examples, see existing tests in `.claude/commands/e2e/`.
+
 ## Project Structure
 
 ```

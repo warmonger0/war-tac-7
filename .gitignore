@@ -61,7 +61,8 @@ deep_specs/
 
 screenshots/
 
-# Playwright video recordings
+# Playwright MCP configuration and video recordings
+.mcp.json
 videos/
 
 # Bun lock files
