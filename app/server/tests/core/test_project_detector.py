@@ -1,6 +1,5 @@
 import pytest
 import json
-from pathlib import Path
 from core.project_detector import (
     detect_project_context,
     is_directory_empty,

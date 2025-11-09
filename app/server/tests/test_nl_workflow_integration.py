@@ -5,12 +5,11 @@ Tests the complete workflow from natural language input to formatted issue.
 
 import pytest
 import json
-from pathlib import Path
 from unittest.mock import patch, MagicMock
 from core.nl_processor import process_request
 from core.project_detector import detect_project_context
 from core.github_poster import GitHubPoster
-from core.data_models import ProjectContext, GitHubIssue
+from core.data_models import GitHubIssue
 
 
 class TestNLWorkflowIntegration:

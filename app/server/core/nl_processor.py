@@ -1,6 +1,6 @@
 import os
 import json
-from typing import Dict, Any, Tuple, List
+from typing import Tuple, List
 from anthropic import Anthropic
 from core.data_models import GitHubIssue, ProjectContext
 
@@ -192,10 +192,10 @@ async def process_request(nl_input: str, project_context: ProjectContext) -> Git
         # Step 6: Generate issue body (will be formatted by issue_formatter)
         # For now, create a basic structure
         body_parts = [
-            f"## Description",
+            "## Description",
             f"{intent.get('summary', nl_input)}",
             "",
-            f"## Requirements",
+            "## Requirements",
         ]
 
         for req in requirements:
@@ -203,10 +203,10 @@ async def process_request(nl_input: str, project_context: ProjectContext) -> Git
 
         body_parts.extend([
             "",
-            f"## Technical Area",
+            "## Technical Area",
             f"{intent.get('technical_area', 'General')}",
             "",
-            f"## Workflow",
+            "## Workflow",
             f"{workflow} model_set {model_set}"
         ])
 

@@ -3,7 +3,6 @@ Project context detection module.
 Analyzes project structure to determine framework, tools, and complexity.
 """
 
-import os
 import json
 from pathlib import Path
 from typing import Optional, List
@@ -105,7 +104,7 @@ def detect_framework(path: Path) -> Optional[str]:
                         return "react-vite"
                     elif "vue" in deps:
                         return "vue-vite"
-            except:
+            except (OSError, json.JSONDecodeError, KeyError):
                 pass
         return "vite"
 
@@ -127,7 +126,7 @@ def detect_framework(path: Path) -> Optional[str]:
                     return "angular"
                 elif "svelte" in deps:
                     return "svelte"
-        except:
+        except (OSError, json.JSONDecodeError, KeyError):
             pass
 
     # Check for Python frameworks
@@ -159,7 +158,7 @@ def detect_backend(path: Path) -> Optional[str]:
                     return "django"
                 elif "flask" in content.lower():
                     return "flask"
-        except:
+        except OSError:
             pass
 
     # Check requirements.txt
@@ -174,7 +173,7 @@ def detect_backend(path: Path) -> Optional[str]:
                     return "django"
                 elif "flask" in content:
                     return "flask"
-        except:
+        except OSError:
             pass
 
     # Check for Node.js backend
@@ -191,7 +190,7 @@ def detect_backend(path: Path) -> Optional[str]:
                     return "fastify"
                 elif "@nestjs/core" in deps:
                     return "nestjs"
-        except:
+        except (OSError, json.JSONDecodeError, KeyError):
             pass
 
     return None
@@ -366,7 +365,7 @@ def count_project_files(path: Path) -> int:
             # Count only files (not directories)
             if item.is_file():
                 count += 1
-    except:
+    except OSError:
         pass
 
     return count

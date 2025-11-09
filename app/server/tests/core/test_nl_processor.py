@@ -211,7 +211,6 @@ class TestNLProcessor:
     async def test_process_request_success(self, mock_extract, mock_analyze):
         """Test end-to-end request processing."""
         # Mock the async function - use AsyncMock or return the dict directly
-        from unittest.mock import AsyncMock
 
         mock_analyze.return_value = {
             "intent_type": "feature",
