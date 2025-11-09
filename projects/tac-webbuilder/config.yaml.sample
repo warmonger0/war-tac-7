@@ -1,0 +1,47 @@
+# tac-webbuilder Configuration File
+# Copy this file to config.yaml and customize for your environment
+# Note: Environment variables prefixed with TWB_ will override these settings
+
+# GitHub Configuration
+github:
+  # Default repository in format 'owner/repo'
+  default_repo: "owner/tac-webbuilder"
+
+  # Full GitHub repository URL (optional, derived from default_repo if not set)
+  # repo_url: "https://github.com/owner/tac-webbuilder"
+
+  # GitHub Personal Access Token (recommended to use environment variable instead)
+  # pat: "ghp_xxxxxxxxxxxx"
+
+  # Automatically post generated issues to GitHub (default: false)
+  auto_post: false
+
+# AI Developer Workflow (ADW) Configuration
+adw:
+  # Default workflow to use when not specified
+  # Options: adw_sdlc_iso, adw_sdlc_zte_iso, adw_plan_build_test_iso, etc.
+  default_workflow: "adw_sdlc_iso"
+
+  # Default model set to use
+  # Options: base, advanced, custom
+  default_model_set: "base"
+
+# Interface Configuration
+interfaces:
+  # CLI Interface
+  cli:
+    enabled: true
+
+  # Web Interface
+  web:
+    enabled: true
+    port: 5174
+    host: "127.0.0.1"
+
+# Claude Code Configuration
+claude:
+  # Path to Claude Code CLI executable
+  code_path: "/usr/local/bin/claude"
+
+  # Anthropic API Key (recommended to use environment variable instead)
+  # api_key: "sk-ant-xxxxxxxxxxxx"
