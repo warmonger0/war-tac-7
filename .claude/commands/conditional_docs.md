@@ -61,3 +61,11 @@ This prompt helps you determine what documentation you should read based on the 
     - When working with upload button text or labeling
     - When implementing UI text changes for data upload functionality
     - When troubleshooting upload button display or terminology
+
+- docs/configuration.md
+  - Conditions:
+    - When working with environment variables or .env files
+    - When troubleshooting configuration issues (API keys, tool paths, etc.)
+    - When setting up new development environments
+    - When implementing features that require new environment variables
+    - When documenting setup or installation procedures

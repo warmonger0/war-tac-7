@@ -34,14 +34,34 @@ bun install
 
 ### 2. Environment Configuration
 
-Set up your API keys in the server directory:
+Configure your environment using the interactive setup wizard (recommended):
 
 ```bash
-cp .env.sample .env
-# Edit .env and add your API keys
+# Run the interactive setup wizard
+./scripts/setup_env.sh
 ```
 
+The setup script will guide you through:
+- Required configuration (Anthropic API key)
+- Claude Code path detection
+- Optional features (GitHub PAT, E2B, Cloudflare R2)
 
+**Alternative**: Manual configuration
+```bash
+# Copy sample and edit manually
+cp .env.sample .env
+# Edit .env and add your API keys
+nano .env
+```
+
+**Validate your configuration:**
+```bash
+./scripts/test_config.sh
+```
+
+For detailed configuration documentation, see [docs/configuration.md](docs/configuration.md).
+
+**Server-specific configuration:**
 ```bash
 cd app/server
 cp .env.sample .env
