@@ -8,18 +8,19 @@ Summary metrics across all ADW runs.
 
 | Metric            | Value          | Last Updated             |
 | ----------------- | -------------- | ------------------------ |
-| Current Streak    | 1              | Thu Jul 31 12:06:52 CDT 2025 |
-| Longest Streak    | 1              | Thu Jul 31 12:06:52 CDT 2025 |
-| Total Plan Size   | 39 lines       | Thu Jul 31 12:06:52 CDT 2025 |
-| Largest Plan Size | 39 lines       | Thu Jul 31 12:06:52 CDT 2025 |
-| Total Diff Size   | 279 lines      | Thu Jul 31 12:06:52 CDT 2025 |
-| Largest Diff Size | 279 lines      | Thu Jul 31 12:06:52 CDT 2025 |
-| Average Presence  | 1.0            | Thu Jul 31 12:06:52 CDT 2025 |
+| Current Streak    | 2              | Sun Nov  9 05:16:45 PST 2025 |
+| Longest Streak    | 2              | Sun Nov  9 05:16:45 PST 2025 |
+| Total Plan Size   | 371 lines      | Sun Nov  9 05:16:45 PST 2025 |
+| Largest Plan Size | 332 lines      | Sun Nov  9 05:16:45 PST 2025 |
+| Total Diff Size   | 936 lines      | Sun Nov  9 05:16:45 PST 2025 |
+| Largest Diff Size | 657 lines      | Sun Nov  9 05:16:45 PST 2025 |
+| Average Presence  | 1.0            | Sun Nov  9 05:16:45 PST 2025 |
 
 ## ADW KPIs
 
 Detailed metrics for individual ADW workflow runs.
 
-| Date   | ADW ID   | Issue Number | Issue Class | Attempts | Plan Size (lines) | Diff Size (Added/Removed/Files) | Created                  | Updated |
-| ------ | -------- | ------------ | ----------- | -------- | ----------------- | ------------------------------- | ------------------------ | ------- |
+| Date       | ADW ID   | Issue Number | Issue Class | Attempts | Plan Size (lines) | Diff Size (Added/Removed/Files) | Created                      | Updated |
+| ---------- | -------- | ------------ | ----------- | -------- | ----------------- | ------------------------------- | ---------------------------- | ------- |
 | 2025-07-31 | cc73faf1 | 47           | /chore      | 1        | 39                | 274/5/10                        | Thu Jul 31 12:06:52 CDT 2025 |         |
+| 2025-11-09 | 1afd9aba | 12           | /feature    | 1        | 332               | 654/3/6                         | Sun Nov  9 05:16:45 PST 2025 |         |
