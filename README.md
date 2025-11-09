@@ -9,6 +9,7 @@ A web application that converts natural language queries to SQL using AI, built 
 - 📊 Interactive table results display
 - 🔒 SQL injection protection
 - ⚡ Fast development with Vite and uv
+- 🤖 Natural language to GitHub issue generation (NEW)
 
 ## Prerequisites
 
@@ -133,6 +134,122 @@ bun run preview            # Preview production build
 - `GET /api/schema` - Get database schema
 - `POST /api/insights` - Generate column insights
 - `GET /api/health` - Health check
+
+## Natural Language to GitHub Issue Generation
+
+The application now includes a powerful feature for converting natural language requests into structured GitHub issues with appropriate ADW workflow triggers.
+
+### Features
+
+- **Intent Analysis**: Automatically classifies requests as feature, bug, or chore
+- **Requirement Extraction**: Extracts technical requirements from natural language
+- **Project Context Detection**: Analyzes project structure to detect framework, tech stack, and complexity
+- **Smart Workflow Selection**: Recommends appropriate ADW workflow and model set based on complexity
+- **GitHub CLI Integration**: Posts issues directly to GitHub with preview and confirmation
+
+### Required Environment Variables
+
+```bash
+export ANTHROPIC_API_KEY="sk-ant-xxxxx"  # Required for NL processing
+export GITHUB_REPO_URL="owner/repo"      # Optional, defaults to current repo
+```
+
+### Required Setup
+
+Install GitHub CLI and authenticate:
+```bash
+brew install gh              # macOS
+# or: sudo apt install gh    # Linux
+# or: choco install gh       # Windows
+
+gh auth login
+```
+
+### Usage Examples
+
+#### Python API
+
+```python
+from core.nl_processor import process_request
+from core.project_detector import detect_project_context
+from core.github_poster import GitHubPoster
+
+# Detect project context
+context = detect_project_context("/path/to/project")
+
+# Process natural language request
+issue = await process_request("Add dark mode to my app", context)
+
+# Post to GitHub (with confirmation)
+poster = GitHubPoster()
+issue_number = poster.post_issue(issue, confirm=True)
+```
+
+#### Project Context Detection
+
+The system automatically detects:
+- **Framework**: React, Vue, Next.js, Angular, Svelte, FastAPI, Django, Flask, Express, NestJS
+- **Build Tools**: Vite, Webpack, Rollup, TypeScript, Babel, Docker
+- **Package Manager**: npm, yarn, pnpm, bun, pip, uv, poetry, pipenv
+- **Complexity**: Low, medium, or high based on project structure
+- **Git Status**: Whether the project has git initialized
+
+#### Workflow Recommendations
+
+The system automatically recommends workflows based on issue type and complexity:
+
+| Issue Type | Complexity | Workflow | Model Set |
+|------------|-----------|----------|-----------|
+| Feature | Low | `adw_sdlc_iso` | `base` |
+| Feature | Medium | `adw_plan_build_test_iso` | `base` |
+| Feature | High | `adw_plan_build_test_iso` | `heavy` |
+| Bug | Any | `adw_plan_build_test_iso` | `base` |
+| Chore | Any | `adw_sdlc_iso` | `base` |
+
+### Module Documentation
+
+#### Core Modules
+
+1. **`core/nl_processor.py`**: Natural language processing using Claude API
+   - `analyze_intent()`: Analyzes user intent and classifies issue type
+   - `extract_requirements()`: Extracts technical requirements
+   - `process_request()`: Main orchestration function
+
+2. **`core/issue_formatter.py`**: Issue template formatting
+   - `create_feature_issue_body()`: Formats feature issues
+   - `create_bug_issue_body()`: Formats bug reports
+   - `create_chore_issue_body()`: Formats chore tasks
+
+3. **`core/project_detector.py`**: Project context detection
+   - `detect_project_context()`: Analyzes project structure
+   - `detect_framework()`: Identifies frontend framework
+   - `detect_backend()`: Identifies backend framework
+   - `calculate_complexity()`: Calculates project complexity
+
+4. **`core/github_poster.py`**: GitHub CLI integration
+   - `GitHubPoster.post_issue()`: Posts issue with preview
+   - `GitHubPoster.format_preview()`: Rich terminal preview
+   - `GitHubPoster.get_repo_info()`: Repository information
+
+### Testing
+
+Run the comprehensive test suite:
+
+```bash
+cd app/server
+
+# Run all NL-to-issue tests
+uv run pytest tests/core/test_nl_processor.py -v
+uv run pytest tests/core/test_issue_formatter.py -v
+uv run pytest tests/core/test_project_detector.py -v
+uv run pytest tests/core/test_github_poster.py -v
+
+# Run integration tests
+uv run pytest tests/test_nl_workflow_integration.py -v
+
+# Run all tests
+uv run pytest
+```
 
 ## Security
 

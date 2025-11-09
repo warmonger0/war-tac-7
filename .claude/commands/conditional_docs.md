@@ -72,3 +72,14 @@ This prompt helps you determine what documentation you should read based on the 
     - When implementing tac-webbuilder project foundation (as reference spec)
     - When troubleshooting MCP config path resolution issues
     - When setting up video recording directories for Playwright sessions
+
+- app_docs/feature-e2bbe1a5-nl-processing-issue-formatter.md
+  - Conditions:
+    - When working with natural language processing for GitHub issues
+    - When implementing or modifying Claude API integration for intent analysis
+    - When working with issue formatting templates (feature/bug/chore)
+    - When implementing project context detection (framework, tech stack detection)
+    - When integrating with GitHub CLI for issue posting
+    - When troubleshooting ADW workflow recommendation logic
+    - When extending the NL-to-issue system with new features
+    - When working with core/nl_processor.py, core/issue_formatter.py, core/project_detector.py, or core/github_poster.py
