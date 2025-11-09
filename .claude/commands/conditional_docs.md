@@ -83,3 +83,14 @@ This prompt helps you determine what documentation you should read based on the 
     - When troubleshooting ADW workflow recommendation logic
     - When extending the NL-to-issue system with new features
     - When working with core/nl_processor.py, core/issue_formatter.py, core/project_detector.py, or core/github_poster.py
+
+- app_docs/feature-fd9119bc-cli-interface.md
+  - Conditions:
+    - When implementing the tac-webbuilder CLI interface
+    - When working with Typer, questionary, or rich libraries for CLI development
+    - When implementing interactive command-line workflows
+    - When setting up CLI history tracking or configuration management
+    - When integrating CLI commands with NL processing and GitHub issue creation
+    - When troubleshooting CLI command execution or parameter handling
+    - When implementing CLI convenience scripts or module entry points
+    - When working with interfaces/cli/ directory
