@@ -1,10 +1,7 @@
 """Unit tests for the GitHub Poster module."""
 
 import pytest
-import json
-import subprocess
-from unittest.mock import Mock, patch, MagicMock
-from datetime import datetime
+from unittest.mock import Mock, patch
 from core.github_poster import (
     GitHubPoster,
     post_github_issue,
@@ -12,8 +9,7 @@ from core.github_poster import (
 )
 from core.webbuilder_models import (
     GitHubIssue,
-    GitHubPostRequest,
-    GitHubPostResponse
+    GitHubPostRequest
 )
 
 
@@ -141,7 +137,7 @@ class TestGitHubPoster:
             stdout='{"url": "https://github.com/owner/repo/issues/100"}'
         )
 
-        url = poster._get_issue_url(100, "owner/repo")
+        poster._get_issue_url(100, "owner/repo")
 
         cmd = mock_run.call_args[0][0]
         assert "--repo" in cmd
@@ -249,7 +245,7 @@ class TestGitHubPoster:
         issue_number = poster.post_issue(sample_issue, confirm=True)
 
         assert issue_number == 42
-        mock_run.assert_called_once()
+        assert mock_run.call_count == 2  # Once for create, once for getting URL
 
     @patch('core.github_poster.GitHubPoster._check_gh_cli')
     @patch('core.github_poster.Confirm.ask')

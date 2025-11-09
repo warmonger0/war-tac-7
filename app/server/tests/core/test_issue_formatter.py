@@ -3,13 +3,11 @@
 import pytest
 from core.issue_formatter import (
     IssueFormatter,
-    preview_issue,
-    ISSUE_TEMPLATES
+    preview_issue
 )
 from core.webbuilder_models import (
     GitHubIssue,
-    IssuePreviewRequest,
-    WorkflowSuggestion
+    IssuePreviewRequest
 )
 
 

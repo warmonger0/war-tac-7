@@ -11,8 +11,7 @@ from rich.prompt import Confirm
 from core.webbuilder_models import (
     GitHubIssue,
     GitHubPostRequest,
-    GitHubPostResponse,
-    WebBuilderError
+    GitHubPostResponse
 )
 
 
@@ -134,7 +133,7 @@ class GitHubPoster:
         """
         try:
             # Check if gh is installed
-            result = subprocess.run(
+            subprocess.run(
                 ["gh", "--version"],
                 capture_output=True,
                 text=True,
@@ -274,7 +273,7 @@ class GitHubPoster:
 
         # Check for invalid characters in labels
         for label in issue.labels:
-            if not re.match(r'^[a-zA-Z0-9\-\s]+$', label):
+            if not re.match(r'^[a-zA-Z0-9\-\s_]+$', label):
                 return False, f"Invalid label format: {label}"
 
         return True, None

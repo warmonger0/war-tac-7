@@ -7,7 +7,6 @@ from rich.markdown import Markdown
 from rich.table import Table
 from core.webbuilder_models import (
     GitHubIssue,
-    ProjectContext,
     WorkflowSuggestion,
     IssuePreviewRequest,
     IssuePreviewResponse
@@ -436,7 +435,6 @@ def preview_issue(request: IssuePreviewRequest) -> IssuePreviewResponse:
     )
 
     # Estimate complexity based on issue details
-    component_count = len(request.issue.labels)
     if request.issue.workflow == "adw_sdlc_iso":
         estimated_complexity = "High - Full SDLC required"
         suggested_timeline = "3-5 days"

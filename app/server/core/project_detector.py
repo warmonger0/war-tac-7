@@ -1,9 +1,8 @@
 """Project Detector module for analyzing project context and structure."""
 
-import os
 import json
 from pathlib import Path
-from typing import List, Optional, Dict, Any
+from typing import List, Optional, Dict
 from core.webbuilder_models import ProjectContext
 
 
@@ -171,8 +170,15 @@ class ProjectDetector:
         # Common patterns to look for
         important_files = [
             "package.json",
+            "package-lock.json",
+            "yarn.lock",
+            "pnpm-lock.yaml",
+            "bun.lockb",
+            "tsconfig.json",
             "pyproject.toml",
             "requirements.txt",
+            "poetry.lock",
+            "uv.lock",
             "Cargo.toml",
             "go.mod",
             "pom.xml",
@@ -205,6 +211,9 @@ class ProjectDetector:
                     for pattern in config_patterns:
                         if item.match(pattern):
                             detected_files[item.name] = item
+                    # Also include source files in root
+                    if item.suffix in [".py", ".js", ".ts", ".jsx", ".tsx", ".java", ".go", ".rs"]:
+                        detected_files[item.name] = item
 
             # Check common subdirectories
             subdirs_to_check = ["src", "app", "lib", "server", "client", "pages", "components"]
@@ -212,12 +221,17 @@ class ProjectDetector:
                 subdir_path = path / subdir
                 if subdir_path.exists() and subdir_path.is_dir():
                     detected_files[subdir] = subdir_path
-                    # Check for specific files in subdirectories
+                    # Count and store files in subdirectories
+                    file_count = 0
                     for item in subdir_path.iterdir():
                         if item.is_file() and item.suffix in [".py", ".js", ".ts", ".jsx", ".tsx"]:
+                            file_count += 1
                             # Store just a few examples
                             if len([k for k in detected_files.keys() if k.startswith(subdir + "/")]) < 3:
                                 detected_files[f"{subdir}/{item.name}"] = item
+                    # Store file count for complexity estimation
+                    if file_count > 3:
+                        detected_files[f"{subdir}_file_count"] = file_count
 
         except PermissionError:
             # Handle permission errors gracefully
@@ -304,6 +318,7 @@ class ProjectDetector:
 
         # Check each framework pattern
         best_match = None
+        best_score = 0
         best_priority = 999
 
         for framework, pattern in self.FRAMEWORK_PATTERNS.items():
@@ -319,9 +334,10 @@ class ProjectDetector:
                 if indicator in all_deps:
                     matches += 3  # Package dependency is very strong indicator
 
-            # If we have matches and better priority, update best match
-            if matches > 0 and pattern["priority"] < best_priority:
+            # Update best match if we have higher score, or same score but better priority
+            if matches > best_score or (matches == best_score and matches > 0 and pattern["priority"] < best_priority):
                 best_match = framework
+                best_score = matches
                 best_priority = pattern["priority"]
 
         return best_match
@@ -398,6 +414,9 @@ class ProjectDetector:
             # Check file content indicators
             if "content_indicators" in pattern:
                 for file_name, file_path in detected_files.items():
+                    # Skip file count entries
+                    if isinstance(file_path, int) or file_name.endswith("_file_count"):
+                        continue
                     if file_path.is_file() and file_name.endswith(('.py', '.js', '.ts')):
                         try:
                             with open(file_path, 'r', encoding='utf-8') as f:
@@ -462,12 +481,19 @@ class ProjectDetector:
             return "low"
 
         # File count contributes to complexity
-        file_count = len(detected_files)
-        if file_count > 50:
+        # Count actual files including those in subdirectories
+        total_file_count = 0
+        for key, value in detected_files.items():
+            if key.endswith("_file_count") and isinstance(value, int):
+                total_file_count += value
+            elif "/" in key or key.endswith((".py", ".js", ".ts", ".jsx", ".tsx")):
+                total_file_count += 1
+
+        if total_file_count > 50:
             complexity_score += 3
-        elif file_count > 20:
+        elif total_file_count > 20:
             complexity_score += 2
-        elif file_count > 10:
+        elif total_file_count > 10:
             complexity_score += 1
 
         # Multiple technologies increase complexity

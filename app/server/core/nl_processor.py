@@ -8,7 +8,6 @@ from anthropic import Anthropic
 from core.webbuilder_models import (
     GitHubIssue,
     ProjectContext,
-    IntentAnalysis,
     NLProcessingRequest,
     NLProcessingResponse,
     WorkflowSuggestion
@@ -206,7 +205,7 @@ Requirements (one per line, start each with "-"):"""
 
             return requirements if requirements else ["No specific requirements identified"]
 
-        except Exception as e:
+        except Exception:
             # Fallback to basic extraction
             return [
                 f"Implement {intent.get('primary_intent', 'requested functionality')}",
@@ -387,13 +386,13 @@ Requirements (one per line, start each with "-"):"""
             if project_context.backend:
                 context_info.append(f"- Backend: {project_context.backend}")
             if context_info:
-                description_parts.append(f"\n## Project Context\n" + "\n".join(context_info))
+                description_parts.append("\n## Project Context\n" + "\n".join(context_info))
 
         # Note any ambiguities
         if intent.get("needs_clarification"):
             clarifications = intent.get("needs_clarification", [])
             if clarifications:
-                description_parts.append(f"\n## Points Requiring Clarification\n" +
+                description_parts.append("\n## Points Requiring Clarification\n" +
                                        "\n".join(f"- {c}" for c in clarifications))
 
         return "\n".join(description_parts)
@@ -433,7 +432,7 @@ Requirements (one per line, start each with "-"):"""
 
         # Add framework-specific notes if context available
         if project_context and project_context.framework:
-            approach_parts.append(f"\n### Framework Notes")
+            approach_parts.append("\n### Framework Notes")
             approach_parts.append(f"- Using {project_context.framework} patterns and conventions")
 
         return "\n".join(approach_parts) if approach_parts else "To be determined during implementation"
@@ -471,7 +470,7 @@ Requirements (one per line, start each with "-"):"""
         body_parts.append(f"\n## Technical Approach\n{technical_approach}")
 
         # Add workflow section
-        body_parts.append(f"\n## Workflow")
+        body_parts.append("\n## Workflow")
         body_parts.append(f"{workflow_suggestion.workflow_name} model_set {workflow_suggestion.model_set}")
         body_parts.append(f"*Reasoning: {workflow_suggestion.reasoning}*")
 

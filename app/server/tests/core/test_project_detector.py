@@ -3,7 +3,6 @@
 import pytest
 import json
 import tempfile
-import os
 from pathlib import Path
 from core.project_detector import ProjectDetector, detect_project_context
 from core.webbuilder_models import ProjectContext
@@ -321,7 +320,7 @@ djangorestframework==3.14.0
         context = detector.detect_project_context(str(file_path))
 
         # Should use parent directory
-        assert context.path == str(temp_project_dir)
+        assert Path(context.path).resolve() == Path(temp_project_dir).resolve()
 
     def test_detect_project_context_convenience_function(self, temp_project_dir):
         """Test the convenience function detect_project_context."""
@@ -330,4 +329,4 @@ djangorestframework==3.14.0
         context = detect_project_context(str(temp_project_dir))
 
         assert isinstance(context, ProjectContext)
-        assert context.path == str(temp_project_dir)
+        assert Path(context.path).resolve() == Path(temp_project_dir).resolve()

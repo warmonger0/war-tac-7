@@ -1,8 +1,7 @@
 """Unit tests for the Natural Language Processor module."""
 
 import pytest
-import asyncio
-from unittest.mock import Mock, patch, AsyncMock
+from unittest.mock import Mock, patch
 from core.nl_processor import NLProcessor, process_nl_request
 from core.webbuilder_models import (
     NLProcessingRequest,
@@ -221,7 +220,7 @@ class TestNLProcessor:
     async def test_process_nl_request_with_project_context(self, mock_anthropic_client):
         """Test processing with project context detection."""
         with patch.dict('os.environ', {'ANTHROPIC_API_KEY': 'test-key'}):
-            with patch('core.nl_processor.detect_project_context') as mock_detect:
+            with patch('core.project_detector.detect_project_context') as mock_detect:
                 # Mock project detection
                 mock_detect.return_value = ProjectContext(
                     path="/test/project",
