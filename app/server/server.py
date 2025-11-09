@@ -23,6 +23,16 @@ from core.data_models import (
     ExportRequest,
     QueryExportRequest
 )
+from core.webbuilder_models import (
+    NLProcessingRequest,
+    NLProcessingResponse,
+    IssuePreviewRequest,
+    IssuePreviewResponse,
+    GitHubPostRequest,
+    GitHubPostResponse,
+    ProjectContext,
+    GitHubIssue
+)
 from core.file_processor import convert_csv_to_sqlite, convert_json_to_sqlite, convert_jsonl_to_sqlite
 from core.llm_processor import generate_sql, generate_random_query
 from core.sql_processor import execute_sql_safely, get_database_schema
@@ -34,6 +44,10 @@ from core.sql_security import (
     SQLSecurityError
 )
 from core.export_utils import generate_csv_from_data, generate_csv_from_table
+from core.nl_processor import process_nl_request
+from core.issue_formatter import preview_issue
+from core.project_detector import detect_project_context
+from core.github_poster import post_github_issue, check_gh_cli_status
 
 # Load .env file from server directory
 load_dotenv()
@@ -362,6 +376,115 @@ async def export_query_results(request: QueryExportRequest) -> Response:
         logger.error(f"[ERROR] Query export failed: {str(e)}")
         logger.error(f"[ERROR] Full traceback:\n{traceback.format_exc()}")
         raise HTTPException(500, f"Error exporting query results: {str(e)}")
+
+# WebBuilder API endpoints
+@app.post("/api/webbuilder/process", response_model=NLProcessingResponse)
+async def process_webbuilder_request(request: NLProcessingRequest) -> NLProcessingResponse:
+    """Process natural language input to generate GitHub issue"""
+    try:
+        logger.info(f"[REQUEST] WebBuilder process: {request.nl_input[:100]}...")
+
+        # Process the NL request
+        response = await process_nl_request(request)
+
+        logger.info(f"[SUCCESS] WebBuilder process completed: {response.issue.title}")
+        return response
+    except Exception as e:
+        logger.error(f"[ERROR] WebBuilder process failed: {str(e)}")
+        logger.error(f"[ERROR] Full traceback:\n{traceback.format_exc()}")
+
+        # Return error response
+        return NLProcessingResponse(
+            issue=GitHubIssue(
+                title="Error processing request",
+                body="Failed to process natural language request",
+                labels=["error"],
+                classification="chore",
+                workflow="adw_simple_iso",
+                model_set="base"
+            ),
+            project_context=None,
+            confidence_score=0.0,
+            intent_analysis={},
+            requirements=[],
+            processing_time_ms=0,
+            error=str(e)
+        )
+
+@app.post("/api/webbuilder/preview", response_model=IssuePreviewResponse)
+async def preview_webbuilder_issue(request: IssuePreviewRequest) -> IssuePreviewResponse:
+    """Preview a formatted GitHub issue before posting"""
+    try:
+        logger.info(f"[REQUEST] WebBuilder preview: {request.issue.title}")
+
+        # Generate preview
+        response = preview_issue(request)
+
+        logger.info("[SUCCESS] WebBuilder preview generated")
+        return response
+    except Exception as e:
+        logger.error(f"[ERROR] WebBuilder preview failed: {str(e)}")
+        logger.error(f"[ERROR] Full traceback:\n{traceback.format_exc()}")
+        raise HTTPException(500, f"Error generating preview: {str(e)}")
+
+@app.get("/api/webbuilder/context")
+async def get_project_context(path: str = ".") -> ProjectContext:
+    """Get project context for a given directory"""
+    try:
+        logger.info(f"[REQUEST] Project context detection: {path}")
+
+        # Detect project context
+        context = detect_project_context(path)
+
+        logger.info(f"[SUCCESS] Project context detected: {context.framework}/{context.backend}")
+        return context
+    except Exception as e:
+        logger.error(f"[ERROR] Project context detection failed: {str(e)}")
+        logger.error(f"[ERROR] Full traceback:\n{traceback.format_exc()}")
+        raise HTTPException(500, f"Error detecting project context: {str(e)}")
+
+@app.post("/api/webbuilder/post", response_model=GitHubPostResponse)
+async def post_webbuilder_issue(request: GitHubPostRequest) -> GitHubPostResponse:
+    """Post an issue to GitHub"""
+    try:
+        logger.info(f"[REQUEST] WebBuilder post issue: {request.issue.title}")
+
+        # Post the issue
+        response = post_github_issue(request)
+
+        if response.success:
+            logger.info(f"[SUCCESS] Issue posted: #{response.issue_number}")
+        else:
+            logger.warning(f"[WARNING] Issue posting failed: {response.error}")
+
+        return response
+    except Exception as e:
+        logger.error(f"[ERROR] WebBuilder post failed: {str(e)}")
+        logger.error(f"[ERROR] Full traceback:\n{traceback.format_exc()}")
+
+        return GitHubPostResponse(
+            success=False,
+            error=str(e)
+        )
+
+@app.get("/api/webbuilder/gh-status")
+async def get_github_cli_status() -> dict:
+    """Check GitHub CLI installation and authentication status"""
+    try:
+        logger.info("[REQUEST] GitHub CLI status check")
+
+        status = check_gh_cli_status()
+
+        logger.info(f"[SUCCESS] GitHub CLI status: installed={status['installed']}, authenticated={status['authenticated']}")
+        return status
+    except Exception as e:
+        logger.error(f"[ERROR] GitHub CLI status check failed: {str(e)}")
+        logger.error(f"[ERROR] Full traceback:\n{traceback.format_exc()}")
+        return {
+            "installed": False,
+            "authenticated": False,
+            "error": str(e)
+        }
 
 if __name__ == "__main__":
     import uvicorn

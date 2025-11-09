@@ -1,7 +1,9 @@
 import './style.css'
 import { api } from './api/client'
+import { IssueBuilder } from './issueBuilder'
 
 // Global state
+let issueBuilder: IssueBuilder | null = null;
 
 // Initialize app
 document.addEventListener('DOMContentLoaded', () => {
@@ -10,6 +12,7 @@ document.addEventListener('DOMContentLoaded', () => {
   initializeModal();
   initializeRandomQueryButton();
   loadDatabaseSchema();
+  initializeIssueBuilder();
 });
 
 // Helper function to get download icon
@@ -524,7 +527,7 @@ function getTypeEmoji(type: string): string {
 async function loadSampleData(sampleType: string) {
   try {
     let filename: string;
-    
+
     if (sampleType === 'users') {
       filename = 'users.json';
     } else if (sampleType === 'products') {
@@ -534,19 +537,63 @@ async function loadSampleData(sampleType: string) {
     } else {
       throw new Error(`Unknown sample type: ${sampleType}`);
     }
-    
+
     const response = await fetch(`/sample-data/${filename}`);
-    
+
     if (!response.ok) {
       throw new Error('Failed to load sample data');
     }
-    
+
     const blob = await response.blob();
     const file = new File([blob], filename, { type: blob.type });
-    
+
     // Upload the file
     await handleFileUpload(file);
   } catch (error) {
     displayError(error instanceof Error ? error.message : 'Failed to load sample data');
+  }
+}
+
+// Initialize Issue Builder
+function initializeIssueBuilder() {
+  // Check if container exists, if not create it
+  let builderContainer = document.getElementById('issue-builder-container');
+
+  if (!builderContainer) {
+    // Create the container and add it to the page
+    builderContainer = document.createElement('div');
+    builderContainer.id = 'issue-builder-container';
+    builderContainer.className = 'section';
+
+    // Create a section header
+    const header = document.createElement('div');
+    header.className = 'section-header';
+    header.innerHTML = '<h2>WebBuilder - GitHub Issue Generator</h2>';
+    builderContainer.appendChild(header);
+
+    // Create the issue builder content area
+    const content = document.createElement('div');
+    content.id = 'issue-builder-content';
+    builderContainer.appendChild(content);
+
+    // Add to the page after the results section
+    const resultsSection = document.getElementById('results-section');
+    if (resultsSection && resultsSection.parentNode) {
+      resultsSection.parentNode.insertBefore(builderContainer, resultsSection.nextSibling);
+    } else {
+      // Fallback: add to the end of the container
+      const container = document.querySelector('.container');
+      if (container) {
+        container.appendChild(builderContainer);
+      }
+    }
+  }
+
+  // Initialize the Issue Builder in the content area
+  if (issueBuilder === null) {
+    issueBuilder = new IssueBuilder('issue-builder-content');
+    issueBuilder.init().catch(error => {
+      console.error('Failed to initialize Issue Builder:', error);
+    });
   }
 }

@@ -543,3 +543,301 @@ h2 {
 .divider::after {
   right: 0;
 }
+
+/* ===============================================
+   Issue Builder Styles
+   =============================================== */
+
+.issue-builder-section {
+  padding: 1.5rem;
+}
+
+.issue-nl-input {
+  width: 100%;
+  padding: 0.75rem;
+  font-size: 0.95rem;
+  border: 1px solid var(--border-color);
+  border-radius: 8px;
+  resize: vertical;
+  font-family: inherit;
+  background: var(--bg-primary);
+  color: var(--text-primary);
+  transition: border-color 0.15s ease-in-out;
+}
+
+.issue-nl-input:focus {
+  outline: none;
+  border-color: var(--primary-color);
+  box-shadow: 0 0 0 3px rgba(52, 152, 219, 0.1);
+}
+
+.char-count {
+  margin-top: 0.25rem;
+  font-size: 0.85rem;
+  color: var(--text-secondary);
+  text-align: right;
+}
+
+/* GitHub Status */
+.github-status {
+  display: flex;
+  gap: 2rem;
+  padding: 1rem;
+  background: var(--bg-secondary);
+  border-radius: 8px;
+  margin-bottom: 1rem;
+}
+
+.status-item {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.status-label {
+  font-weight: 500;
+  color: var(--text-secondary);
+}
+
+.status-value {
+  font-weight: 600;
+}
+
+.status-value.success {
+  color: var(--success-color);
+}
+
+.status-value.error {
+  color: var(--error-color);
+}
+
+/* Project Context */
+.project-context {
+  padding: 1rem;
+  background: var(--bg-secondary);
+  border-radius: 8px;
+  margin-bottom: 1rem;
+}
+
+.project-context h4 {
+  margin: 0 0 0.75rem 0;
+  color: var(--text-primary);
+  font-size: 0.95rem;
+  font-weight: 600;
+}
+
+.context-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 1rem;
+}
+
+.context-item {
+  display: flex;
+  gap: 0.5rem;
+}
+
+.context-label {
+  font-weight: 500;
+  color: var(--text-secondary);
+}
+
+.context-value {
+  font-weight: 600;
+  color: var(--text-primary);
+}
+
+.complexity-low {
+  color: var(--success-color);
+}
+
+.complexity-medium {
+  color: #f39c12;
+}
+
+.complexity-high {
+  color: var(--error-color);
+}
+
+/* Issue Preview */
+.issue-preview-content {
+  background: var(--bg-secondary);
+  border: 1px solid var(--border-color);
+  border-radius: 8px;
+  padding: 1rem;
+  margin: 1rem 0;
+  max-height: 400px;
+  overflow-y: auto;
+}
+
+.issue-preview-content pre {
+  margin: 0;
+  white-space: pre-wrap;
+  word-wrap: break-word;
+  font-family: 'Monaco', 'Courier New', monospace;
+  font-size: 0.875rem;
+  line-height: 1.5;
+  color: var(--text-primary);
+}
+
+.issue-metadata {
+  display: flex;
+  gap: 1rem;
+  margin-bottom: 1rem;
+  flex-wrap: wrap;
+}
+
+.issue-type {
+  padding: 0.25rem 0.75rem;
+  border-radius: 4px;
+  color: white;
+  font-size: 0.875rem;
+  font-weight: 600;
+  text-transform: uppercase;
+}
+
+.workflow-badge {
+  padding: 0.25rem 0.75rem;
+  background: var(--bg-secondary);
+  border: 1px solid var(--border-color);
+  border-radius: 4px;
+  font-size: 0.875rem;
+  font-weight: 500;
+}
+
+.confidence-score {
+  padding: 0.25rem 0.75rem;
+  background: rgba(52, 152, 219, 0.1);
+  color: var(--primary-color);
+  border-radius: 4px;
+  font-size: 0.875rem;
+  font-weight: 500;
+}
+
+/* Requirements */
+.requirements-section {
+  margin: 1rem 0;
+}
+
+.requirements-section h4 {
+  margin: 0 0 0.5rem 0;
+  color: var(--text-primary);
+  font-size: 0.95rem;
+  font-weight: 600;
+}
+
+.requirements-section ul {
+  margin: 0;
+  padding-left: 1.5rem;
+}
+
+.requirements-section li {
+  margin-bottom: 0.25rem;
+  color: var(--text-primary);
+}
+
+/* Estimation */
+.estimation {
+  display: flex;
+  gap: 0.5rem;
+  padding: 0.75rem;
+  background: rgba(52, 152, 219, 0.1);
+  border-radius: 8px;
+  margin: 1rem 0;
+}
+
+.estimation-label {
+  font-weight: 500;
+  color: var(--text-secondary);
+}
+
+.estimation-value {
+  font-weight: 600;
+  color: var(--primary-color);
+}
+
+/* Messages */
+.warning-message {
+  padding: 0.75rem 1rem;
+  background: rgba(243, 156, 18, 0.1);
+  color: #f39c12;
+  border: 1px solid rgba(243, 156, 18, 0.3);
+  border-radius: 8px;
+  margin-top: 0.5rem;
+  font-size: 0.9rem;
+}
+
+.warning-message code {
+  background: rgba(0, 0, 0, 0.2);
+  padding: 0.125rem 0.25rem;
+  border-radius: 3px;
+  font-family: 'Monaco', 'Courier New', monospace;
+}
+
+.success-icon {
+  color: var(--success-color);
+  font-size: 1.25rem;
+  margin-right: 0.5rem;
+}
+
+#issue-preview-section h3 {
+  margin: 1.5rem 0 1rem 0;
+  color: var(--text-primary);
+  font-size: 1.1rem;
+  font-weight: 600;
+}
+
+/* Loading spinner for Issue Builder */
+.issue-builder-section .loading {
+  display: inline-block;
+  width: 14px;
+  height: 14px;
+  border: 2px solid rgba(255, 255, 255, 0.3);
+  border-radius: 50%;
+  border-top-color: white;
+  animation: spin 1s ease-in-out infinite;
+}
+
+/* Button group adjustment */
+.issue-builder-section .button-group {
+  display: flex;
+  gap: 1rem;
+  margin-top: 1rem;
+}
+
+.issue-builder-section .btn {
+  padding: 0.5rem 1.5rem;
+  font-size: 0.95rem;
+  font-weight: 500;
+  border-radius: 8px;
+  border: 1px solid transparent;
+  cursor: pointer;
+  transition: all 0.15s ease-in-out;
+}
+
+.issue-builder-section .btn-primary {
+  background: var(--primary-color);
+  color: white;
+  border-color: var(--primary-color);
+}
+
+.issue-builder-section .btn-primary:hover:not(:disabled) {
+  background: #2980b9;
+  border-color: #2980b9;
+}
+
+.issue-builder-section .btn-secondary {
+  background: var(--text-secondary);
+  color: white;
+  border-color: var(--text-secondary);
+}
+
+.issue-builder-section .btn-secondary:hover:not(:disabled) {
+  background: #6c757d;
+  border-color: #6c757d;
+}
+
+.issue-builder-section .btn:disabled {
+  opacity: 0.65;
+  cursor: not-allowed;
+}
