@@ -61,3 +61,14 @@ This prompt helps you determine what documentation you should read based on the 
     - When working with upload button text or labeling
     - When implementing UI text changes for data upload functionality
     - When troubleshooting upload button display or terminology
+
+- app_docs/feature-1afd9aba-project-structure-adw-integration.md
+  - Conditions:
+    - When working with MCP (Model Context Protocol) configuration
+    - When setting up or troubleshooting Playwright MCP server integration
+    - When implementing worktree isolation for ADW executions
+    - When configuring absolute paths for ADW worktree resources
+    - When creating project specifications following SDLC planning patterns
+    - When implementing tac-webbuilder project foundation (as reference spec)
+    - When troubleshooting MCP config path resolution issues
+    - When setting up video recording directories for Playwright sessions
