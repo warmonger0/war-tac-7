@@ -132,6 +132,18 @@ Write comprehensive unit tests for the authentication service covering: user reg
 Create Playwright end-to-end tests for the complete checkout process: browse products, add items to cart, update quantities, remove items, proceed to checkout, enter shipping information, select payment method, review order, and complete purchase. Include tests for validation errors, discount code application, and order confirmation email. Run tests against staging environment.
 ```
 
+### Example 20a: Visual Validation with Playwright MCP
+
+```
+Use Playwright MCP to validate the homepage renders correctly: navigate to the homepage, take screenshots at desktop (1920x1080), tablet (768x1024), and mobile (375x667) viewport sizes, verify all hero images load, check navigation menu displays properly, and validate footer links are visible. Capture any console errors or warnings.
+```
+
+### Example 20b: User Flow Testing with Playwright MCP
+
+```
+Test the user registration flow with Playwright MCP: navigate to signup page, fill out registration form, submit and verify success message appears, check welcome email is sent, login with new credentials, verify dashboard loads, capture screenshots at each step. Ensure all form validations work correctly.
+```
+
 ### Example 21: Integration Tests for Payment API
 
 ```

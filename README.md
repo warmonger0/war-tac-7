@@ -11,6 +11,7 @@ tac-webbuilder is a natural language interface for web development that transfor
 - 🎨 **Project Templates** - Start new projects with React, Next.js, or Vanilla JavaScript
 - 🔗 **Existing Code Integration** - Add ADW to any existing web application
 - 💻 **Dual Interface** - Use CLI for speed or Web UI for visualization
+- 🎭 **Playwright MCP Integration** - Built-in browser automation and E2E testing
 - ✅ **Complete Automation** - From feature request to merged PR
 
 ## Quick Start
@@ -84,6 +85,26 @@ gh auth token
 ```
 
 Then open [http://localhost:5174](http://localhost:5174) in your browser.
+
+### Playwright MCP Setup
+
+All projects include Playwright MCP integration for browser automation and E2E testing:
+
+```bash
+# Copy MCP configuration (already done in new projects)
+cp .mcp.json.sample .mcp.json
+
+# Install Playwright browsers
+npx playwright install chromium
+```
+
+The Playwright MCP server enables:
+- Automated E2E test execution
+- Screenshot capture for visual validation
+- Video recording of test runs
+- Browser automation for testing workflows
+
+See [docs/playwright-mcp.md](docs/playwright-mcp.md) for detailed configuration and usage.
 
 ## Features
 

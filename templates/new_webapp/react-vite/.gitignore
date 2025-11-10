@@ -30,3 +30,7 @@ dist-ssr
 
 # Testing
 coverage
+
+# MCP
+.mcp.json
+videos/

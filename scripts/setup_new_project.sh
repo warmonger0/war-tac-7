@@ -88,6 +88,16 @@ echo -e "${GREEN}Creating project '$PROJECT_NAME' from template '$TEMPLATE'...${
 # Copy template
 cp -r "$TEMPLATE_PATH" "$TARGET_DIR"
 
+# Set up MCP configuration
+echo -e "${GREEN}🎭 Configuring Playwright MCP...${NC}"
+if [ -f "$TARGET_DIR/.mcp.json.sample" ]; then
+    cp "$TARGET_DIR/.mcp.json.sample" "$TARGET_DIR/.mcp.json"
+    echo -e "${GREEN}✓ MCP configuration ready${NC}"
+fi
+
+# Create videos directory for Playwright recordings
+mkdir -p "$TARGET_DIR/videos"
+
 # Update package.json name if it exists
 if [ -f "$TARGET_DIR/package.json" ]; then
     if command -v jq &> /dev/null; then

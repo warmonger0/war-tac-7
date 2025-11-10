@@ -83,6 +83,7 @@ Create-tac-webbuilder.md
 
 # MCP config backups
 .mcp.json.disabled
+.mcp.json
 
 # Playwright config (generated)
 playwright-mcp-config.json
