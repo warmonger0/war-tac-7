@@ -2,10 +2,8 @@
 Unit tests for routes_analyzer module
 """
 
-import pytest
 import tempfile
 import os
-from pathlib import Path
 from core.routes_analyzer import RoutesAnalyzer
 
 

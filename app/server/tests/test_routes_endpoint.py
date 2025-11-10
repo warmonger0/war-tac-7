@@ -2,7 +2,6 @@
 Tests for /api/routes endpoint
 """
 
-import pytest
 from fastapi.testclient import TestClient
 from server import app
 
