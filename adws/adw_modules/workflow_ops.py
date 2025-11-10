@@ -85,13 +85,21 @@ def extract_adw_info(text: str, temp_adw_id: str) -> ADWExtractionResult:
             adw_id = data.get("adw_id")
             model_set = data.get("model_set", "base")  # Default to "base"
 
-            # Validate command
-            if adw_command and adw_command in AVAILABLE_ADW_WORKFLOWS:
-                return ADWExtractionResult(
-                    workflow_command=adw_command,
-                    adw_id=adw_id,
-                    model_set=model_set
-                )
+            # Validate command (case-insensitive)
+            if adw_command:
+                # Check if command matches any workflow (case-insensitive)
+                matching_workflow = None
+                for workflow in AVAILABLE_ADW_WORKFLOWS:
+                    if adw_command.lower() == workflow.lower():
+                        matching_workflow = workflow
+                        break
+
+                if matching_workflow:
+                    return ADWExtractionResult(
+                        workflow_command=matching_workflow,  # Use canonical form
+                        adw_id=adw_id,
+                        model_set=model_set
+                    )
 
             return ADWExtractionResult()  # Empty result
 

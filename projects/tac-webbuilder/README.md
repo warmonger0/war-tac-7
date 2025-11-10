@@ -6,34 +6,113 @@ Natural language interface for tac-7 AI Developer Workflows (ADW).
 
 `tac-webbuilder` is a tool within the tac-7 repository that enables users to interact with AI Developer Workflows using natural language. Instead of manually creating GitHub issues with specific markdown formatting and understanding ADW workflow syntax, users can describe what they want to build in plain language, and tac-webbuilder handles the translation to properly formatted GitHub issues and workflow triggers.
 
+### Available Interfaces
+
+1. **CLI Interface** - Interactive terminal-based interface with rich formatting
+2. **Web Backend API** - FastAPI REST API with WebSocket support for programmatic access
+
+**Note:** A web frontend UI (browser-based interface) is planned but not yet implemented. The current web backend API can be consumed by any HTTP client or used to build a custom frontend.
+
 ## Project Structure
 
 ```
 tac-webbuilder/
 ├── README.md                 # This file
 ├── pyproject.toml           # Python project configuration
+├── uv.lock                  # Locked dependency versions
+├── config.yaml              # YAML configuration (from config.yaml.sample)
 ├── config.yaml.sample       # YAML configuration template
+├── .env                     # Environment variables (from .env.sample)
 ├── .env.sample              # Environment variables template
 ├── .gitignore               # Git ignore patterns
 ├── core/                    # Core configuration and utilities
 │   ├── __init__.py
 │   └── config.py           # Pydantic-based configuration management
 ├── interfaces/              # User-facing interfaces
-│   ├── cli/                # Command-line interface (future)
-│   └── web/                # Web interface (future)
+│   ├── cli/                # Command-line interface (IMPLEMENTED)
+│   │   ├── __init__.py
+│   │   ├── __main__.py     # CLI entry point
+│   │   ├── main.py         # Main CLI logic
+│   │   ├── commands.py     # Command implementations
+│   │   ├── interactive.py  # Interactive mode
+│   │   ├── config_manager.py # CLI configuration
+│   │   ├── history.py      # Request history tracking
+│   │   └── output.py       # Output formatting
+│   └── web/                # Web backend API (IMPLEMENTED)
+│       ├── __init__.py
+│       ├── server.py       # FastAPI application
+│       ├── models.py       # Pydantic models
+│       ├── state.py        # Request state management
+│       ├── websocket.py    # WebSocket manager
+│       ├── workflow_monitor.py # ADW monitoring
+│       └── routes/         # API route modules
+│           ├── __init__.py
+│           ├── requests.py # Request submission
+│           ├── workflows.py # Workflow monitoring
+│           ├── projects.py # Project management
+│           └── history.py  # History endpoints
 ├── adws/                    # AI Developer Workflows (copied from tac-7)
 │   ├── adw_modules/        # Core ADW modules
+│   │   ├── agent.py        # Agent execution
+│   │   ├── workflow_ops.py # Workflow operations
+│   │   ├── git_ops.py      # Git operations
+│   │   ├── github.py       # GitHub API integration
+│   │   ├── worktree_ops.py # Git worktree management
+│   │   ├── state.py        # Workflow state
+│   │   ├── data_types.py   # Data type definitions
+│   │   ├── utils.py        # Utility functions
+│   │   └── r2_uploader.py  # R2 artifact uploads
 │   ├── adw_*_iso.py        # Workflow scripts
+│   │   ├── adw_sdlc_iso.py # Full SDLC workflow
+│   │   ├── adw_sdlc_zte_iso.py # Zero-test-error SDLC
+│   │   ├── adw_plan_build_test_iso.py
+│   │   ├── adw_plan_build_iso.py
+│   │   ├── adw_build_iso.py
+│   │   ├── adw_test_iso.py
+│   │   ├── adw_review_iso.py
+│   │   ├── adw_ship_iso.py
+│   │   ├── adw_document_iso.py
+│   │   └── adw_patch_iso.py
 │   ├── adw_triggers/       # Automation triggers
+│   │   ├── trigger_webhook.py # Webhook trigger
+│   │   └── trigger_cron.py    # Scheduled trigger
 │   ├── adw_tests/          # Test utilities
 │   └── README.md           # Complete ADW documentation
 ├── .claude/                 # Claude Code configuration
 │   ├── commands/           # Slash commands
+│   │   ├── e2e/           # E2E test commands
+│   │   │   ├── test_cli_interface.md
+│   │   │   └── test_web_api.md
+│   │   └── ... (setup, test, feature commands)
 │   ├── hooks/              # Git hooks
 │   └── settings.json       # Claude settings
 ├── templates/               # Issue and workflow templates
+│   └── issue_template.md  # GitHub issue template
+├── docs/                    # Documentation
+│   └── playwright-mcp.md  # Playwright MCP integration guide
 ├── scripts/                 # Utility scripts
-│   └── setup.sh            # Initial setup script
+│   ├── setup.sh            # Initial setup script
+│   ├── start_cli.sh        # Start CLI interface
+│   ├── start_web.sh        # Start web backend API
+│   └── validate_adw.py     # ADW validation
+├── tests/                   # Test suite
+│   ├── conftest.py         # Pytest configuration
+│   ├── test_config.py      # Configuration tests
+│   ├── core/               # Core module tests
+│   │   └── test_mcp_setup.py
+│   └── interfaces/         # Interface tests
+│       ├── test_cli_main.py
+│       ├── test_commands.py
+│       ├── test_interactive.py
+│       ├── test_config_manager.py
+│       ├── test_history.py
+│       ├── test_output.py
+│       └── web/            # Web API tests
+│           ├── test_server.py
+│           ├── test_models.py
+│           ├── test_state.py
+│           ├── test_requests_routes.py
+│           └── test_workflows_routes.py
 ├── logs/                    # Runtime logs (gitignored)
 ├── agents/                  # Agent execution artifacts (gitignored)
 └── trees/                   # Worktree isolation (gitignored)
@@ -124,6 +203,50 @@ Test that ADW modules are importable:
 uv run python -c "from adws.adw_modules.agent import Agent; print('ADW modules loaded successfully!')"
 ```
 
+### 4. Choose Your Interface
+
+tac-webbuilder provides two interfaces for interacting with AI Developer Workflows:
+
+#### Option A: CLI Interface (Terminal)
+
+Start the interactive CLI:
+
+```bash
+./scripts/start_cli.sh
+```
+
+Or run one-off commands:
+
+```bash
+# Submit a request
+uv run python -m interfaces.cli submit "Add dark mode to settings page" --project /path/to/project
+
+# View history
+uv run python -m interfaces.cli history
+
+# Check status of workflows
+uv run python -m interfaces.cli status
+```
+
+See [CLI Interface Documentation](#cli-interface) for full details.
+
+#### Option B: Web Backend API (Programmatic)
+
+Start the FastAPI backend server:
+
+```bash
+./scripts/start_web.sh
+```
+
+Access the API at:
+- **API Documentation**: http://localhost:8002/docs (Swagger UI)
+- **API Base**: http://localhost:8002
+- **WebSocket**: ws://localhost:8002/ws
+
+See [Web Backend API Documentation](#web-backend-api) for full details.
+
+**Note:** A web frontend UI is planned but not yet implemented. The web backend provides a REST API that can be consumed by any HTTP client or used to build a custom frontend.
+
 ## Configuration
 
 ### Configuration Precedence
@@ -164,6 +287,134 @@ tac-webbuilder includes a complete copy of tac-7's ADW system. For comprehensive
 - `adw_plan_build_iso` - Plan and build workflow
 - `adw_build_iso` - Build only
 - And more - see [ADW README](adws/README.md)
+
+## CLI Interface
+
+tac-webbuilder provides a command-line interface for terminal-based interaction with AI Developer Workflows. The CLI supports both interactive mode and one-off commands.
+
+### Quick Start
+
+Start the interactive CLI:
+
+```bash
+cd /Users/Warmonger0/tac/tac-7/projects/tac-webbuilder
+./scripts/start_cli.sh
+```
+
+Or run commands directly:
+
+```bash
+# Submit a request
+uv run python -m interfaces.cli submit "Add dark mode toggle to settings" --project /path/to/project
+
+# View request history
+uv run python -m interfaces.cli history
+
+# Check workflow status
+uv run python -m interfaces.cli status
+
+# Show configuration
+uv run python -m interfaces.cli config
+```
+
+### Interactive Mode
+
+The interactive CLI provides a conversational interface:
+
+```bash
+$ ./scripts/start_cli.sh
+
+Welcome to tac-webbuilder CLI!
+Connected to: yourusername/your-repo
+
+> What would you like to build?
+Add a dark mode toggle to the settings page
+
+> Project path (or press Enter for current directory):
+/Users/me/projects/my-app
+
+[Analyzing project...]
+[Generating GitHub issue...]
+
+Preview:
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+Title: Add dark mode toggle to settings page
+
+## Description
+...
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+> Post to GitHub? [y/N]: y
+
+✓ Issue created: #42
+✓ ADW workflow triggered
+Monitor progress at: http://localhost:8002/api/workflows/adw-abc123
+```
+
+### Features
+
+- **Interactive mode**: Conversational interface for submitting requests
+- **Command mode**: Run one-off commands without interaction
+- **Request history**: View past requests and their status
+- **Configuration management**: View and update CLI settings
+- **Workflow monitoring**: Check status of running ADW workflows
+- **Project context**: Automatic detection of project type and tech stack
+- **Rich output**: Color-coded, formatted output using Rich library
+
+### Configuration
+
+Configure the CLI via `config.yaml`:
+
+```yaml
+interfaces:
+  cli:
+    enabled: true
+    auto_confirm: false  # Auto-post to GitHub without confirmation
+    default_project: "/path/to/default/project"
+    history_limit: 50    # Number of history items to keep
+```
+
+Or via environment variables:
+
+```bash
+TWB_INTERFACES__CLI__ENABLED=true
+TWB_INTERFACES__CLI__AUTO_CONFIRM=false
+TWB_INTERFACES__CLI__DEFAULT_PROJECT=/path/to/project
+```
+
+### Testing
+
+Run CLI tests:
+
+```bash
+# Run all CLI tests
+uv run pytest tests/interfaces/test_cli_main.py -v
+
+# Test specific features
+uv run pytest tests/interfaces/test_commands.py -v
+uv run pytest tests/interfaces/test_interactive.py -v
+uv run pytest tests/interfaces/test_history.py -v
+```
+
+### Troubleshooting
+
+#### Command Not Found
+
+Make sure you're in the correct directory and the virtual environment is activated:
+
+```bash
+cd /Users/Warmonger0/tac/tac-7/projects/tac-webbuilder
+./scripts/start_cli.sh
+```
+
+#### Configuration Errors
+
+Check that your configuration is valid:
+
+```bash
+uv run python -m interfaces.cli config
+```
 
 ## Web Backend API
 
@@ -467,16 +718,36 @@ uv add --dev package-name
 - `scripts/` - Utility scripts for setup and maintenance
 - `tests/` - Test suite
 
-## Future Roadmap
+## Roadmap & Status
 
-tac-webbuilder is being developed in phases:
+tac-webbuilder has been developed in phases:
 
-1. **✓ Issue 1 (Current)**: Project foundation and ADW integration
-2. **Issue 2**: Natural language processing - Convert user input to GitHub issues
-3. **Issue 3**: CLI interface - Terminal-based interactions
-4. **Issue 4**: Web backend API - REST API for the web interface
-5. **Issue 5**: Web frontend UI - Browser-based interface
-6. **Issue 6**: Template system - Reusable templates for common workflows
+1. **✓ Issue 1 - COMPLETED**: Project foundation and ADW integration
+2. **✓ Issue 2 - COMPLETED**: Natural language processing - Convert user input to GitHub issues
+3. **✓ Issue 3 - COMPLETED**: CLI interface - Terminal-based interactions
+4. **✓ Issue 4 - COMPLETED**: Web backend API - REST API for the web interface
+5. **Issue 5 - PLANNED**: Web frontend UI - Browser-based interface (React/Vue/Svelte)
+6. **✓ Issue 6 - COMPLETED**: Template system - Reusable templates for common workflows
+7. **✓ Issue 7 - COMPLETED**: Playwright MCP Integration - Browser automation for testing
+8. **✓ Issue 8 - COMPLETED**: Environment setup and configuration documentation
+
+### Current Status
+
+**Implemented Features:**
+- ✅ Core configuration system (YAML + env variables)
+- ✅ CLI interface with interactive mode
+- ✅ Web backend API (FastAPI + WebSocket)
+- ✅ Natural language request processing
+- ✅ GitHub issue creation and preview
+- ✅ ADW workflow monitoring
+- ✅ Project context detection
+- ✅ Request history tracking
+- ✅ Playwright MCP integration
+- ✅ Comprehensive test suite
+
+**Not Yet Implemented:**
+- ❌ Web frontend UI (planned for future development)
+- ❌ Mobile interface
 
 ## Troubleshooting
 
