@@ -170,6 +170,32 @@ fi
 echo -e "${GREEN}📦 GitHub Repository: $GH_REPO${NC}"
 echo ""
 
+# Set up MCP configuration
+echo -e "${GREEN}🎭 Setting up Playwright MCP...${NC}"
+if [ ! -f ".mcp.json" ] && [ ! -f ".mcp.json.sample" ]; then
+    # Copy MCP configuration from webbuilder
+    cp "$PROJECT_ROOT/.mcp.json.sample" "$TARGET_PROJECT/.mcp.json.sample"
+    cp "$PROJECT_ROOT/playwright-mcp-config.json" "$TARGET_PROJECT/playwright-mcp-config.json"
+    echo -e "${GREEN}✓ MCP configuration files copied${NC}"
+
+    # Add to .gitignore if not present
+    if [ -f ".gitignore" ]; then
+        if ! grep -q "\.mcp\.json" .gitignore; then
+            echo "" >> .gitignore
+            echo "# MCP" >> .gitignore
+            echo ".mcp.json" >> .gitignore
+            echo "videos/" >> .gitignore
+            echo -e "${GREEN}✓ Updated .gitignore with MCP patterns${NC}"
+        fi
+    fi
+
+    # Create videos directory
+    mkdir -p "$TARGET_PROJECT/videos"
+else
+    echo -e "${YELLOW}⚠ MCP configuration already exists, skipping${NC}"
+fi
+echo ""
+
 # Generate integration request
 INTEGRATION_REQUEST="Integrate ADW workflow into this $FRAMEWORK project.
 
@@ -192,7 +218,13 @@ INTEGRATION_REQUEST="Integrate ADW workflow into this $FRAMEWORK project.
    - Ensure .env is in .gitignore
    - Document all environment variables
 
-3. **Test Configuration**"
+3. **Playwright MCP Integration**
+   - MCP configuration files have been copied (.mcp.json.sample, playwright-mcp-config.json)
+   - .gitignore has been updated to exclude .mcp.json and videos/
+   - E2E testing and visual review capabilities are now available
+   - Use /test_e2e and /review commands for automated testing
+
+4. **Test Configuration**"
 
 if [ "$TEST_FRAMEWORK" = "None detected" ]; then
     INTEGRATION_REQUEST="$INTEGRATION_REQUEST
@@ -208,12 +240,12 @@ fi
 
 INTEGRATION_REQUEST="$INTEGRATION_REQUEST
 
-4. **Documentation**
+5. **Documentation**
    - Add ADW usage section to README.md
    - Document natural language request patterns
    - Add examples of common requests
 
-5. **Framework-Specific Setup**"
+6. **Framework-Specific Setup**"
 
 case "$FRAMEWORK" in
     "React"*|"Next.js")

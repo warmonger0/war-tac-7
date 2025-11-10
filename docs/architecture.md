@@ -314,6 +314,8 @@ Events:
 - Write new tests
 - Validate functionality
 - Check for regressions
+- Execute E2E tests via Playwright MCP (browser automation)
+- Capture screenshots for visual validation
 
 **4. Review**
 - Create pull request

@@ -5,6 +5,7 @@ Solutions to common issues when using tac-webbuilder.
 ## Table of Contents
 
 - [Environment Setup](#environment-setup)
+- [Playwright MCP](#playwright-mcp)
 - [API and Backend](#api-and-backend)
 - [Frontend Issues](#frontend-issues)
 - [GitHub Integration](#github-integration)
@@ -105,6 +106,106 @@ chmod +x scripts/*.sh
 # Or run with bash
 bash scripts/start_cli.sh
 ```
+
+## Playwright MCP
+
+### Issue: MCP Server Won't Start
+
+**Symptoms:**
+```
+Error: Cannot start Playwright MCP server
+```
+
+**Solution:**
+```bash
+# Verify Node.js is installed
+node --version  # Should be 18+
+
+# Test MCP server directly
+npx @playwright/mcp@latest --version
+
+# Check .mcp.json syntax
+python3 -m json.tool .mcp.json
+
+# Verify config path
+grep "playwright-mcp-config.json" .mcp.json
+```
+
+---
+
+### Issue: Browser Launch Fails
+
+**Symptoms:**
+```
+Error: Executable doesn't exist at /path/to/chromium
+```
+
+**Solution:**
+```bash
+# Install Playwright browsers
+npx playwright install chromium
+
+# Or install all browsers
+npx playwright install
+
+# Install system dependencies (Linux)
+npx playwright install-deps
+
+# Verify installation
+npx playwright --version
+```
+
+---
+
+### Issue: Videos Not Recording
+
+**Symptoms:**
+- No videos appear in videos/ directory
+- MCP runs but no recordings
+
+**Solution:**
+```bash
+# Check videos directory exists
+mkdir -p videos
+
+# Verify video config
+grep -A 5 "recordVideo" playwright-mcp-config.json
+
+# Check disk space
+df -h .
+
+# Try with absolute path temporarily
+# Edit playwright-mcp-config.json:
+# "dir": "/full/path/to/project/videos"
+```
+
+---
+
+### Issue: Screenshots Not Saving
+
+**Symptoms:**
+- Screenshot commands execute but no files appear
+- Permission denied errors
+
+**Solution:**
+```bash
+# Create screenshots directory
+mkdir -p logs/screenshots
+
+# Check permissions
+ls -la logs/
+
+# Fix permissions if needed
+chmod 755 logs/
+chmod 755 logs/screenshots/
+
+# Verify MCP can write
+touch logs/screenshots/test.txt && rm logs/screenshots/test.txt
+```
+
+**See [docs/playwright-mcp.md](playwright-mcp.md) for detailed configuration.**
+
+---
 
 ## API and Backend
 

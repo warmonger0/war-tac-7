@@ -7,6 +7,8 @@
       "index.html",
       ".gitignore",
       ".env.sample",
+      ".mcp.json.sample",
+      "playwright-mcp-config.json",
       "README.md"
     ],
     "directories": [
@@ -29,7 +31,7 @@
       "dev": 5173,
       "preview": 4173
     },
-    "description": "Modern React application with Vite, TypeScript, and hot module replacement"
+    "description": "Modern React application with Vite, TypeScript, hot module replacement, and Playwright MCP integration for E2E testing"
   },
   "nextjs": {
     "files": [
@@ -38,6 +40,8 @@
       "tsconfig.json",
       ".gitignore",
       ".env.sample",
+      ".mcp.json.sample",
+      "playwright-mcp-config.json",
       "README.md"
     ],
     "directories": [
@@ -61,7 +65,7 @@
       "dev": 3000,
       "start": 3000
     },
-    "description": "Next.js application with App Router, TypeScript, and server components"
+    "description": "Next.js application with App Router, TypeScript, server components, and Playwright MCP integration for E2E testing"
   },
   "vanilla": {
     "files": [
@@ -69,11 +73,13 @@
       "style.css",
       "script.js",
       ".gitignore",
+      ".mcp.json.sample",
+      "playwright-mcp-config.json",
       "README.md"
     ],
     "directories": [],
     "scripts": {},
     "ports": {},
-    "description": "Minimal vanilla JavaScript template for learning and prototyping"
+    "description": "Minimal vanilla JavaScript template for learning and prototyping with Playwright MCP integration for E2E testing"
   }
 }

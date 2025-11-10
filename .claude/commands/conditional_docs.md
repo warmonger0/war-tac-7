@@ -133,6 +133,15 @@ This prompt helps you determine what documentation you should read based on the 
     - When writing documentation or examples
     - When helping users understand what requests are possible
 
+- docs/playwright-mcp.md
+  - Conditions:
+    - When working with Playwright MCP configuration
+    - When setting up or troubleshooting Playwright MCP server integration
+    - When implementing E2E testing with browser automation
+    - When working with video recording or screenshot capture
+    - When debugging MCP server startup or browser launch issues
+    - When configuring Playwright browser settings or viewport sizes
+
 - docs/troubleshooting.md
   - Conditions:
     - When debugging issues or errors
