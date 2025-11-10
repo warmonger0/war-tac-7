@@ -1,0 +1,5400 @@
+{
+  "generated_at": "2025-11-10T03:14:16.529659",
+  "root_directory": "/Users/Warmonger0/tac/tac-7/trees/04a76d25",
+  "files": [
+    {
+      "path": "adws/adw_sdlc_iso.py",
+      "size_bytes": 4642,
+      "modified_at": "2025-11-10T02:57:12.171586",
+      "extension": ".py",
+      "metadata": {
+        "imports": [
+          "subprocess",
+          "sys",
+          "os",
+          "adw_modules.workflow_ops"
+        ],
+        "functions": [
+          {
+            "name": "main",
+            "parameters": [],
+            "is_async": false
+          }
+        ],
+        "classes": []
+      }
+    },
+    {
+      "path": "adws/adw_review_iso.py",
+      "size_bytes": 19176,
+      "modified_at": "2025-11-10T02:57:12.171510",
+      "extension": ".py",
+      "metadata": {
+        "imports": [
+          "sys",
+          "os",
+          "logging",
+          "json",
+          "typing",
+          "dotenv",
+          "adw_modules.state",
+          "adw_modules.git_ops",
+          "adw_modules.github",
+          "adw_modules.workflow_ops",
+          "adw_modules.utils",
+          "adw_modules.data_types",
+          "adw_modules.agent",
+          "adw_modules.r2_uploader",
+          "adw_modules.worktree_ops"
+        ],
+        "functions": [
+          {
+            "name": "run_review",
+            "parameters": [
+              "spec_file",
+              "adw_id",
+              "logger",
+              "working_dir"
+            ],
+            "is_async": false
+          },
+          {
+            "name": "create_review_patch_plan",
+            "parameters": [
+              "issue",
+              "issue_num",
+              "adw_id",
+              "logger",
+              "working_dir"
+            ],
+            "is_async": false
+          },
+          {
+            "name": "upload_review_screenshots",
+            "parameters": [
+              "review_result",
+              "adw_id",
+              "worktree_path",
+              "logger"
+            ],
+            "is_async": false
+          },
+          {
+            "name": "resolve_blocker_issues",
+            "parameters": [
+              "blocker_issues",
+              "issue_number",
+              "adw_id",
+              "worktree_path",
+              "logger"
+            ],
+            "is_async": false
+          },
+          {
+            "name": "build_review_summary",
+            "parameters": [
+              "review_result"
+            ],
+            "is_async": false
+          },
+          {
+            "name": "main",
+            "parameters": [],
+            "is_async": false
+          }
+        ],
+        "classes": []
+      }
+    },
+    {
+      "path": "adws/adw_patch_iso.py",
+      "size_bytes": 14202,
+      "modified_at": "2025-11-10T02:57:12.171046",
+      "extension": ".py",
+      "metadata": {
+        "imports": [
+          "sys",
+          "os",
+          "logging",
+          "json",
+          "subprocess",
+          "typing",
+          "dotenv",
+          "adw_modules.state",
+          "adw_modules.git_ops",
+          "adw_modules.github",
+          "adw_modules.workflow_ops",
+          "adw_modules.worktree_ops",
+          "adw_modules.utils",
+          "adw_modules.data_types",
+          "adw_modules.agent"
+        ],
+        "functions": [
+          {
+            "name": "get_patch_content",
+            "parameters": [
+              "issue",
+              "issue_number",
+              "adw_id",
+              "logger"
+            ],
+            "is_async": false
+          },
+          {
+            "name": "main",
+            "parameters": [],
+            "is_async": false
+          }
+        ],
+        "classes": []
+      }
+    },
+    {
+      "path": "adws/adw_plan_iso.py",
+      "size_bytes": 11306,
+      "modified_at": "2025-11-10T02:57:12.171449",
+      "extension": ".py",
+      "metadata": {
+        "imports": [
+          "sys",
+          "os",
+          "logging",
+          "json",
+          "typing",
+          "dotenv",
+          "adw_modules.state",
+          "adw_modules.git_ops",
+          "adw_modules.github",
+          "adw_modules.workflow_ops",
+          "adw_modules.utils",
+          "adw_modules.data_types",
+          "adw_modules.agent",
+          "adw_modules.worktree_ops"
+        ],
+        "functions": [
+          {
+            "name": "main",
+            "parameters": [],
+            "is_async": false
+          }
+        ],
+        "classes": []
+      }
+    },
+    {
+      "path": "adws/adw_ship_iso.py",
+      "size_bytes": 11451,
+      "modified_at": "2025-11-10T02:57:12.171850",
+      "extension": ".py",
+      "metadata": {
+        "imports": [
+          "sys",
+          "os",
+          "logging",
+          "json",
+          "subprocess",
+          "typing",
+          "dotenv",
+          "adw_modules.state",
+          "adw_modules.github",
+          "adw_modules.workflow_ops",
+          "adw_modules.utils",
+          "adw_modules.worktree_ops",
+          "adw_modules.data_types"
+        ],
+        "functions": [
+          {
+            "name": "find_pr_for_branch",
+            "parameters": [
+              "branch_name",
+              "repo_path",
+              "logger"
+            ],
+            "is_async": false
+          },
+          {
+            "name": "merge_pr_via_github",
+            "parameters": [
+              "pr_number",
+              "repo_path",
+              "logger"
+            ],
+            "is_async": false
+          },
+          {
+            "name": "ship_via_pr_merge",
+            "parameters": [
+              "branch_name",
+              "repo_path",
+              "logger"
+            ],
+            "is_async": false
+          },
+          {
+            "name": "validate_state_completeness",
+            "parameters": [
+              "state",
+              "logger"
+            ],
+            "is_async": false
+          },
+          {
+            "name": "main",
+            "parameters": [],
+            "is_async": false
+          }
+        ],
+        "classes": []
+      }
+    },
+    {
+      "path": "adws/adw_document_iso.py",
+      "size_bytes": 16956,
+      "modified_at": "2025-11-10T02:57:12.170177",
+      "extension": ".py",
+      "metadata": {
+        "imports": [
+          "sys",
+          "os",
+          "logging",
+          "json",
+          "subprocess",
+          "typing",
+          "datetime",
+          "dotenv",
+          "adw_modules.state",
+          "adw_modules.git_ops",
+          "adw_modules.github",
+          "adw_modules.workflow_ops",
+          "adw_modules.utils",
+          "adw_modules.data_types",
+          "adw_modules.agent",
+          "adw_modules.worktree_ops"
+        ],
+        "functions": [
+          {
+            "name": "check_for_changes",
+            "parameters": [
+              "logger",
+              "cwd"
+            ],
+            "is_async": false
+          },
+          {
+            "name": "generate_documentation",
+            "parameters": [
+              "issue_number",
+              "adw_id",
+              "logger",
+              "spec_file",
+              "working_dir"
+            ],
+            "is_async": false
+          },
+          {
+            "name": "track_agentic_kpis",
+            "parameters": [
+              "issue_number",
+              "adw_id",
+              "state",
+              "logger",
+              "worktree_path"
+            ],
+            "is_async": false
+          },
+          {
+            "name": "main",
+            "parameters": [],
+            "is_async": false
+          }
+        ],
+        "classes": []
+      }
+    },
+    {
+      "path": "adws/adw_test_iso.py",
+      "size_bytes": 29971,
+      "modified_at": "2025-11-10T02:57:12.171922",
+      "extension": ".py",
+      "metadata": {
+        "imports": [
+          "json",
+          "subprocess",
+          "sys",
+          "os",
+          "logging",
+          "typing",
+          "dotenv",
+          "adw_modules.data_types",
+          "adw_modules.agent",
+          "adw_modules.github",
+          "adw_modules.utils",
+          "adw_modules.state",
+          "adw_modules.git_ops",
+          "adw_modules.workflow_ops",
+          "adw_modules.worktree_ops"
+        ],
+        "functions": [
+          {
+            "name": "run_tests",
+            "parameters": [
+              "adw_id",
+              "logger",
+              "working_dir"
+            ],
+            "is_async": false
+          },
+          {
+            "name": "parse_test_results",
+            "parameters": [
+              "output",
+              "logger"
+            ],
+            "is_async": false
+          },
+          {
+            "name": "format_test_results_comment",
+            "parameters": [
+              "results",
+              "passed_count",
+              "failed_count"
+            ],
+            "is_async": false
+          },
+          {
+            "name": "parse_e2e_test_results",
+            "parameters": [
+              "output",
+              "logger"
+            ],
+            "is_async": false
+          },
+          {
+            "name": "post_comprehensive_test_summary",
+            "parameters": [
+              "issue_number",
+              "adw_id",
+              "results",
+              "e2e_results",
+              "logger"
+            ],
+            "is_async": false
+          },
+          {
+            "name": "run_e2e_tests",
+            "parameters": [
+              "adw_id",
+              "logger",
+              "working_dir"
+            ],
+            "is_async": false
+          },
+          {
+            "name": "resolve_failed_tests",
+            "parameters": [
+              "failed_tests",
+              "adw_id",
+              "issue_number",
+              "logger",
+              "worktree_path",
+              "iteration"
+            ],
+            "is_async": false
+          },
+          {
+            "name": "run_tests_with_resolution",
+            "parameters": [
+              "adw_id",
+              "issue_number",
+              "logger",
+              "worktree_path",
+              "max_attempts"
+            ],
+            "is_async": false
+          },
+          {
+            "name": "resolve_failed_e2e_tests",
+            "parameters": [
+              "failed_tests",
+              "adw_id",
+              "issue_number",
+              "logger",
+              "worktree_path",
+              "iteration"
+            ],
+            "is_async": false
+          },
+          {
+            "name": "run_e2e_tests_with_resolution",
+            "parameters": [
+              "adw_id",
+              "issue_number",
+              "logger",
+              "worktree_path",
+              "max_attempts"
+            ],
+            "is_async": false
+          },
+          {
+            "name": "main",
+            "parameters": [],
+            "is_async": false
+          }
+        ],
+        "classes": []
+      }
+    },
+    {
+      "path": "adws/adw_sdlc_zte_iso.py",
+      "size_bytes": 7941,
+      "modified_at": "2025-11-10T02:57:12.171648",
+      "extension": ".py",
+      "metadata": {
+        "imports": [
+          "subprocess",
+          "sys",
+          "os",
+          "adw_modules.workflow_ops",
+          "adw_modules.github"
+        ],
+        "functions": [
+          {
+            "name": "main",
+            "parameters": [],
+            "is_async": false
+          }
+        ],
+        "classes": []
+      }
+    },
+    {
+      "path": "scripts/run_optimization_test.py",
+      "size_bytes": 8347,
+      "modified_at": "2025-11-10T03:12:26.329231",
+      "extension": ".py",
+      "metadata": {
+        "imports": [
+          "json",
+          "datetime",
+          "pathlib"
+        ],
+        "functions": [
+          {
+            "name": "generate_optimization_analysis_template",
+            "parameters": [],
+            "is_async": false
+          },
+          {
+            "name": "create_test_workflow_spec",
+            "parameters": [],
+            "is_async": false
+          },
+          {
+            "name": "main",
+            "parameters": [],
+            "is_async": false
+          }
+        ],
+        "classes": []
+      }
+    },
+    {
+      "path": "scripts/validate_implementation.py",
+      "size_bytes": 10271,
+      "modified_at": "2025-11-10T03:10:51.652480",
+      "extension": ".py",
+      "metadata": {
+        "imports": [
+          "os",
+          "sys",
+          "pathlib",
+          "typing",
+          "datetime"
+        ],
+        "functions": [
+          {
+            "name": "check_file_exists",
+            "parameters": [
+              "path"
+            ],
+            "is_async": false
+          },
+          {
+            "name": "check_directory_structure",
+            "parameters": [],
+            "is_async": false
+          },
+          {
+            "name": "check_core_server_files",
+            "parameters": [],
+            "is_async": false
+          },
+          {
+            "name": "check_webbuilder_client",
+            "parameters": [],
+            "is_async": false
+          },
+          {
+            "name": "check_tests",
+            "parameters": [],
+            "is_async": false
+          },
+          {
+            "name": "check_templates",
+            "parameters": [],
+            "is_async": false
+          },
+          {
+            "name": "check_scripts",
+            "parameters": [],
+            "is_async": false
+          },
+          {
+            "name": "check_documentation",
+            "parameters": [],
+            "is_async": false
+          },
+          {
+            "name": "check_configuration_files",
+            "parameters": [],
+            "is_async": false
+          },
+          {
+            "name": "main",
+            "parameters": [],
+            "is_async": false
+          }
+        ],
+        "classes": [
+          {
+            "name": "ValidationReport",
+            "methods": [
+              {
+                "name": "__init__",
+                "parameters": [
+                  "self"
+                ]
+              },
+              {
+                "name": "add_section",
+                "parameters": [
+                  "self",
+                  "title",
+                  "checks"
+                ]
+              },
+              {
+                "name": "generate_markdown",
+                "parameters": [
+                  "self"
+                ]
+              }
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "path": "scripts/generate_codebase_index.py",
+      "size_bytes": 8095,
+      "modified_at": "2025-11-10T03:11:31.071811",
+      "extension": ".py",
+      "metadata": {
+        "imports": [
+          "os",
+          "json",
+          "ast",
+          "pathlib",
+          "datetime",
+          "typing"
+        ],
+        "functions": [
+          {
+            "name": "main",
+            "parameters": [],
+            "is_async": false
+          }
+        ],
+        "classes": [
+          {
+            "name": "CodebaseIndexer",
+            "methods": [
+              {
+                "name": "__init__",
+                "parameters": [
+                  "self",
+                  "root_dir"
+                ]
+              },
+              {
+                "name": "should_index_file",
+                "parameters": [
+                  "self",
+                  "file_path"
+                ]
+              },
+              {
+                "name": "extract_python_metadata",
+                "parameters": [
+                  "self",
+                  "file_path"
+                ]
+              },
+              {
+                "name": "extract_typescript_metadata",
+                "parameters": [
+                  "self",
+                  "file_path"
+                ]
+              },
+              {
+                "name": "index_file",
+                "parameters": [
+                  "self",
+                  "file_path"
+                ]
+              },
+              {
+                "name": "generate_index",
+                "parameters": [
+                  "self"
+                ]
+              },
+              {
+                "name": "_count_file_types",
+                "parameters": [
+                  "self"
+                ]
+              },
+              {
+                "name": "save_index",
+                "parameters": [
+                  "self",
+                  "output_path"
+                ]
+              }
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "path": "app/server/server.py",
+      "size_bytes": 13896,
+      "modified_at": "2025-11-10T03:07:27.158624",
+      "extension": ".py",
+      "metadata": {
+        "imports": [
+          "fastapi",
+          "fastapi.middleware.cors",
+          "fastapi.responses",
+          "datetime",
+          "os",
+          "sqlite3",
+          "traceback",
+          "dotenv",
+          "logging",
+          "sys",
+          "core.data_models",
+          "core.file_processor",
+          "core.llm_processor",
+          "core.sql_processor",
+          "core.insights",
+          "core.sql_security",
+          "core.export_utils",
+          "core.routes_analyzer"
+        ],
+        "functions": [
+          {
+            "name": "upload_file",
+            "parameters": [
+              "file"
+            ],
+            "is_async": true
+          },
+          {
+            "name": "process_natural_language_query",
+            "parameters": [
+              "request"
+            ],
+            "is_async": true
+          },
+          {
+            "name": "get_database_schema_endpoint",
+            "parameters": [],
+            "is_async": true
+          },
+          {
+            "name": "generate_insights_endpoint",
+            "parameters": [
+              "request"
+            ],
+            "is_async": true
+          },
+          {
+            "name": "generate_random_query_endpoint",
+            "parameters": [],
+            "is_async": true
+          },
+          {
+            "name": "health_check",
+            "parameters": [],
+            "is_async": true
+          },
+          {
+            "name": "delete_table",
+            "parameters": [
+              "table_name"
+            ],
+            "is_async": true
+          },
+          {
+            "name": "export_table",
+            "parameters": [
+              "request"
+            ],
+            "is_async": true
+          },
+          {
+            "name": "export_query_results",
+            "parameters": [
+              "request"
+            ],
+            "is_async": true
+          },
+          {
+            "name": "get_routes",
+            "parameters": [],
+            "is_async": true
+          }
+        ],
+        "classes": []
+      }
+    },
+    {
+      "path": "app/server/main.py",
+      "size_bytes": 363,
+      "modified_at": "2025-11-10T02:57:12.179852",
+      "extension": ".py",
+      "metadata": {
+        "imports": [
+          "logging",
+          "sys"
+        ],
+        "functions": [
+          {
+            "name": "main",
+            "parameters": [],
+            "is_async": false
+          }
+        ],
+        "classes": []
+      }
+    },
+    {
+      "path": "app/client/vite.config.ts",
+      "size_bytes": 330,
+      "modified_at": "2025-11-10T02:57:12.177669",
+      "extension": ".ts",
+      "metadata": {
+        "imports": [
+          "import { defineConfig } from 'vite'"
+        ],
+        "exports": [
+          "export default defineConfig({"
+        ],
+        "note": "Basic text analysis - not full AST parsing"
+      }
+    },
+    {
+      "path": "app/server/core/github_poster.py",
+      "size_bytes": 5761,
+      "modified_at": "2025-11-10T02:57:12.178540",
+      "extension": ".py",
+      "metadata": {
+        "imports": [
+          "subprocess",
+          "typing",
+          "rich.console",
+          "rich.panel",
+          "rich.markdown",
+          "core.data_models"
+        ],
+        "functions": [],
+        "classes": [
+          {
+            "name": "GitHubPoster",
+            "methods": [
+              {
+                "name": "__init__",
+                "parameters": [
+                  "self",
+                  "repo_url"
+                ]
+              },
+              {
+                "name": "format_preview",
+                "parameters": [
+                  "self",
+                  "issue"
+                ]
+              },
+              {
+                "name": "post_issue",
+                "parameters": [
+                  "self",
+                  "issue",
+                  "confirm"
+                ]
+              },
+              {
+                "name": "_show_preview",
+                "parameters": [
+                  "self",
+                  "issue"
+                ]
+              },
+              {
+                "name": "_execute_gh_command",
+                "parameters": [
+                  "self",
+                  "cmd"
+                ]
+              },
+              {
+                "name": "_validate_gh_cli",
+                "parameters": [
+                  "self"
+                ]
+              },
+              {
+                "name": "get_repo_info",
+                "parameters": [
+                  "self"
+                ]
+              }
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "path": "app/server/core/issue_formatter.py",
+      "size_bytes": 5994,
+      "modified_at": "2025-11-10T02:57:12.179181",
+      "extension": ".py",
+      "metadata": {
+        "imports": [
+          "typing",
+          "core.data_models"
+        ],
+        "functions": [
+          {
+            "name": "format_issue",
+            "parameters": [
+              "issue",
+              "template_data"
+            ],
+            "is_async": false
+          },
+          {
+            "name": "validate_issue_body",
+            "parameters": [
+              "body"
+            ],
+            "is_async": false
+          },
+          {
+            "name": "format_requirements_list",
+            "parameters": [
+              "requirements"
+            ],
+            "is_async": false
+          },
+          {
+            "name": "format_technical_approach",
+            "parameters": [
+              "approach"
+            ],
+            "is_async": false
+          },
+          {
+            "name": "format_workflow_section",
+            "parameters": [
+              "workflow",
+              "model_set"
+            ],
+            "is_async": false
+          },
+          {
+            "name": "escape_markdown_special_chars",
+            "parameters": [
+              "text"
+            ],
+            "is_async": false
+          },
+          {
+            "name": "create_feature_issue_body",
+            "parameters": [
+              "description",
+              "requirements",
+              "technical_approach",
+              "workflow",
+              "model_set"
+            ],
+            "is_async": false
+          },
+          {
+            "name": "create_bug_issue_body",
+            "parameters": [
+              "description",
+              "steps",
+              "expected",
+              "actual",
+              "workflow",
+              "model_set"
+            ],
+            "is_async": false
+          },
+          {
+            "name": "create_chore_issue_body",
+            "parameters": [
+              "description",
+              "tasks",
+              "workflow",
+              "model_set"
+            ],
+            "is_async": false
+          }
+        ],
+        "classes": []
+      }
+    },
+    {
+      "path": "app/server/core/export_utils.py",
+      "size_bytes": 1659,
+      "modified_at": "2025-11-10T02:57:12.178231",
+      "extension": ".py",
+      "metadata": {
+        "imports": [
+          "sqlite3",
+          "typing",
+          "pandas",
+          "io"
+        ],
+        "functions": [
+          {
+            "name": "generate_csv_from_data",
+            "parameters": [
+              "data",
+              "columns"
+            ],
+            "is_async": false
+          },
+          {
+            "name": "generate_csv_from_table",
+            "parameters": [
+              "conn",
+              "table_name"
+            ],
+            "is_async": false
+          }
+        ],
+        "classes": []
+      }
+    },
+    {
+      "path": "app/server/core/project_detector.py",
+      "size_bytes": 10281,
+      "modified_at": "2025-11-10T02:57:12.179643",
+      "extension": ".py",
+      "metadata": {
+        "imports": [
+          "json",
+          "pathlib",
+          "typing",
+          "core.data_models"
+        ],
+        "functions": [
+          {
+            "name": "detect_project_context",
+            "parameters": [
+              "path"
+            ],
+            "is_async": false
+          },
+          {
+            "name": "is_directory_empty",
+            "parameters": [
+              "path"
+            ],
+            "is_async": false
+          },
+          {
+            "name": "detect_framework",
+            "parameters": [
+              "path"
+            ],
+            "is_async": false
+          },
+          {
+            "name": "detect_backend",
+            "parameters": [
+              "path"
+            ],
+            "is_async": false
+          },
+          {
+            "name": "detect_build_tools",
+            "parameters": [
+              "path"
+            ],
+            "is_async": false
+          },
+          {
+            "name": "detect_package_manager",
+            "parameters": [
+              "path"
+            ],
+            "is_async": false
+          },
+          {
+            "name": "check_git_initialized",
+            "parameters": [
+              "path"
+            ],
+            "is_async": false
+          },
+          {
+            "name": "calculate_complexity_from_structure",
+            "parameters": [
+              "path",
+              "framework",
+              "backend",
+              "build_tools"
+            ],
+            "is_async": false
+          },
+          {
+            "name": "count_project_files",
+            "parameters": [
+              "path"
+            ],
+            "is_async": false
+          },
+          {
+            "name": "suggest_workflow",
+            "parameters": [
+              "context"
+            ],
+            "is_async": false
+          },
+          {
+            "name": "calculate_complexity",
+            "parameters": [
+              "context"
+            ],
+            "is_async": false
+          }
+        ],
+        "classes": []
+      }
+    },
+    {
+      "path": "app/server/core/nl_processor.py",
+      "size_bytes": 7367,
+      "modified_at": "2025-11-10T02:57:12.179445",
+      "extension": ".py",
+      "metadata": {
+        "imports": [
+          "os",
+          "json",
+          "typing",
+          "anthropic",
+          "core.data_models"
+        ],
+        "functions": [
+          {
+            "name": "analyze_intent",
+            "parameters": [
+              "nl_input"
+            ],
+            "is_async": true
+          },
+          {
+            "name": "extract_requirements",
+            "parameters": [
+              "nl_input",
+              "intent"
+            ],
+            "is_async": false
+          },
+          {
+            "name": "classify_issue_type",
+            "parameters": [
+              "intent"
+            ],
+            "is_async": false
+          },
+          {
+            "name": "suggest_adw_workflow",
+            "parameters": [
+              "issue_type",
+              "complexity"
+            ],
+            "is_async": false
+          },
+          {
+            "name": "process_request",
+            "parameters": [
+              "nl_input",
+              "project_context"
+            ],
+            "is_async": true
+          }
+        ],
+        "classes": []
+      }
+    },
+    {
+      "path": "app/server/core/constants.py",
+      "size_bytes": 796,
+      "modified_at": "2025-11-10T02:57:12.177999",
+      "extension": ".py",
+      "metadata": {
+        "imports": [],
+        "functions": [],
+        "classes": []
+      }
+    },
+    {
+      "path": "app/server/core/routes_analyzer.py",
+      "size_bytes": 5734,
+      "modified_at": "2025-11-10T03:06:34.343962",
+      "extension": ".py",
+      "metadata": {
+        "imports": [
+          "ast",
+          "pathlib",
+          "typing",
+          "logging"
+        ],
+        "functions": [],
+        "classes": [
+          {
+            "name": "RoutesAnalyzer",
+            "methods": [
+              {
+                "name": "__init__",
+                "parameters": [
+                  "self",
+                  "server_file_path"
+                ]
+              },
+              {
+                "name": "analyze_routes",
+                "parameters": [
+                  "self"
+                ]
+              },
+              {
+                "name": "_analyze_file",
+                "parameters": [
+                  "self",
+                  "file_path"
+                ]
+              },
+              {
+                "name": "_extract_route_from_decorators",
+                "parameters": [
+                  "self",
+                  "func_node"
+                ]
+              },
+              {
+                "name": "_extract_string_value",
+                "parameters": [
+                  "self",
+                  "node"
+                ]
+              },
+              {
+                "name": "_extract_docstring",
+                "parameters": [
+                  "self",
+                  "func_node"
+                ]
+              }
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "path": "app/server/core/__init__.py",
+      "size_bytes": 48,
+      "modified_at": "2025-11-10T02:57:12.177938",
+      "extension": ".py",
+      "metadata": {
+        "imports": [],
+        "functions": [],
+        "classes": []
+      }
+    },
+    {
+      "path": "app/server/core/file_processor.py",
+      "size_bytes": 11153,
+      "modified_at": "2025-11-10T02:57:12.178301",
+      "extension": ".py",
+      "metadata": {
+        "imports": [
+          "json",
+          "pandas",
+          "sqlite3",
+          "io",
+          "re",
+          "typing",
+          "sql_security",
+          "constants"
+        ],
+        "functions": [
+          {
+            "name": "sanitize_table_name",
+            "parameters": [
+              "table_name"
+            ],
+            "is_async": false
+          },
+          {
+            "name": "convert_csv_to_sqlite",
+            "parameters": [
+              "csv_content",
+              "table_name",
+              "db_path"
+            ],
+            "is_async": false
+          },
+          {
+            "name": "convert_json_to_sqlite",
+            "parameters": [
+              "json_content",
+              "table_name",
+              "db_path"
+            ],
+            "is_async": false
+          },
+          {
+            "name": "flatten_json_object",
+            "parameters": [
+              "obj",
+              "prefix"
+            ],
+            "is_async": false
+          },
+          {
+            "name": "discover_jsonl_fields",
+            "parameters": [
+              "jsonl_content"
+            ],
+            "is_async": false
+          },
+          {
+            "name": "convert_jsonl_to_sqlite",
+            "parameters": [
+              "jsonl_content",
+              "table_name",
+              "db_path"
+            ],
+            "is_async": false
+          }
+        ],
+        "classes": []
+      }
+    },
+    {
+      "path": "app/server/core/sql_security.py",
+      "size_bytes": 9011,
+      "modified_at": "2025-11-10T02:57:12.179788",
+      "extension": ".py",
+      "metadata": {
+        "imports": [
+          "re",
+          "sqlite3",
+          "typing"
+        ],
+        "functions": [
+          {
+            "name": "validate_identifier",
+            "parameters": [
+              "identifier",
+              "identifier_type"
+            ],
+            "is_async": false
+          },
+          {
+            "name": "escape_identifier",
+            "parameters": [
+              "identifier"
+            ],
+            "is_async": false
+          },
+          {
+            "name": "execute_query_safely",
+            "parameters": [
+              "conn",
+              "query",
+              "params",
+              "identifier_params",
+              "allow_ddl"
+            ],
+            "is_async": false
+          },
+          {
+            "name": "validate_sql_query",
+            "parameters": [
+              "query"
+            ],
+            "is_async": false
+          },
+          {
+            "name": "sanitize_value_for_like",
+            "parameters": [
+              "value"
+            ],
+            "is_async": false
+          },
+          {
+            "name": "build_safe_in_clause",
+            "parameters": [
+              "column",
+              "values"
+            ],
+            "is_async": false
+          },
+          {
+            "name": "get_safe_table_list",
+            "parameters": [
+              "conn"
+            ],
+            "is_async": false
+          },
+          {
+            "name": "check_table_exists",
+            "parameters": [
+              "conn",
+              "table_name"
+            ],
+            "is_async": false
+          }
+        ],
+        "classes": [
+          {
+            "name": "SQLSecurityError",
+            "methods": []
+          }
+        ]
+      }
+    },
+    {
+      "path": "app/server/core/sql_processor.py",
+      "size_bytes": 3445,
+      "modified_at": "2025-11-10T02:57:12.179715",
+      "extension": ".py",
+      "metadata": {
+        "imports": [
+          "sqlite3",
+          "typing",
+          "sql_security"
+        ],
+        "functions": [
+          {
+            "name": "execute_sql_safely",
+            "parameters": [
+              "sql_query"
+            ],
+            "is_async": false
+          },
+          {
+            "name": "get_database_schema",
+            "parameters": [],
+            "is_async": false
+          }
+        ],
+        "classes": []
+      }
+    },
+    {
+      "path": "app/server/core/llm_processor.py",
+      "size_bytes": 10112,
+      "modified_at": "2025-11-10T02:57:12.179253",
+      "extension": ".py",
+      "metadata": {
+        "imports": [
+          "os",
+          "typing",
+          "openai",
+          "anthropic",
+          "core.data_models"
+        ],
+        "functions": [
+          {
+            "name": "generate_sql_with_openai",
+            "parameters": [
+              "query_text",
+              "schema_info"
+            ],
+            "is_async": false
+          },
+          {
+            "name": "generate_sql_with_anthropic",
+            "parameters": [
+              "query_text",
+              "schema_info"
+            ],
+            "is_async": false
+          },
+          {
+            "name": "format_schema_for_prompt",
+            "parameters": [
+              "schema_info"
+            ],
+            "is_async": false
+          },
+          {
+            "name": "generate_random_query_with_openai",
+            "parameters": [
+              "schema_info"
+            ],
+            "is_async": false
+          },
+          {
+            "name": "generate_random_query_with_anthropic",
+            "parameters": [
+              "schema_info"
+            ],
+            "is_async": false
+          },
+          {
+            "name": "generate_random_query",
+            "parameters": [
+              "schema_info"
+            ],
+            "is_async": false
+          },
+          {
+            "name": "generate_sql",
+            "parameters": [
+              "request",
+              "schema_info"
+            ],
+            "is_async": false
+          }
+        ],
+        "classes": []
+      }
+    },
+    {
+      "path": "app/server/core/data_models.py",
+      "size_bytes": 4864,
+      "modified_at": "2025-11-10T03:07:07.249167",
+      "extension": ".py",
+      "metadata": {
+        "imports": [
+          "pydantic",
+          "typing",
+          "datetime"
+        ],
+        "functions": [],
+        "classes": [
+          {
+            "name": "FileUploadRequest",
+            "methods": []
+          },
+          {
+            "name": "FileUploadResponse",
+            "methods": []
+          },
+          {
+            "name": "QueryRequest",
+            "methods": []
+          },
+          {
+            "name": "QueryResponse",
+            "methods": []
+          },
+          {
+            "name": "ColumnInfo",
+            "methods": []
+          },
+          {
+            "name": "TableSchema",
+            "methods": []
+          },
+          {
+            "name": "DatabaseSchemaRequest",
+            "methods": []
+          },
+          {
+            "name": "DatabaseSchemaResponse",
+            "methods": []
+          },
+          {
+            "name": "InsightsRequest",
+            "methods": []
+          },
+          {
+            "name": "ColumnInsight",
+            "methods": []
+          },
+          {
+            "name": "InsightsResponse",
+            "methods": []
+          },
+          {
+            "name": "RandomQueryResponse",
+            "methods": []
+          },
+          {
+            "name": "HealthCheckRequest",
+            "methods": []
+          },
+          {
+            "name": "HealthCheckResponse",
+            "methods": []
+          },
+          {
+            "name": "ExportRequest",
+            "methods": []
+          },
+          {
+            "name": "QueryExportRequest",
+            "methods": []
+          },
+          {
+            "name": "GitHubIssue",
+            "methods": []
+          },
+          {
+            "name": "ProjectContext",
+            "methods": []
+          },
+          {
+            "name": "NLProcessRequest",
+            "methods": []
+          },
+          {
+            "name": "NLProcessResponse",
+            "methods": []
+          },
+          {
+            "name": "Route",
+            "methods": []
+          },
+          {
+            "name": "RoutesResponse",
+            "methods": []
+          }
+        ]
+      }
+    },
+    {
+      "path": "app/server/core/insights.py",
+      "size_bytes": 4391,
+      "modified_at": "2025-11-10T02:57:12.178607",
+      "extension": ".py",
+      "metadata": {
+        "imports": [
+          "sqlite3",
+          "typing",
+          "core.data_models",
+          "sql_security"
+        ],
+        "functions": [
+          {
+            "name": "generate_insights",
+            "parameters": [
+              "table_name",
+              "column_names"
+            ],
+            "is_async": false
+          }
+        ],
+        "classes": []
+      }
+    },
+    {
+      "path": "app/server/tests/test_routes_endpoint.py",
+      "size_bytes": 2282,
+      "modified_at": "2025-11-10T03:07:38.807211",
+      "extension": ".py",
+      "metadata": {
+        "imports": [
+          "pytest",
+          "fastapi.testclient",
+          "server"
+        ],
+        "functions": [
+          {
+            "name": "test_get_routes_returns_valid_response",
+            "parameters": [],
+            "is_async": false
+          },
+          {
+            "name": "test_get_routes_contains_required_fields",
+            "parameters": [],
+            "is_async": false
+          },
+          {
+            "name": "test_get_routes_includes_known_endpoints",
+            "parameters": [],
+            "is_async": false
+          },
+          {
+            "name": "test_get_routes_total_matches_count",
+            "parameters": [],
+            "is_async": false
+          },
+          {
+            "name": "test_get_routes_methods_are_uppercase",
+            "parameters": [],
+            "is_async": false
+          },
+          {
+            "name": "test_get_routes_paths_start_with_slash",
+            "parameters": [],
+            "is_async": false
+          }
+        ],
+        "classes": []
+      }
+    },
+    {
+      "path": "app/server/tests/test_nl_workflow_integration.py",
+      "size_bytes": 12459,
+      "modified_at": "2025-11-10T02:57:12.182940",
+      "extension": ".py",
+      "metadata": {
+        "imports": [
+          "pytest",
+          "json",
+          "unittest.mock",
+          "core.nl_processor",
+          "core.project_detector",
+          "core.github_poster",
+          "core.data_models"
+        ],
+        "functions": [],
+        "classes": [
+          {
+            "name": "TestNLWorkflowIntegration",
+            "methods": [
+              {
+                "name": "mock_anthropic_responses",
+                "parameters": [
+                  "self"
+                ]
+              },
+              {
+                "name": "sample_project_dir",
+                "parameters": [
+                  "self",
+                  "tmp_path"
+                ]
+              },
+              {
+                "name": "test_detect_project_context_integration",
+                "parameters": [
+                  "self",
+                  "sample_project_dir"
+                ]
+              },
+              {
+                "name": "test_nl_to_issue_workflow",
+                "parameters": [
+                  "self",
+                  "mock_anthropic_class",
+                  "sample_project_dir",
+                  "mock_anthropic_responses"
+                ]
+              },
+              {
+                "name": "test_bug_report_workflow",
+                "parameters": [
+                  "self",
+                  "mock_anthropic_class",
+                  "sample_project_dir"
+                ]
+              },
+              {
+                "name": "test_chore_workflow",
+                "parameters": [
+                  "self",
+                  "mock_anthropic_class",
+                  "sample_project_dir"
+                ]
+              },
+              {
+                "name": "test_new_project_detection",
+                "parameters": [
+                  "self",
+                  "tmp_path"
+                ]
+              },
+              {
+                "name": "test_high_complexity_workflow",
+                "parameters": [
+                  "self",
+                  "mock_anthropic_class",
+                  "tmp_path"
+                ]
+              },
+              {
+                "name": "test_error_propagation",
+                "parameters": [
+                  "self",
+                  "mock_anthropic_class",
+                  "sample_project_dir"
+                ]
+              },
+              {
+                "name": "test_end_to_end_with_github_posting",
+                "parameters": [
+                  "self",
+                  "mock_execute",
+                  "mock_validate"
+                ]
+              },
+              {
+                "name": "test_framework_label_inclusion",
+                "parameters": [
+                  "self",
+                  "sample_project_dir"
+                ]
+              },
+              {
+                "name": "test_workflow_with_missing_api_key",
+                "parameters": [
+                  "self",
+                  "mock_anthropic_class",
+                  "sample_project_dir"
+                ]
+              }
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "path": "app/server/tests/__init__.py",
+      "size_bytes": 0,
+      "modified_at": "2025-11-10T02:57:12.180173",
+      "extension": ".py",
+      "metadata": {
+        "imports": [],
+        "functions": [],
+        "classes": []
+      }
+    },
+    {
+      "path": "app/server/tests/test_export_utils.py",
+      "size_bytes": 7396,
+      "modified_at": "2025-11-10T02:57:12.182651",
+      "extension": ".py",
+      "metadata": {
+        "imports": [
+          "pytest",
+          "sqlite3",
+          "pandas",
+          "io",
+          "core.export_utils"
+        ],
+        "functions": [],
+        "classes": [
+          {
+            "name": "TestExportUtils",
+            "methods": [
+              {
+                "name": "test_generate_csv_from_data_empty",
+                "parameters": [
+                  "self"
+                ]
+              },
+              {
+                "name": "test_generate_csv_from_data_with_columns_no_data",
+                "parameters": [
+                  "self"
+                ]
+              },
+              {
+                "name": "test_generate_csv_from_data_with_data",
+                "parameters": [
+                  "self"
+                ]
+              },
+              {
+                "name": "test_generate_csv_from_data_auto_columns",
+                "parameters": [
+                  "self"
+                ]
+              },
+              {
+                "name": "test_generate_csv_from_data_various_types",
+                "parameters": [
+                  "self"
+                ]
+              },
+              {
+                "name": "test_generate_csv_from_data_special_characters",
+                "parameters": [
+                  "self"
+                ]
+              },
+              {
+                "name": "test_generate_csv_from_data_unicode",
+                "parameters": [
+                  "self"
+                ]
+              },
+              {
+                "name": "test_generate_csv_from_table_nonexistent",
+                "parameters": [
+                  "self"
+                ]
+              },
+              {
+                "name": "test_generate_csv_from_table_empty",
+                "parameters": [
+                  "self"
+                ]
+              },
+              {
+                "name": "test_generate_csv_from_table_with_data",
+                "parameters": [
+                  "self"
+                ]
+              },
+              {
+                "name": "test_generate_csv_from_table_special_name",
+                "parameters": [
+                  "self"
+                ]
+              }
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "path": "app/server/tests/test_sql_injection.py",
+      "size_bytes": 12536,
+      "modified_at": "2025-11-10T02:57:12.183101",
+      "extension": ".py",
+      "metadata": {
+        "imports": [
+          "pytest",
+          "sqlite3",
+          "tempfile",
+          "os",
+          "unittest.mock",
+          "core.sql_security",
+          "core.sql_processor",
+          "core.file_processor",
+          "core.insights"
+        ],
+        "functions": [
+          {
+            "name": "test_db",
+            "parameters": [],
+            "is_async": false
+          },
+          {
+            "name": "test_integration_upload_malicious_filename",
+            "parameters": [
+              "test_db"
+            ],
+            "is_async": false
+          }
+        ],
+        "classes": [
+          {
+            "name": "TestSQLSecurityModule",
+            "methods": [
+              {
+                "name": "test_validate_identifier_valid",
+                "parameters": [
+                  "self"
+                ]
+              },
+              {
+                "name": "test_validate_identifier_invalid",
+                "parameters": [
+                  "self"
+                ]
+              },
+              {
+                "name": "test_escape_identifier",
+                "parameters": [
+                  "self"
+                ]
+              },
+              {
+                "name": "test_execute_query_safely",
+                "parameters": [
+                  "self",
+                  "test_db"
+                ]
+              },
+              {
+                "name": "test_execute_query_safely_injection_attempt",
+                "parameters": [
+                  "self",
+                  "test_db"
+                ]
+              },
+              {
+                "name": "test_validate_sql_query",
+                "parameters": [
+                  "self"
+                ]
+              },
+              {
+                "name": "test_sanitize_value_for_like",
+                "parameters": [
+                  "self"
+                ]
+              },
+              {
+                "name": "test_build_safe_in_clause",
+                "parameters": [
+                  "self"
+                ]
+              },
+              {
+                "name": "test_check_table_exists",
+                "parameters": [
+                  "self",
+                  "test_db"
+                ]
+              }
+            ]
+          },
+          {
+            "name": "TestSQLProcessorSecurity",
+            "methods": [
+              {
+                "name": "test_execute_sql_safely_blocks_dangerous_queries",
+                "parameters": [
+                  "self",
+                  "mock_connect"
+                ]
+              },
+              {
+                "name": "test_execute_sql_safely_allows_select",
+                "parameters": [
+                  "self",
+                  "mock_connect"
+                ]
+              }
+            ]
+          },
+          {
+            "name": "TestFileProcessorSecurity",
+            "methods": [
+              {
+                "name": "test_sanitize_table_name_injection_attempts",
+                "parameters": [
+                  "self"
+                ]
+              }
+            ]
+          },
+          {
+            "name": "TestInsightsSecurity",
+            "methods": [
+              {
+                "name": "test_generate_insights_validates_table_name",
+                "parameters": [
+                  "self",
+                  "mock_connect"
+                ]
+              },
+              {
+                "name": "test_generate_insights_validates_column_names",
+                "parameters": [
+                  "self",
+                  "mock_connect"
+                ]
+              }
+            ]
+          },
+          {
+            "name": "TestEndToEndSQLInjection",
+            "methods": [
+              {
+                "name": "test_malicious_table_names",
+                "parameters": [
+                  "self",
+                  "test_db"
+                ]
+              },
+              {
+                "name": "test_malicious_sql_queries",
+                "parameters": [
+                  "self"
+                ]
+              },
+              {
+                "name": "test_sql_comment_injection",
+                "parameters": [
+                  "self"
+                ]
+              }
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "path": "app/server/tests/core/test_github_poster.py",
+      "size_bytes": 9896,
+      "modified_at": "2025-11-10T02:57:12.180804",
+      "extension": ".py",
+      "metadata": {
+        "imports": [
+          "pytest",
+          "subprocess",
+          "unittest.mock",
+          "core.github_poster",
+          "core.data_models"
+        ],
+        "functions": [],
+        "classes": [
+          {
+            "name": "TestGitHubPoster",
+            "methods": [
+              {
+                "name": "sample_issue",
+                "parameters": [
+                  "self"
+                ]
+              },
+              {
+                "name": "poster",
+                "parameters": [
+                  "self"
+                ]
+              },
+              {
+                "name": "test_init_without_repo",
+                "parameters": [
+                  "self"
+                ]
+              },
+              {
+                "name": "test_init_with_repo",
+                "parameters": [
+                  "self"
+                ]
+              },
+              {
+                "name": "test_format_preview",
+                "parameters": [
+                  "self",
+                  "poster",
+                  "sample_issue"
+                ]
+              },
+              {
+                "name": "test_post_issue_without_confirmation",
+                "parameters": [
+                  "self",
+                  "mock_execute",
+                  "mock_validate",
+                  "poster",
+                  "sample_issue"
+                ]
+              },
+              {
+                "name": "test_post_issue_with_confirmation_yes",
+                "parameters": [
+                  "self",
+                  "mock_execute",
+                  "mock_input",
+                  "mock_preview",
+                  "mock_validate",
+                  "poster",
+                  "sample_issue"
+                ]
+              },
+              {
+                "name": "test_post_issue_with_confirmation_no",
+                "parameters": [
+                  "self",
+                  "mock_input",
+                  "mock_preview",
+                  "mock_validate",
+                  "poster",
+                  "sample_issue"
+                ]
+              },
+              {
+                "name": "test_post_issue_gh_not_available",
+                "parameters": [
+                  "self",
+                  "mock_validate",
+                  "poster",
+                  "sample_issue"
+                ]
+              },
+              {
+                "name": "test_post_issue_with_repo_url",
+                "parameters": [
+                  "self",
+                  "mock_execute",
+                  "mock_validate",
+                  "sample_issue"
+                ]
+              },
+              {
+                "name": "test_validate_gh_cli_success",
+                "parameters": [
+                  "self",
+                  "mock_run",
+                  "poster"
+                ]
+              },
+              {
+                "name": "test_validate_gh_cli_not_installed",
+                "parameters": [
+                  "self",
+                  "mock_run",
+                  "poster"
+                ]
+              },
+              {
+                "name": "test_validate_gh_cli_not_authenticated",
+                "parameters": [
+                  "self",
+                  "mock_run",
+                  "poster"
+                ]
+              },
+              {
+                "name": "test_execute_gh_command_success",
+                "parameters": [
+                  "self",
+                  "mock_run",
+                  "poster"
+                ]
+              },
+              {
+                "name": "test_execute_gh_command_failure",
+                "parameters": [
+                  "self",
+                  "mock_run",
+                  "poster"
+                ]
+              },
+              {
+                "name": "test_get_repo_info",
+                "parameters": [
+                  "self",
+                  "mock_execute",
+                  "poster"
+                ]
+              },
+              {
+                "name": "test_get_repo_info_with_url",
+                "parameters": [
+                  "self",
+                  "mock_execute"
+                ]
+              },
+              {
+                "name": "test_get_repo_info_failure",
+                "parameters": [
+                  "self",
+                  "mock_execute",
+                  "poster"
+                ]
+              },
+              {
+                "name": "test_post_issue_labels_formatting",
+                "parameters": [
+                  "self",
+                  "sample_issue"
+                ]
+              },
+              {
+                "name": "test_post_issue_extracts_number_correctly",
+                "parameters": [
+                  "self",
+                  "mock_execute",
+                  "mock_validate",
+                  "poster",
+                  "sample_issue"
+                ]
+              }
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "path": "app/server/tests/core/__init__.py",
+      "size_bytes": 0,
+      "modified_at": "2025-11-10T02:57:12.180612",
+      "extension": ".py",
+      "metadata": {
+        "imports": [],
+        "functions": [],
+        "classes": []
+      }
+    },
+    {
+      "path": "app/server/tests/core/test_llm_processor.py",
+      "size_bytes": 12422,
+      "modified_at": "2025-11-10T02:57:12.181082",
+      "extension": ".py",
+      "metadata": {
+        "imports": [
+          "pytest",
+          "os",
+          "unittest.mock",
+          "core.llm_processor",
+          "core.data_models"
+        ],
+        "functions": [],
+        "classes": [
+          {
+            "name": "TestLLMProcessor",
+            "methods": [
+              {
+                "name": "test_generate_sql_with_openai_success",
+                "parameters": [
+                  "self",
+                  "mock_openai_class"
+                ]
+              },
+              {
+                "name": "test_generate_sql_with_openai_clean_markdown",
+                "parameters": [
+                  "self",
+                  "mock_openai_class"
+                ]
+              },
+              {
+                "name": "test_generate_sql_with_openai_no_api_key",
+                "parameters": [
+                  "self"
+                ]
+              },
+              {
+                "name": "test_generate_sql_with_openai_api_error",
+                "parameters": [
+                  "self",
+                  "mock_openai_class"
+                ]
+              },
+              {
+                "name": "test_generate_sql_with_anthropic_success",
+                "parameters": [
+                  "self",
+                  "mock_anthropic_class"
+                ]
+              },
+              {
+                "name": "test_generate_sql_with_anthropic_clean_markdown",
+                "parameters": [
+                  "self",
+                  "mock_anthropic_class"
+                ]
+              },
+              {
+                "name": "test_generate_sql_with_anthropic_no_api_key",
+                "parameters": [
+                  "self"
+                ]
+              },
+              {
+                "name": "test_generate_sql_with_anthropic_api_error",
+                "parameters": [
+                  "self",
+                  "mock_anthropic_class"
+                ]
+              },
+              {
+                "name": "test_format_schema_for_prompt",
+                "parameters": [
+                  "self"
+                ]
+              },
+              {
+                "name": "test_format_schema_for_prompt_empty",
+                "parameters": [
+                  "self"
+                ]
+              },
+              {
+                "name": "test_generate_sql_openai_key_priority",
+                "parameters": [
+                  "self",
+                  "mock_openai_func"
+                ]
+              },
+              {
+                "name": "test_generate_sql_anthropic_fallback",
+                "parameters": [
+                  "self",
+                  "mock_anthropic_func"
+                ]
+              },
+              {
+                "name": "test_generate_sql_request_preference_openai",
+                "parameters": [
+                  "self",
+                  "mock_openai_func"
+                ]
+              },
+              {
+                "name": "test_generate_sql_request_preference_anthropic",
+                "parameters": [
+                  "self",
+                  "mock_anthropic_func"
+                ]
+              },
+              {
+                "name": "test_generate_sql_both_keys_openai_priority",
+                "parameters": [
+                  "self",
+                  "mock_openai_func"
+                ]
+              },
+              {
+                "name": "test_generate_sql_only_openai_key",
+                "parameters": [
+                  "self",
+                  "mock_openai_func"
+                ]
+              }
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "path": "app/server/tests/core/test_mcp_setup.py",
+      "size_bytes": 4384,
+      "modified_at": "2025-11-10T02:57:12.181421",
+      "extension": ".py",
+      "metadata": {
+        "imports": [
+          "json",
+          "pathlib"
+        ],
+        "functions": [
+          {
+            "name": "test_mcp_config_exists",
+            "parameters": [],
+            "is_async": false
+          },
+          {
+            "name": "test_playwright_config_exists",
+            "parameters": [],
+            "is_async": false
+          },
+          {
+            "name": "test_mcp_config_valid_json",
+            "parameters": [],
+            "is_async": false
+          },
+          {
+            "name": "test_playwright_config_valid",
+            "parameters": [],
+            "is_async": false
+          },
+          {
+            "name": "test_mcp_config_references_playwright_config",
+            "parameters": [],
+            "is_async": false
+          },
+          {
+            "name": "test_playwright_config_uses_relative_video_path",
+            "parameters": [],
+            "is_async": false
+          }
+        ],
+        "classes": []
+      }
+    },
+    {
+      "path": "app/server/tests/core/test_nl_processor.py",
+      "size_bytes": 10435,
+      "modified_at": "2025-11-10T02:57:12.181628",
+      "extension": ".py",
+      "metadata": {
+        "imports": [
+          "pytest",
+          "os",
+          "json",
+          "unittest.mock",
+          "core.nl_processor",
+          "core.data_models"
+        ],
+        "functions": [],
+        "classes": [
+          {
+            "name": "TestNLProcessor",
+            "methods": [
+              {
+                "name": "test_analyze_intent_feature",
+                "parameters": [
+                  "self",
+                  "mock_anthropic_class"
+                ]
+              },
+              {
+                "name": "test_analyze_intent_bug",
+                "parameters": [
+                  "self",
+                  "mock_anthropic_class"
+                ]
+              },
+              {
+                "name": "test_analyze_intent_clean_markdown",
+                "parameters": [
+                  "self",
+                  "mock_anthropic_class"
+                ]
+              },
+              {
+                "name": "test_analyze_intent_no_api_key",
+                "parameters": [
+                  "self"
+                ]
+              },
+              {
+                "name": "test_analyze_intent_api_error",
+                "parameters": [
+                  "self",
+                  "mock_anthropic_class"
+                ]
+              },
+              {
+                "name": "test_extract_requirements_success",
+                "parameters": [
+                  "self",
+                  "mock_anthropic_class"
+                ]
+              },
+              {
+                "name": "test_extract_requirements_clean_markdown",
+                "parameters": [
+                  "self",
+                  "mock_anthropic_class"
+                ]
+              },
+              {
+                "name": "test_extract_requirements_no_api_key",
+                "parameters": [
+                  "self"
+                ]
+              },
+              {
+                "name": "test_classify_issue_type_feature",
+                "parameters": [
+                  "self"
+                ]
+              },
+              {
+                "name": "test_classify_issue_type_bug",
+                "parameters": [
+                  "self"
+                ]
+              },
+              {
+                "name": "test_classify_issue_type_chore",
+                "parameters": [
+                  "self"
+                ]
+              },
+              {
+                "name": "test_classify_issue_type_default",
+                "parameters": [
+                  "self"
+                ]
+              },
+              {
+                "name": "test_suggest_adw_workflow_bug",
+                "parameters": [
+                  "self"
+                ]
+              },
+              {
+                "name": "test_suggest_adw_workflow_chore",
+                "parameters": [
+                  "self"
+                ]
+              },
+              {
+                "name": "test_suggest_adw_workflow_feature_low",
+                "parameters": [
+                  "self"
+                ]
+              },
+              {
+                "name": "test_suggest_adw_workflow_feature_medium",
+                "parameters": [
+                  "self"
+                ]
+              },
+              {
+                "name": "test_suggest_adw_workflow_feature_high",
+                "parameters": [
+                  "self"
+                ]
+              },
+              {
+                "name": "test_process_request_success",
+                "parameters": [
+                  "self",
+                  "mock_extract",
+                  "mock_analyze"
+                ]
+              },
+              {
+                "name": "test_process_request_error_handling",
+                "parameters": [
+                  "self",
+                  "mock_analyze"
+                ]
+              }
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "path": "app/server/tests/core/test_issue_formatter.py",
+      "size_bytes": 10152,
+      "modified_at": "2025-11-10T02:57:12.180924",
+      "extension": ".py",
+      "metadata": {
+        "imports": [
+          "pytest",
+          "core.issue_formatter",
+          "core.data_models"
+        ],
+        "functions": [],
+        "classes": [
+          {
+            "name": "TestIssueFormatter",
+            "methods": [
+              {
+                "name": "test_format_requirements_list_with_items",
+                "parameters": [
+                  "self"
+                ]
+              },
+              {
+                "name": "test_format_requirements_list_empty",
+                "parameters": [
+                  "self"
+                ]
+              },
+              {
+                "name": "test_format_technical_approach_with_content",
+                "parameters": [
+                  "self"
+                ]
+              },
+              {
+                "name": "test_format_technical_approach_empty",
+                "parameters": [
+                  "self"
+                ]
+              },
+              {
+                "name": "test_format_technical_approach_none",
+                "parameters": [
+                  "self"
+                ]
+              },
+              {
+                "name": "test_format_workflow_section",
+                "parameters": [
+                  "self"
+                ]
+              },
+              {
+                "name": "test_format_workflow_section_heavy",
+                "parameters": [
+                  "self"
+                ]
+              },
+              {
+                "name": "test_create_feature_issue_body",
+                "parameters": [
+                  "self"
+                ]
+              },
+              {
+                "name": "test_create_feature_issue_body_no_technical_approach",
+                "parameters": [
+                  "self"
+                ]
+              },
+              {
+                "name": "test_create_bug_issue_body",
+                "parameters": [
+                  "self"
+                ]
+              },
+              {
+                "name": "test_create_bug_issue_body_minimal",
+                "parameters": [
+                  "self"
+                ]
+              },
+              {
+                "name": "test_create_chore_issue_body",
+                "parameters": [
+                  "self"
+                ]
+              },
+              {
+                "name": "test_format_issue_feature",
+                "parameters": [
+                  "self"
+                ]
+              },
+              {
+                "name": "test_format_issue_bug",
+                "parameters": [
+                  "self"
+                ]
+              },
+              {
+                "name": "test_format_issue_chore",
+                "parameters": [
+                  "self"
+                ]
+              },
+              {
+                "name": "test_format_issue_missing_field",
+                "parameters": [
+                  "self"
+                ]
+              },
+              {
+                "name": "test_validate_issue_body_valid",
+                "parameters": [
+                  "self"
+                ]
+              },
+              {
+                "name": "test_validate_issue_body_missing_sections",
+                "parameters": [
+                  "self"
+                ]
+              },
+              {
+                "name": "test_validate_issue_body_missing_workflow",
+                "parameters": [
+                  "self"
+                ]
+              },
+              {
+                "name": "test_issue_templates_exist",
+                "parameters": [
+                  "self"
+                ]
+              },
+              {
+                "name": "test_issue_templates_structure",
+                "parameters": [
+                  "self"
+                ]
+              }
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "path": "app/server/tests/core/test_file_processor.py",
+      "size_bytes": 16524,
+      "modified_at": "2025-11-10T02:57:12.180688",
+      "extension": ".py",
+      "metadata": {
+        "imports": [
+          "pytest",
+          "pathlib",
+          "core.file_processor"
+        ],
+        "functions": [
+          {
+            "name": "test_db",
+            "parameters": [],
+            "is_async": false
+          },
+          {
+            "name": "test_assets_dir",
+            "parameters": [],
+            "is_async": false
+          }
+        ],
+        "classes": [
+          {
+            "name": "TestFileProcessor",
+            "methods": [
+              {
+                "name": "test_convert_csv_to_sqlite_success",
+                "parameters": [
+                  "self",
+                  "test_db",
+                  "test_assets_dir"
+                ]
+              },
+              {
+                "name": "test_convert_csv_to_sqlite_column_cleaning",
+                "parameters": [
+                  "self",
+                  "test_db",
+                  "test_assets_dir"
+                ]
+              },
+              {
+                "name": "test_convert_csv_to_sqlite_with_inconsistent_data",
+                "parameters": [
+                  "self",
+                  "test_db",
+                  "test_assets_dir"
+                ]
+              },
+              {
+                "name": "test_convert_json_to_sqlite_success",
+                "parameters": [
+                  "self",
+                  "test_db",
+                  "test_assets_dir"
+                ]
+              },
+              {
+                "name": "test_convert_json_to_sqlite_invalid_json",
+                "parameters": [
+                  "self",
+                  "test_db"
+                ]
+              },
+              {
+                "name": "test_convert_json_to_sqlite_not_array",
+                "parameters": [
+                  "self",
+                  "test_db"
+                ]
+              },
+              {
+                "name": "test_convert_json_to_sqlite_empty_array",
+                "parameters": [
+                  "self",
+                  "test_db"
+                ]
+              },
+              {
+                "name": "test_flatten_json_object_nested_dict",
+                "parameters": [
+                  "self"
+                ]
+              },
+              {
+                "name": "test_flatten_json_object_array",
+                "parameters": [
+                  "self"
+                ]
+              },
+              {
+                "name": "test_flatten_json_object_complex",
+                "parameters": [
+                  "self"
+                ]
+              },
+              {
+                "name": "test_flatten_json_object_primitive",
+                "parameters": [
+                  "self"
+                ]
+              },
+              {
+                "name": "test_discover_jsonl_fields_basic",
+                "parameters": [
+                  "self"
+                ]
+              },
+              {
+                "name": "test_discover_jsonl_fields_nested",
+                "parameters": [
+                  "self"
+                ]
+              },
+              {
+                "name": "test_discover_jsonl_fields_arrays",
+                "parameters": [
+                  "self"
+                ]
+              },
+              {
+                "name": "test_discover_jsonl_fields_invalid_json",
+                "parameters": [
+                  "self"
+                ]
+              },
+              {
+                "name": "test_discover_jsonl_fields_empty_lines",
+                "parameters": [
+                  "self"
+                ]
+              },
+              {
+                "name": "test_convert_jsonl_to_sqlite_success",
+                "parameters": [
+                  "self",
+                  "test_db",
+                  "test_assets_dir"
+                ]
+              },
+              {
+                "name": "test_convert_jsonl_to_sqlite_complex",
+                "parameters": [
+                  "self",
+                  "test_db",
+                  "test_assets_dir"
+                ]
+              },
+              {
+                "name": "test_convert_jsonl_to_sqlite_invalid_json",
+                "parameters": [
+                  "self",
+                  "test_db"
+                ]
+              },
+              {
+                "name": "test_convert_jsonl_to_sqlite_empty_file",
+                "parameters": [
+                  "self",
+                  "test_db"
+                ]
+              },
+              {
+                "name": "test_convert_jsonl_to_sqlite_blank_lines_only",
+                "parameters": [
+                  "self",
+                  "test_db"
+                ]
+              },
+              {
+                "name": "test_convert_jsonl_to_sqlite_inconsistent_schema",
+                "parameters": [
+                  "self",
+                  "test_db"
+                ]
+              }
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "path": "app/server/tests/core/test_sql_processor.py",
+      "size_bytes": 6904,
+      "modified_at": "2025-11-10T02:57:12.181853",
+      "extension": ".py",
+      "metadata": {
+        "imports": [
+          "pytest",
+          "sqlite3",
+          "unittest.mock",
+          "core.sql_processor"
+        ],
+        "functions": [
+          {
+            "name": "test_db",
+            "parameters": [],
+            "is_async": false
+          }
+        ],
+        "classes": [
+          {
+            "name": "TestSQLProcessor",
+            "methods": [
+              {
+                "name": "test_execute_sql_safely_valid_select",
+                "parameters": [
+                  "self",
+                  "test_db"
+                ]
+              },
+              {
+                "name": "test_execute_sql_safely_with_joins",
+                "parameters": [
+                  "self",
+                  "test_db"
+                ]
+              },
+              {
+                "name": "test_execute_sql_safely_no_results",
+                "parameters": [
+                  "self",
+                  "test_db"
+                ]
+              },
+              {
+                "name": "test_execute_sql_safely_dangerous_keywords",
+                "parameters": [
+                  "self"
+                ]
+              },
+              {
+                "name": "test_execute_sql_safely_case_insensitive_keywords",
+                "parameters": [
+                  "self"
+                ]
+              },
+              {
+                "name": "test_execute_sql_safely_sql_error",
+                "parameters": [
+                  "self",
+                  "test_db"
+                ]
+              },
+              {
+                "name": "test_execute_sql_safely_syntax_error",
+                "parameters": [
+                  "self",
+                  "test_db"
+                ]
+              },
+              {
+                "name": "test_get_database_schema_success",
+                "parameters": [
+                  "self",
+                  "test_db"
+                ]
+              },
+              {
+                "name": "test_get_database_schema_empty_database",
+                "parameters": [
+                  "self"
+                ]
+              },
+              {
+                "name": "test_get_database_schema_error",
+                "parameters": [
+                  "self"
+                ]
+              },
+              {
+                "name": "test_dangerous_keywords_coverage",
+                "parameters": [
+                  "self"
+                ]
+              }
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "path": "app/server/tests/core/test_project_detector.py",
+      "size_bytes": 12138,
+      "modified_at": "2025-11-10T02:57:12.181792",
+      "extension": ".py",
+      "metadata": {
+        "imports": [
+          "pytest",
+          "json",
+          "core.project_detector",
+          "core.data_models"
+        ],
+        "functions": [],
+        "classes": [
+          {
+            "name": "TestProjectDetector",
+            "methods": [
+              {
+                "name": "tmp_project_dir",
+                "parameters": [
+                  "self",
+                  "tmp_path"
+                ]
+              },
+              {
+                "name": "test_is_directory_empty_true",
+                "parameters": [
+                  "self",
+                  "tmp_path"
+                ]
+              },
+              {
+                "name": "test_is_directory_empty_with_hidden_files",
+                "parameters": [
+                  "self",
+                  "tmp_path"
+                ]
+              },
+              {
+                "name": "test_is_directory_empty_false",
+                "parameters": [
+                  "self",
+                  "tmp_path"
+                ]
+              },
+              {
+                "name": "test_detect_framework_react_vite",
+                "parameters": [
+                  "self",
+                  "tmp_path"
+                ]
+              },
+              {
+                "name": "test_detect_framework_nextjs",
+                "parameters": [
+                  "self",
+                  "tmp_path"
+                ]
+              },
+              {
+                "name": "test_detect_framework_vue_vite",
+                "parameters": [
+                  "self",
+                  "tmp_path"
+                ]
+              },
+              {
+                "name": "test_detect_framework_none",
+                "parameters": [
+                  "self",
+                  "tmp_path"
+                ]
+              },
+              {
+                "name": "test_detect_backend_fastapi",
+                "parameters": [
+                  "self",
+                  "tmp_path"
+                ]
+              },
+              {
+                "name": "test_detect_backend_express",
+                "parameters": [
+                  "self",
+                  "tmp_path"
+                ]
+              },
+              {
+                "name": "test_detect_backend_none",
+                "parameters": [
+                  "self",
+                  "tmp_path"
+                ]
+              },
+              {
+                "name": "test_detect_build_tools_multiple",
+                "parameters": [
+                  "self",
+                  "tmp_path"
+                ]
+              },
+              {
+                "name": "test_detect_build_tools_none",
+                "parameters": [
+                  "self",
+                  "tmp_path"
+                ]
+              },
+              {
+                "name": "test_detect_package_manager_bun",
+                "parameters": [
+                  "self",
+                  "tmp_path"
+                ]
+              },
+              {
+                "name": "test_detect_package_manager_npm",
+                "parameters": [
+                  "self",
+                  "tmp_path"
+                ]
+              },
+              {
+                "name": "test_detect_package_manager_uv",
+                "parameters": [
+                  "self",
+                  "tmp_path"
+                ]
+              },
+              {
+                "name": "test_detect_package_manager_default_npm",
+                "parameters": [
+                  "self",
+                  "tmp_path"
+                ]
+              },
+              {
+                "name": "test_detect_package_manager_none",
+                "parameters": [
+                  "self",
+                  "tmp_path"
+                ]
+              },
+              {
+                "name": "test_check_git_initialized_true",
+                "parameters": [
+                  "self",
+                  "tmp_path"
+                ]
+              },
+              {
+                "name": "test_check_git_initialized_false",
+                "parameters": [
+                  "self",
+                  "tmp_path"
+                ]
+              },
+              {
+                "name": "test_calculate_complexity_low",
+                "parameters": [
+                  "self",
+                  "tmp_path"
+                ]
+              },
+              {
+                "name": "test_calculate_complexity_medium",
+                "parameters": [
+                  "self",
+                  "tmp_path"
+                ]
+              },
+              {
+                "name": "test_calculate_complexity_high",
+                "parameters": [
+                  "self",
+                  "tmp_path"
+                ]
+              },
+              {
+                "name": "test_suggest_workflow_low",
+                "parameters": [
+                  "self"
+                ]
+              },
+              {
+                "name": "test_suggest_workflow_medium",
+                "parameters": [
+                  "self"
+                ]
+              },
+              {
+                "name": "test_suggest_workflow_high",
+                "parameters": [
+                  "self"
+                ]
+              },
+              {
+                "name": "test_calculate_complexity_wrapper",
+                "parameters": [
+                  "self"
+                ]
+              },
+              {
+                "name": "test_detect_project_context_new_project",
+                "parameters": [
+                  "self",
+                  "tmp_path"
+                ]
+              },
+              {
+                "name": "test_detect_project_context_react_project",
+                "parameters": [
+                  "self",
+                  "tmp_path"
+                ]
+              },
+              {
+                "name": "test_detect_project_context_nonexistent_path",
+                "parameters": [
+                  "self"
+                ]
+              }
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "path": "app/server/tests/core/test_routes_analyzer.py",
+      "size_bytes": 5904,
+      "modified_at": "2025-11-10T03:05:18.492210",
+      "extension": ".py",
+      "metadata": {
+        "imports": [
+          "pytest",
+          "tempfile",
+          "os",
+          "pathlib",
+          "core.routes_analyzer"
+        ],
+        "functions": [],
+        "classes": [
+          {
+            "name": "TestRoutesAnalyzer",
+            "methods": [
+              {
+                "name": "test_analyze_existing_server_routes",
+                "parameters": [
+                  "self"
+                ]
+              },
+              {
+                "name": "test_analyze_routes_with_different_methods",
+                "parameters": [
+                  "self"
+                ]
+              },
+              {
+                "name": "test_analyze_routes_extracts_docstrings",
+                "parameters": [
+                  "self"
+                ]
+              },
+              {
+                "name": "test_analyze_routes_handles_missing_docstrings",
+                "parameters": [
+                  "self"
+                ]
+              },
+              {
+                "name": "test_analyze_routes_with_no_routes",
+                "parameters": [
+                  "self"
+                ]
+              },
+              {
+                "name": "test_analyze_routes_with_malformed_file",
+                "parameters": [
+                  "self"
+                ]
+              },
+              {
+                "name": "test_analyze_nonexistent_file",
+                "parameters": [
+                  "self"
+                ]
+              },
+              {
+                "name": "test_routes_sorted_by_path",
+                "parameters": [
+                  "self"
+                ]
+              },
+              {
+                "name": "test_extract_route_with_post_method",
+                "parameters": [
+                  "self"
+                ]
+              },
+              {
+                "name": "test_extract_route_with_delete_method",
+                "parameters": [
+                  "self"
+                ]
+              }
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "path": "app/server/tests/templates/test_scaffolding.py",
+      "size_bytes": 12262,
+      "modified_at": "2025-11-10T02:57:12.182563",
+      "extension": ".py",
+      "metadata": {
+        "imports": [
+          "json",
+          "os",
+          "pathlib",
+          "pytest"
+        ],
+        "functions": [
+          {
+            "name": "project_root",
+            "parameters": [],
+            "is_async": false
+          },
+          {
+            "name": "templates_dir",
+            "parameters": [
+              "project_root"
+            ],
+            "is_async": false
+          },
+          {
+            "name": "template_structure_file",
+            "parameters": [
+              "templates_dir"
+            ],
+            "is_async": false
+          }
+        ],
+        "classes": [
+          {
+            "name": "TestTemplateStructure",
+            "methods": [
+              {
+                "name": "test_template_structure_exists",
+                "parameters": [
+                  "self",
+                  "template_structure_file"
+                ]
+              },
+              {
+                "name": "test_template_structure_valid_json",
+                "parameters": [
+                  "self",
+                  "template_structure_file"
+                ]
+              },
+              {
+                "name": "test_template_structure_has_required_templates",
+                "parameters": [
+                  "self",
+                  "template_structure_file"
+                ]
+              },
+              {
+                "name": "test_template_structure_has_required_fields",
+                "parameters": [
+                  "self",
+                  "template_structure_file"
+                ]
+              }
+            ]
+          },
+          {
+            "name": "TestReactViteTemplate",
+            "methods": [
+              {
+                "name": "react_vite_dir",
+                "parameters": [
+                  "self",
+                  "templates_dir"
+                ]
+              },
+              {
+                "name": "test_react_vite_template_exists",
+                "parameters": [
+                  "self",
+                  "react_vite_dir"
+                ]
+              },
+              {
+                "name": "test_react_vite_has_package_json",
+                "parameters": [
+                  "self",
+                  "react_vite_dir"
+                ]
+              },
+              {
+                "name": "test_react_vite_has_vite_config",
+                "parameters": [
+                  "self",
+                  "react_vite_dir"
+                ]
+              },
+              {
+                "name": "test_react_vite_has_tsconfig",
+                "parameters": [
+                  "self",
+                  "react_vite_dir"
+                ]
+              },
+              {
+                "name": "test_react_vite_has_src_directory",
+                "parameters": [
+                  "self",
+                  "react_vite_dir"
+                ]
+              },
+              {
+                "name": "test_react_vite_has_claude_config",
+                "parameters": [
+                  "self",
+                  "react_vite_dir"
+                ]
+              },
+              {
+                "name": "test_react_vite_has_readme",
+                "parameters": [
+                  "self",
+                  "react_vite_dir"
+                ]
+              },
+              {
+                "name": "test_react_vite_has_gitignore",
+                "parameters": [
+                  "self",
+                  "react_vite_dir"
+                ]
+              }
+            ]
+          },
+          {
+            "name": "TestNextJSTemplate",
+            "methods": [
+              {
+                "name": "nextjs_dir",
+                "parameters": [
+                  "self",
+                  "templates_dir"
+                ]
+              },
+              {
+                "name": "test_nextjs_template_exists",
+                "parameters": [
+                  "self",
+                  "nextjs_dir"
+                ]
+              },
+              {
+                "name": "test_nextjs_has_package_json",
+                "parameters": [
+                  "self",
+                  "nextjs_dir"
+                ]
+              },
+              {
+                "name": "test_nextjs_has_config",
+                "parameters": [
+                  "self",
+                  "nextjs_dir"
+                ]
+              },
+              {
+                "name": "test_nextjs_has_app_directory",
+                "parameters": [
+                  "self",
+                  "nextjs_dir"
+                ]
+              },
+              {
+                "name": "test_nextjs_has_api_route",
+                "parameters": [
+                  "self",
+                  "nextjs_dir"
+                ]
+              },
+              {
+                "name": "test_nextjs_has_claude_config",
+                "parameters": [
+                  "self",
+                  "nextjs_dir"
+                ]
+              }
+            ]
+          },
+          {
+            "name": "TestVanillaTemplate",
+            "methods": [
+              {
+                "name": "vanilla_dir",
+                "parameters": [
+                  "self",
+                  "templates_dir"
+                ]
+              },
+              {
+                "name": "test_vanilla_template_exists",
+                "parameters": [
+                  "self",
+                  "vanilla_dir"
+                ]
+              },
+              {
+                "name": "test_vanilla_has_required_files",
+                "parameters": [
+                  "self",
+                  "vanilla_dir"
+                ]
+              },
+              {
+                "name": "test_vanilla_html_is_valid",
+                "parameters": [
+                  "self",
+                  "vanilla_dir"
+                ]
+              },
+              {
+                "name": "test_vanilla_has_gitignore",
+                "parameters": [
+                  "self",
+                  "vanilla_dir"
+                ]
+              }
+            ]
+          },
+          {
+            "name": "TestIntegrationGuide",
+            "methods": [
+              {
+                "name": "test_integration_guide_exists",
+                "parameters": [
+                  "self",
+                  "templates_dir"
+                ]
+              },
+              {
+                "name": "test_integration_guide_has_content",
+                "parameters": [
+                  "self",
+                  "templates_dir"
+                ]
+              }
+            ]
+          },
+          {
+            "name": "TestScaffoldingScripts",
+            "methods": [
+              {
+                "name": "test_setup_new_project_script_exists",
+                "parameters": [
+                  "self",
+                  "project_root"
+                ]
+              },
+              {
+                "name": "test_setup_new_project_script_is_executable",
+                "parameters": [
+                  "self",
+                  "project_root"
+                ]
+              },
+              {
+                "name": "test_setup_new_project_script_has_shebang",
+                "parameters": [
+                  "self",
+                  "project_root"
+                ]
+              },
+              {
+                "name": "test_integrate_existing_script_exists",
+                "parameters": [
+                  "self",
+                  "project_root"
+                ]
+              },
+              {
+                "name": "test_integrate_existing_script_is_executable",
+                "parameters": [
+                  "self",
+                  "project_root"
+                ]
+              }
+            ]
+          },
+          {
+            "name": "TestDocumentation",
+            "methods": [
+              {
+                "name": "test_all_documentation_exists",
+                "parameters": [
+                  "self",
+                  "project_root"
+                ]
+              },
+              {
+                "name": "test_documentation_has_content",
+                "parameters": [
+                  "self",
+                  "project_root"
+                ]
+              }
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "path": "app/server/tests/templates/__init__.py",
+      "size_bytes": 51,
+      "modified_at": "2025-11-10T02:57:12.182091",
+      "extension": ".py",
+      "metadata": {
+        "imports": [],
+        "functions": [],
+        "classes": []
+      }
+    },
+    {
+      "path": "app/server/tests/templates/test_mcp_in_templates.py",
+      "size_bytes": 6647,
+      "modified_at": "2025-11-10T02:57:12.182274",
+      "extension": ".py",
+      "metadata": {
+        "imports": [
+          "json",
+          "pathlib"
+        ],
+        "functions": [
+          {
+            "name": "test_react_vite_has_mcp",
+            "parameters": [],
+            "is_async": false
+          },
+          {
+            "name": "test_nextjs_has_mcp",
+            "parameters": [],
+            "is_async": false
+          },
+          {
+            "name": "test_vanilla_has_mcp",
+            "parameters": [],
+            "is_async": false
+          },
+          {
+            "name": "test_react_vite_gitignore_includes_mcp",
+            "parameters": [],
+            "is_async": false
+          },
+          {
+            "name": "test_nextjs_gitignore_includes_mcp",
+            "parameters": [],
+            "is_async": false
+          },
+          {
+            "name": "test_vanilla_gitignore_includes_mcp",
+            "parameters": [],
+            "is_async": false
+          },
+          {
+            "name": "test_mcp_configs_use_relative_paths",
+            "parameters": [],
+            "is_async": false
+          },
+          {
+            "name": "test_template_mcp_configs_match_root",
+            "parameters": [],
+            "is_async": false
+          }
+        ],
+        "classes": []
+      }
+    },
+    {
+      "path": "app/client/src/main.ts",
+      "size_bytes": 17363,
+      "modified_at": "2025-11-10T02:57:12.177201",
+      "extension": ".ts",
+      "metadata": {
+        "imports": [
+          "import './style.css'",
+          "import { api } from './api/client'"
+        ],
+        "exports": [],
+        "note": "Basic text analysis - not full AST parsing"
+      }
+    },
+    {
+      "path": "app/client/src/types.d.ts",
+      "size_bytes": 1603,
+      "modified_at": "2025-11-10T02:57:12.177495",
+      "extension": ".ts",
+      "metadata": {
+        "imports": [],
+        "exports": [],
+        "note": "Basic text analysis - not full AST parsing"
+      }
+    },
+    {
+      "path": "app/client/src/vite-env.d.ts",
+      "size_bytes": 38,
+      "modified_at": "2025-11-10T02:57:12.177554",
+      "extension": ".ts",
+      "metadata": {
+        "imports": [],
+        "exports": [],
+        "note": "Basic text analysis - not full AST parsing"
+      }
+    },
+    {
+      "path": "app/client/src/api/client.ts",
+      "size_bytes": 3965,
+      "modified_at": "2025-11-10T02:57:12.177129",
+      "extension": ".ts",
+      "metadata": {
+        "imports": [],
+        "exports": [
+          "export const api = {"
+        ],
+        "note": "Basic text analysis - not full AST parsing"
+      }
+    },
+    {
+      "path": "adws/adw_modules/git_ops.py",
+      "size_bytes": 9217,
+      "modified_at": "2025-11-10T02:57:12.170483",
+      "extension": ".py",
+      "metadata": {
+        "imports": [
+          "subprocess",
+          "json",
+          "logging",
+          "typing",
+          "adw_modules.github"
+        ],
+        "functions": [
+          {
+            "name": "get_current_branch",
+            "parameters": [
+              "cwd"
+            ],
+            "is_async": false
+          },
+          {
+            "name": "push_branch",
+            "parameters": [
+              "branch_name",
+              "cwd"
+            ],
+            "is_async": false
+          },
+          {
+            "name": "check_pr_exists",
+            "parameters": [
+              "branch_name"
+            ],
+            "is_async": false
+          },
+          {
+            "name": "create_branch",
+            "parameters": [
+              "branch_name",
+              "cwd"
+            ],
+            "is_async": false
+          },
+          {
+            "name": "commit_changes",
+            "parameters": [
+              "message",
+              "cwd"
+            ],
+            "is_async": false
+          },
+          {
+            "name": "get_pr_number",
+            "parameters": [
+              "branch_name"
+            ],
+            "is_async": false
+          },
+          {
+            "name": "approve_pr",
+            "parameters": [
+              "pr_number",
+              "logger"
+            ],
+            "is_async": false
+          },
+          {
+            "name": "merge_pr",
+            "parameters": [
+              "pr_number",
+              "logger",
+              "merge_method"
+            ],
+            "is_async": false
+          },
+          {
+            "name": "finalize_git_operations",
+            "parameters": [
+              "state",
+              "logger",
+              "cwd"
+            ],
+            "is_async": false
+          }
+        ],
+        "classes": []
+      }
+    },
+    {
+      "path": "adws/adw_modules/__init__.py",
+      "size_bytes": 21,
+      "modified_at": "2025-11-10T02:57:12.170279",
+      "extension": ".py",
+      "metadata": {
+        "imports": [],
+        "functions": [],
+        "classes": []
+      }
+    },
+    {
+      "path": "adws/adw_modules/data_types.py",
+      "size_bytes": 8150,
+      "modified_at": "2025-11-10T02:57:12.170420",
+      "extension": ".py",
+      "metadata": {
+        "imports": [
+          "datetime",
+          "typing",
+          "pydantic",
+          "enum"
+        ],
+        "functions": [],
+        "classes": [
+          {
+            "name": "RetryCode",
+            "methods": []
+          },
+          {
+            "name": "GitHubUser",
+            "methods": []
+          },
+          {
+            "name": "GitHubLabel",
+            "methods": []
+          },
+          {
+            "name": "GitHubMilestone",
+            "methods": []
+          },
+          {
+            "name": "GitHubComment",
+            "methods": []
+          },
+          {
+            "name": "GitHubIssueListItem",
+            "methods": []
+          },
+          {
+            "name": "GitHubIssue",
+            "methods": []
+          },
+          {
+            "name": "AgentPromptRequest",
+            "methods": []
+          },
+          {
+            "name": "AgentPromptResponse",
+            "methods": []
+          },
+          {
+            "name": "AgentTemplateRequest",
+            "methods": []
+          },
+          {
+            "name": "ClaudeCodeResultMessage",
+            "methods": []
+          },
+          {
+            "name": "TestResult",
+            "methods": []
+          },
+          {
+            "name": "E2ETestResult",
+            "methods": [
+              {
+                "name": "passed",
+                "parameters": [
+                  "self"
+                ]
+              }
+            ]
+          },
+          {
+            "name": "ADWStateData",
+            "methods": []
+          },
+          {
+            "name": "ReviewIssue",
+            "methods": []
+          },
+          {
+            "name": "ReviewResult",
+            "methods": []
+          },
+          {
+            "name": "DocumentationResult",
+            "methods": []
+          },
+          {
+            "name": "ADWExtractionResult",
+            "methods": [
+              {
+                "name": "has_workflow",
+                "parameters": [
+                  "self"
+                ]
+              }
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "path": "adws/adw_modules/r2_uploader.py",
+      "size_bytes": 4959,
+      "modified_at": "2025-11-10T02:57:12.170597",
+      "extension": ".py",
+      "metadata": {
+        "imports": [
+          "os",
+          "logging",
+          "typing",
+          "pathlib",
+          "boto3",
+          "botocore.client",
+          "botocore.exceptions"
+        ],
+        "functions": [],
+        "classes": [
+          {
+            "name": "R2Uploader",
+            "methods": [
+              {
+                "name": "__init__",
+                "parameters": [
+                  "self",
+                  "logger"
+                ]
+              },
+              {
+                "name": "_initialize",
+                "parameters": [
+                  "self"
+                ]
+              },
+              {
+                "name": "upload_file",
+                "parameters": [
+                  "self",
+                  "file_path",
+                  "object_key"
+                ]
+              },
+              {
+                "name": "upload_screenshots",
+                "parameters": [
+                  "self",
+                  "screenshots",
+                  "adw_id"
+                ]
+              }
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "path": "adws/adw_modules/worktree_ops.py",
+      "size_bytes": 8182,
+      "modified_at": "2025-11-10T02:57:12.170856",
+      "extension": ".py",
+      "metadata": {
+        "imports": [
+          "os",
+          "subprocess",
+          "logging",
+          "socket",
+          "typing",
+          "adw_modules.state"
+        ],
+        "functions": [
+          {
+            "name": "create_worktree",
+            "parameters": [
+              "adw_id",
+              "branch_name",
+              "logger"
+            ],
+            "is_async": false
+          },
+          {
+            "name": "validate_worktree",
+            "parameters": [
+              "adw_id",
+              "state"
+            ],
+            "is_async": false
+          },
+          {
+            "name": "get_worktree_path",
+            "parameters": [
+              "adw_id"
+            ],
+            "is_async": false
+          },
+          {
+            "name": "remove_worktree",
+            "parameters": [
+              "adw_id",
+              "logger"
+            ],
+            "is_async": false
+          },
+          {
+            "name": "setup_worktree_environment",
+            "parameters": [
+              "worktree_path",
+              "backend_port",
+              "frontend_port",
+              "logger"
+            ],
+            "is_async": false
+          },
+          {
+            "name": "get_ports_for_adw",
+            "parameters": [
+              "adw_id"
+            ],
+            "is_async": false
+          },
+          {
+            "name": "is_port_available",
+            "parameters": [
+              "port"
+            ],
+            "is_async": false
+          },
+          {
+            "name": "find_next_available_ports",
+            "parameters": [
+              "adw_id",
+              "max_attempts"
+            ],
+            "is_async": false
+          }
+        ],
+        "classes": []
+      }
+    },
+    {
+      "path": "adws/adw_modules/utils.py",
+      "size_bytes": 8391,
+      "modified_at": "2025-11-10T02:57:12.170716",
+      "extension": ".py",
+      "metadata": {
+        "imports": [
+          "json",
+          "logging",
+          "os",
+          "re",
+          "sys",
+          "uuid",
+          "datetime",
+          "typing"
+        ],
+        "functions": [
+          {
+            "name": "make_adw_id",
+            "parameters": [],
+            "is_async": false
+          },
+          {
+            "name": "setup_logger",
+            "parameters": [
+              "adw_id",
+              "trigger_type"
+            ],
+            "is_async": false
+          },
+          {
+            "name": "get_logger",
+            "parameters": [
+              "adw_id"
+            ],
+            "is_async": false
+          },
+          {
+            "name": "parse_json",
+            "parameters": [
+              "text",
+              "target_type"
+            ],
+            "is_async": false
+          },
+          {
+            "name": "check_env_vars",
+            "parameters": [
+              "logger"
+            ],
+            "is_async": false
+          },
+          {
+            "name": "get_safe_subprocess_env",
+            "parameters": [],
+            "is_async": false
+          }
+        ],
+        "classes": []
+      }
+    },
+    {
+      "path": "adws/adw_modules/agent.py",
+      "size_bytes": 21661,
+      "modified_at": "2025-11-10T02:57:12.170352",
+      "extension": ".py",
+      "metadata": {
+        "imports": [
+          "subprocess",
+          "sys",
+          "os",
+          "json",
+          "re",
+          "logging",
+          "time",
+          "typing",
+          "dotenv",
+          "data_types"
+        ],
+        "functions": [
+          {
+            "name": "get_model_for_slash_command",
+            "parameters": [
+              "request",
+              "default"
+            ],
+            "is_async": false
+          },
+          {
+            "name": "truncate_output",
+            "parameters": [
+              "output",
+              "max_length",
+              "suffix"
+            ],
+            "is_async": false
+          },
+          {
+            "name": "check_claude_installed",
+            "parameters": [],
+            "is_async": false
+          },
+          {
+            "name": "parse_jsonl_output",
+            "parameters": [
+              "output_file"
+            ],
+            "is_async": false
+          },
+          {
+            "name": "convert_jsonl_to_json",
+            "parameters": [
+              "jsonl_file"
+            ],
+            "is_async": false
+          },
+          {
+            "name": "get_claude_env",
+            "parameters": [],
+            "is_async": false
+          },
+          {
+            "name": "save_prompt",
+            "parameters": [
+              "prompt",
+              "adw_id",
+              "agent_name"
+            ],
+            "is_async": false
+          },
+          {
+            "name": "prompt_claude_code_with_retry",
+            "parameters": [
+              "request",
+              "max_retries",
+              "retry_delays"
+            ],
+            "is_async": false
+          },
+          {
+            "name": "prompt_claude_code",
+            "parameters": [
+              "request"
+            ],
+            "is_async": false
+          },
+          {
+            "name": "execute_template",
+            "parameters": [
+              "request"
+            ],
+            "is_async": false
+          }
+        ],
+        "classes": []
+      }
+    },
+    {
+      "path": "adws/adw_modules/github.py",
+      "size_bytes": 9535,
+      "modified_at": "2025-11-10T02:57:12.170542",
+      "extension": ".py",
+      "metadata": {
+        "imports": [
+          "subprocess",
+          "sys",
+          "os",
+          "json",
+          "typing",
+          "data_types"
+        ],
+        "functions": [
+          {
+            "name": "get_github_env",
+            "parameters": [],
+            "is_async": false
+          },
+          {
+            "name": "get_repo_url",
+            "parameters": [],
+            "is_async": false
+          },
+          {
+            "name": "extract_repo_path",
+            "parameters": [
+              "github_url"
+            ],
+            "is_async": false
+          },
+          {
+            "name": "fetch_issue",
+            "parameters": [
+              "issue_number",
+              "repo_path"
+            ],
+            "is_async": false
+          },
+          {
+            "name": "make_issue_comment",
+            "parameters": [
+              "issue_id",
+              "comment"
+            ],
+            "is_async": false
+          },
+          {
+            "name": "mark_issue_in_progress",
+            "parameters": [
+              "issue_id"
+            ],
+            "is_async": false
+          },
+          {
+            "name": "fetch_open_issues",
+            "parameters": [
+              "repo_path"
+            ],
+            "is_async": false
+          },
+          {
+            "name": "fetch_issue_comments",
+            "parameters": [
+              "repo_path",
+              "issue_number"
+            ],
+            "is_async": false
+          },
+          {
+            "name": "find_keyword_from_comment",
+            "parameters": [
+              "keyword",
+              "issue"
+            ],
+            "is_async": false
+          }
+        ],
+        "classes": []
+      }
+    },
+    {
+      "path": "adws/adw_modules/workflow_ops.py",
+      "size_bytes": 23489,
+      "modified_at": "2025-11-10T02:57:12.170784",
+      "extension": ".py",
+      "metadata": {
+        "imports": [
+          "glob",
+          "json",
+          "logging",
+          "os",
+          "subprocess",
+          "re",
+          "typing",
+          "adw_modules.data_types",
+          "adw_modules.agent",
+          "adw_modules.github",
+          "adw_modules.state",
+          "adw_modules.utils"
+        ],
+        "functions": [
+          {
+            "name": "format_issue_message",
+            "parameters": [
+              "adw_id",
+              "agent_name",
+              "message",
+              "session_id"
+            ],
+            "is_async": false
+          },
+          {
+            "name": "extract_adw_info",
+            "parameters": [
+              "text",
+              "temp_adw_id"
+            ],
+            "is_async": false
+          },
+          {
+            "name": "classify_issue",
+            "parameters": [
+              "issue",
+              "adw_id",
+              "logger"
+            ],
+            "is_async": false
+          },
+          {
+            "name": "build_plan",
+            "parameters": [
+              "issue",
+              "command",
+              "adw_id",
+              "logger",
+              "working_dir"
+            ],
+            "is_async": false
+          },
+          {
+            "name": "implement_plan",
+            "parameters": [
+              "plan_file",
+              "adw_id",
+              "logger",
+              "agent_name",
+              "working_dir"
+            ],
+            "is_async": false
+          },
+          {
+            "name": "generate_branch_name",
+            "parameters": [
+              "issue",
+              "issue_class",
+              "adw_id",
+              "logger"
+            ],
+            "is_async": false
+          },
+          {
+            "name": "create_commit",
+            "parameters": [
+              "agent_name",
+              "issue",
+              "issue_class",
+              "adw_id",
+              "logger",
+              "working_dir"
+            ],
+            "is_async": false
+          },
+          {
+            "name": "create_pull_request",
+            "parameters": [
+              "branch_name",
+              "issue",
+              "state",
+              "logger",
+              "working_dir"
+            ],
+            "is_async": false
+          },
+          {
+            "name": "ensure_plan_exists",
+            "parameters": [
+              "state",
+              "issue_number"
+            ],
+            "is_async": false
+          },
+          {
+            "name": "ensure_adw_id",
+            "parameters": [
+              "issue_number",
+              "adw_id",
+              "logger"
+            ],
+            "is_async": false
+          },
+          {
+            "name": "find_existing_branch_for_issue",
+            "parameters": [
+              "issue_number",
+              "adw_id",
+              "cwd"
+            ],
+            "is_async": false
+          },
+          {
+            "name": "find_plan_for_issue",
+            "parameters": [
+              "issue_number",
+              "adw_id"
+            ],
+            "is_async": false
+          },
+          {
+            "name": "create_or_find_branch",
+            "parameters": [
+              "issue_number",
+              "issue",
+              "state",
+              "logger",
+              "cwd"
+            ],
+            "is_async": false
+          },
+          {
+            "name": "find_spec_file",
+            "parameters": [
+              "state",
+              "logger"
+            ],
+            "is_async": false
+          },
+          {
+            "name": "create_and_implement_patch",
+            "parameters": [
+              "adw_id",
+              "review_change_request",
+              "logger",
+              "agent_name_planner",
+              "agent_name_implementor",
+              "spec_path",
+              "issue_screenshots",
+              "working_dir"
+            ],
+            "is_async": false
+          }
+        ],
+        "classes": []
+      }
+    },
+    {
+      "path": "adws/adw_modules/state.py",
+      "size_bytes": 6259,
+      "modified_at": "2025-11-10T02:57:12.170655",
+      "extension": ".py",
+      "metadata": {
+        "imports": [
+          "json",
+          "os",
+          "sys",
+          "logging",
+          "typing",
+          "adw_modules.data_types"
+        ],
+        "functions": [],
+        "classes": [
+          {
+            "name": "ADWState",
+            "methods": [
+              {
+                "name": "__init__",
+                "parameters": [
+                  "self",
+                  "adw_id"
+                ]
+              },
+              {
+                "name": "update",
+                "parameters": [
+                  "self"
+                ]
+              },
+              {
+                "name": "get",
+                "parameters": [
+                  "self",
+                  "key",
+                  "default"
+                ]
+              },
+              {
+                "name": "append_adw_id",
+                "parameters": [
+                  "self",
+                  "adw_id"
+                ]
+              },
+              {
+                "name": "get_working_directory",
+                "parameters": [
+                  "self"
+                ]
+              },
+              {
+                "name": "get_state_path",
+                "parameters": [
+                  "self"
+                ]
+              },
+              {
+                "name": "save",
+                "parameters": [
+                  "self",
+                  "workflow_step"
+                ]
+              },
+              {
+                "name": "load",
+                "parameters": [
+                  "cls",
+                  "adw_id",
+                  "logger"
+                ]
+              },
+              {
+                "name": "from_stdin",
+                "parameters": [
+                  "cls"
+                ]
+              },
+              {
+                "name": "to_stdout",
+                "parameters": [
+                  "self"
+                ]
+              }
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "path": "adws/adw_triggers/trigger_webhook.py",
+      "size_bytes": 12669,
+      "modified_at": "2025-11-10T02:57:12.172917",
+      "extension": ".py",
+      "metadata": {
+        "imports": [
+          "os",
+          "subprocess",
+          "sys",
+          "typing",
+          "fastapi",
+          "dotenv",
+          "uvicorn",
+          "adw_modules.utils",
+          "adw_modules.github",
+          "adw_modules.workflow_ops",
+          "adw_modules.state"
+        ],
+        "functions": [
+          {
+            "name": "github_webhook",
+            "parameters": [
+              "request"
+            ],
+            "is_async": true
+          },
+          {
+            "name": "health",
+            "parameters": [],
+            "is_async": true
+          }
+        ],
+        "classes": []
+      }
+    },
+    {
+      "path": "adws/adw_triggers/__init__.py",
+      "size_bytes": 22,
+      "modified_at": "2025-11-10T02:57:12.172688",
+      "extension": ".py",
+      "metadata": {
+        "imports": [],
+        "functions": [],
+        "classes": []
+      }
+    },
+    {
+      "path": "adws/adw_triggers/trigger_cron.py",
+      "size_bytes": 7444,
+      "modified_at": "2025-11-10T02:57:12.172760",
+      "extension": ".py",
+      "metadata": {
+        "imports": [
+          "os",
+          "signal",
+          "subprocess",
+          "sys",
+          "time",
+          "pathlib",
+          "typing",
+          "schedule",
+          "dotenv",
+          "adw_modules.utils",
+          "adw_modules.github"
+        ],
+        "functions": [
+          {
+            "name": "signal_handler",
+            "parameters": [
+              "signum",
+              "frame"
+            ],
+            "is_async": false
+          },
+          {
+            "name": "should_process_issue",
+            "parameters": [
+              "issue_number"
+            ],
+            "is_async": false
+          },
+          {
+            "name": "trigger_adw_workflow",
+            "parameters": [
+              "issue_number"
+            ],
+            "is_async": false
+          },
+          {
+            "name": "check_and_process_issues",
+            "parameters": [],
+            "is_async": false
+          },
+          {
+            "name": "main",
+            "parameters": [],
+            "is_async": false
+          }
+        ],
+        "classes": []
+      }
+    },
+    {
+      "path": "adws/adw_tests/test_r2_uploader.py",
+      "size_bytes": 5490,
+      "modified_at": "2025-11-10T02:57:12.172514",
+      "extension": ".py",
+      "metadata": {
+        "imports": [
+          "os",
+          "sys",
+          "logging",
+          "pathlib",
+          "requests",
+          "datetime",
+          "dotenv",
+          "adw_modules.r2_uploader"
+        ],
+        "functions": [
+          {
+            "name": "setup_logger",
+            "parameters": [],
+            "is_async": false
+          },
+          {
+            "name": "test_r2_upload",
+            "parameters": [],
+            "is_async": false
+          },
+          {
+            "name": "main",
+            "parameters": [],
+            "is_async": false
+          }
+        ],
+        "classes": []
+      }
+    },
+    {
+      "path": "adws/adw_tests/__init__.py",
+      "size_bytes": 19,
+      "modified_at": "2025-11-10T02:57:12.172062",
+      "extension": ".py",
+      "metadata": {
+        "imports": [],
+        "functions": [],
+        "classes": []
+      }
+    },
+    {
+      "path": "adws/adw_tests/test_webhook_simplified.py",
+      "size_bytes": 2453,
+      "modified_at": "2025-11-10T02:57:12.172584",
+      "extension": ".py",
+      "metadata": {
+        "imports": [
+          "os"
+        ],
+        "functions": [
+          {
+            "name": "test_workflow_support",
+            "parameters": [],
+            "is_async": false
+          }
+        ],
+        "classes": []
+      }
+    },
+    {
+      "path": "adws/adw_tests/sandbox_poc.py",
+      "size_bytes": 4378,
+      "modified_at": "2025-11-10T02:57:12.172304",
+      "extension": ".py",
+      "metadata": {
+        "imports": [
+          "os",
+          "dotenv",
+          "e2b_code_interpreter"
+        ],
+        "functions": [],
+        "classes": []
+      }
+    },
+    {
+      "path": "adws/adw_tests/health_check.py",
+      "size_bytes": 13128,
+      "modified_at": "2025-11-10T02:57:12.172232",
+      "extension": ".py",
+      "metadata": {
+        "imports": [
+          "os",
+          "sys",
+          "json",
+          "subprocess",
+          "tempfile",
+          "typing",
+          "datetime",
+          "pathlib",
+          "argparse",
+          "dotenv",
+          "pydantic",
+          "adw_modules.github",
+          "adw_modules.utils"
+        ],
+        "functions": [
+          {
+            "name": "check_env_vars",
+            "parameters": [],
+            "is_async": false
+          },
+          {
+            "name": "check_git_repo",
+            "parameters": [],
+            "is_async": false
+          },
+          {
+            "name": "check_claude_code",
+            "parameters": [],
+            "is_async": false
+          },
+          {
+            "name": "check_github_cli",
+            "parameters": [],
+            "is_async": false
+          },
+          {
+            "name": "run_health_check",
+            "parameters": [],
+            "is_async": false
+          },
+          {
+            "name": "main",
+            "parameters": [],
+            "is_async": false
+          }
+        ],
+        "classes": [
+          {
+            "name": "CheckResult",
+            "methods": []
+          },
+          {
+            "name": "HealthCheckResult",
+            "methods": []
+          }
+        ]
+      }
+    },
+    {
+      "path": "adws/adw_tests/test_model_selection.py",
+      "size_bytes": 5923,
+      "modified_at": "2025-11-10T02:57:12.172444",
+      "extension": ".py",
+      "metadata": {
+        "imports": [
+          "sys",
+          "os",
+          "typing",
+          "adw_modules.agent",
+          "adw_modules.data_types"
+        ],
+        "functions": [
+          {
+            "name": "test_model_mapping_structure",
+            "parameters": [],
+            "is_async": false
+          },
+          {
+            "name": "test_model_mapping_lookups",
+            "parameters": [],
+            "is_async": false
+          },
+          {
+            "name": "test_model_differences",
+            "parameters": [],
+            "is_async": false
+          },
+          {
+            "name": "test_get_model_for_slash_command",
+            "parameters": [],
+            "is_async": false
+          },
+          {
+            "name": "main",
+            "parameters": [],
+            "is_async": false
+          }
+        ],
+        "classes": []
+      }
+    },
+    {
+      "path": "adws/adw_tests/test_agents.py",
+      "size_bytes": 6088,
+      "modified_at": "2025-11-10T02:57:12.172376",
+      "extension": ".py",
+      "metadata": {
+        "imports": [
+          "sys",
+          "os",
+          "json",
+          "concurrent.futures",
+          "dotenv",
+          "adw_modules.data_types",
+          "adw_modules.agent",
+          "adw_modules.utils"
+        ],
+        "functions": [
+          {
+            "name": "test_model",
+            "parameters": [
+              "model",
+              "adw_id"
+            ],
+            "is_async": false
+          },
+          {
+            "name": "test_retry_functionality",
+            "parameters": [
+              "adw_id"
+            ],
+            "is_async": false
+          },
+          {
+            "name": "main",
+            "parameters": [],
+            "is_async": false
+          }
+        ],
+        "classes": []
+      }
+    },
+    {
+      "path": "tests/scripts/test_config_validation.py",
+      "size_bytes": 736,
+      "modified_at": "2025-11-10T02:57:12.212814",
+      "extension": ".py",
+      "metadata": {
+        "imports": [
+          "subprocess",
+          "os",
+          "shutil"
+        ],
+        "functions": [
+          {
+            "name": "test_config_validation_fails_without_env",
+            "parameters": [],
+            "is_async": false
+          },
+          {
+            "name": "test_config_validation_passes_with_valid_env",
+            "parameters": [],
+            "is_async": false
+          }
+        ],
+        "classes": []
+      }
+    },
+    {
+      "path": ".claude/hooks/post_tool_use.py",
+      "size_bytes": 1357,
+      "modified_at": "2025-11-10T02:57:12.168436",
+      "extension": ".py",
+      "metadata": {
+        "imports": [
+          "json",
+          "os",
+          "sys",
+          "pathlib",
+          "utils.constants"
+        ],
+        "functions": [
+          {
+            "name": "main",
+            "parameters": [],
+            "is_async": false
+          }
+        ],
+        "classes": []
+      }
+    },
+    {
+      "path": ".claude/hooks/notification.py",
+      "size_bytes": 1804,
+      "modified_at": "2025-11-10T02:57:12.168376",
+      "extension": ".py",
+      "metadata": {
+        "imports": [
+          "argparse",
+          "json",
+          "os",
+          "sys",
+          "subprocess",
+          "random",
+          "pathlib",
+          "utils.constants"
+        ],
+        "functions": [
+          {
+            "name": "main",
+            "parameters": [],
+            "is_async": false
+          }
+        ],
+        "classes": []
+      }
+    },
+    {
+      "path": ".claude/hooks/stop.py",
+      "size_bytes": 2899,
+      "modified_at": "2025-11-10T02:57:12.168607",
+      "extension": ".py",
+      "metadata": {
+        "imports": [
+          "argparse",
+          "json",
+          "os",
+          "sys",
+          "random",
+          "subprocess",
+          "pathlib",
+          "datetime",
+          "utils.constants"
+        ],
+        "functions": [
+          {
+            "name": "main",
+            "parameters": [],
+            "is_async": false
+          }
+        ],
+        "classes": []
+      }
+    },
+    {
+      "path": ".claude/hooks/pre_tool_use.py",
+      "size_bytes": 5278,
+      "modified_at": "2025-11-10T02:57:12.168554",
+      "extension": ".py",
+      "metadata": {
+        "imports": [
+          "json",
+          "sys",
+          "re",
+          "os",
+          "pathlib",
+          "utils.constants"
+        ],
+        "functions": [
+          {
+            "name": "is_dangerous_rm_command",
+            "parameters": [
+              "command"
+            ],
+            "is_async": false
+          },
+          {
+            "name": "is_env_file_access",
+            "parameters": [
+              "tool_name",
+              "tool_input"
+            ],
+            "is_async": false
+          },
+          {
+            "name": "main",
+            "parameters": [],
+            "is_async": false
+          }
+        ],
+        "classes": []
+      }
+    },
+    {
+      "path": ".claude/hooks/subagent_stop.py",
+      "size_bytes": 2912,
+      "modified_at": "2025-11-10T02:57:12.168661",
+      "extension": ".py",
+      "metadata": {
+        "imports": [
+          "argparse",
+          "json",
+          "os",
+          "sys",
+          "subprocess",
+          "pathlib",
+          "datetime",
+          "utils.constants"
+        ],
+        "functions": [
+          {
+            "name": "main",
+            "parameters": [],
+            "is_async": false
+          }
+        ],
+        "classes": []
+      }
+    },
+    {
+      "path": ".claude/hooks/pre_compact.py",
+      "size_bytes": 1344,
+      "modified_at": "2025-11-10T02:57:12.168499",
+      "extension": ".py",
+      "metadata": {
+        "imports": [
+          "json",
+          "sys",
+          "pathlib",
+          "utils.constants"
+        ],
+        "functions": [
+          {
+            "name": "main",
+            "parameters": [],
+            "is_async": false
+          }
+        ],
+        "classes": []
+      }
+    },
+    {
+      "path": ".claude/hooks/user_prompt_submit.py",
+      "size_bytes": 3267,
+      "modified_at": "2025-11-10T02:57:12.168718",
+      "extension": ".py",
+      "metadata": {
+        "imports": [
+          "argparse",
+          "json",
+          "os",
+          "sys",
+          "pathlib",
+          "datetime",
+          "utils.constants"
+        ],
+        "functions": [
+          {
+            "name": "log_user_prompt",
+            "parameters": [
+              "session_id",
+              "input_data"
+            ],
+            "is_async": false
+          },
+          {
+            "name": "validate_prompt",
+            "parameters": [
+              "prompt"
+            ],
+            "is_async": false
+          },
+          {
+            "name": "main",
+            "parameters": [],
+            "is_async": false
+          }
+        ],
+        "classes": []
+      }
+    },
+    {
+      "path": ".claude/hooks/utils/constants.py",
+      "size_bytes": 959,
+      "modified_at": "2025-11-10T02:57:12.168807",
+      "extension": ".py",
+      "metadata": {
+        "imports": [
+          "os",
+          "pathlib"
+        ],
+        "functions": [
+          {
+            "name": "get_session_log_dir",
+            "parameters": [
+              "session_id"
+            ],
+            "is_async": false
+          },
+          {
+            "name": "ensure_session_log_dir",
+            "parameters": [
+              "session_id"
+            ],
+            "is_async": false
+          }
+        ],
+        "classes": []
+      }
+    },
+    {
+      "path": ".claude/hooks/utils/llm/oai.py",
+      "size_bytes": 3216,
+      "modified_at": "2025-11-10T02:57:12.168968",
+      "extension": ".py",
+      "metadata": {
+        "imports": [
+          "os",
+          "sys",
+          "dotenv"
+        ],
+        "functions": [
+          {
+            "name": "prompt_llm",
+            "parameters": [
+              "prompt_text"
+            ],
+            "is_async": false
+          },
+          {
+            "name": "generate_completion_message",
+            "parameters": [],
+            "is_async": false
+          },
+          {
+            "name": "main",
+            "parameters": [],
+            "is_async": false
+          }
+        ],
+        "classes": []
+      }
+    },
+    {
+      "path": ".claude/hooks/utils/llm/anth.py",
+      "size_bytes": 3232,
+      "modified_at": "2025-11-10T02:57:12.168903",
+      "extension": ".py",
+      "metadata": {
+        "imports": [
+          "os",
+          "sys",
+          "dotenv"
+        ],
+        "functions": [
+          {
+            "name": "prompt_llm",
+            "parameters": [
+              "prompt_text"
+            ],
+            "is_async": false
+          },
+          {
+            "name": "generate_completion_message",
+            "parameters": [],
+            "is_async": false
+          },
+          {
+            "name": "main",
+            "parameters": [],
+            "is_async": false
+          }
+        ],
+        "classes": []
+      }
+    },
+    {
+      "path": "templates/new_webapp/react-vite/vite.config.ts",
+      "size_bytes": 311,
+      "modified_at": "2025-11-10T02:57:12.211479",
+      "extension": ".ts",
+      "metadata": {
+        "imports": [
+          "import { defineConfig } from 'vite'",
+          "import react from '@vitejs/plugin-react'"
+        ],
+        "exports": [
+          "export default defineConfig({"
+        ],
+        "note": "Basic text analysis - not full AST parsing"
+      }
+    },
+    {
+      "path": "templates/new_webapp/nextjs/next.config.js",
+      "size_bytes": 155,
+      "modified_at": "2025-11-10T02:57:12.209107",
+      "extension": ".js",
+      "metadata": {
+        "imports": [],
+        "exports": [],
+        "note": "Basic text analysis - not full AST parsing"
+      }
+    },
+    {
+      "path": "templates/new_webapp/vanilla/script.js",
+      "size_bytes": 301,
+      "modified_at": "2025-11-10T02:57:12.212246",
+      "extension": ".js",
+      "metadata": {
+        "imports": [],
+        "exports": [],
+        "note": "Basic text analysis - not full AST parsing"
+      }
+    },
+    {
+      "path": "templates/new_webapp/react-vite/src/App.tsx",
+      "size_bytes": 684,
+      "modified_at": "2025-11-10T02:57:12.210616",
+      "extension": ".tsx",
+      "metadata": {
+        "imports": [
+          "import { useState } from 'react'",
+          "import './App.css'"
+        ],
+        "exports": [
+          "export default App"
+        ],
+        "note": "Basic text analysis - not full AST parsing"
+      }
+    },
+    {
+      "path": "templates/new_webapp/react-vite/src/main.tsx",
+      "size_bytes": 236,
+      "modified_at": "2025-11-10T02:57:12.210838",
+      "extension": ".tsx",
+      "metadata": {
+        "imports": [
+          "import React from 'react'",
+          "import ReactDOM from 'react-dom/client'",
+          "import App from './App.tsx'",
+          "import './index.css'"
+        ],
+        "exports": [],
+        "note": "Basic text analysis - not full AST parsing"
+      }
+    },
+    {
+      "path": "templates/new_webapp/react-vite/src/types.d.ts",
+      "size_bytes": 350,
+      "modified_at": "2025-11-10T02:57:12.211144",
+      "extension": ".ts",
+      "metadata": {
+        "imports": [],
+        "exports": [
+          "export interface ApiResponse<T = unknown> {"
+        ],
+        "note": "Basic text analysis - not full AST parsing"
+      }
+    },
+    {
+      "path": "templates/new_webapp/react-vite/src/setupTests.ts",
+      "size_bytes": 35,
+      "modified_at": "2025-11-10T02:57:12.211015",
+      "extension": ".ts",
+      "metadata": {
+        "imports": [
+          "import '@testing-library/jest-dom'"
+        ],
+        "exports": [],
+        "note": "Basic text analysis - not full AST parsing"
+      }
+    },
+    {
+      "path": "templates/new_webapp/nextjs/app/layout.tsx",
+      "size_bytes": 445,
+      "modified_at": "2025-11-10T02:57:12.208756",
+      "extension": ".tsx",
+      "metadata": {
+        "imports": [
+          "import type { Metadata } from 'next'",
+          "import { Inter } from 'next/font/google'",
+          "import './globals.css'"
+        ],
+        "exports": [
+          "export const metadata: Metadata = {",
+          "export default function RootLayout({"
+        ],
+        "note": "Basic text analysis - not full AST parsing"
+      }
+    },
+    {
+      "path": "templates/new_webapp/nextjs/app/page.tsx",
+      "size_bytes": 901,
+      "modified_at": "2025-11-10T02:57:12.208990",
+      "extension": ".tsx",
+      "metadata": {
+        "imports": [
+          "import { useState } from 'react'",
+          "import styles from './page.module.css'"
+        ],
+        "exports": [
+          "export default function Home() {"
+        ],
+        "note": "Basic text analysis - not full AST parsing"
+      }
+    },
+    {
+      "path": "templates/new_webapp/nextjs/app/api/hello/route.ts",
+      "size_bytes": 371,
+      "modified_at": "2025-11-10T02:57:12.208382",
+      "extension": ".ts",
+      "metadata": {
+        "imports": [
+          "import { NextResponse } from 'next/server'"
+        ],
+        "exports": [
+          "export async function GET() {",
+          "export async function POST(request: Request) {"
+        ],
+        "note": "Basic text analysis - not full AST parsing"
+      }
+    }
+  ],
+  "summary": {
+    "total_files_indexed": 91,
+    "total_source_bytes": 591195,
+    "file_types": {
+      ".py": 76,
+      ".ts": 9,
+      ".js": 2,
+      ".tsx": 4
+    }
+  }
+}

@@ -4,12 +4,13 @@ import { TabBar } from './components/TabBar';
 import { RequestForm } from './components/RequestForm';
 import { WorkflowDashboard } from './components/WorkflowDashboard';
 import { HistoryView } from './components/HistoryView';
+import { RoutesView } from './components/RoutesView';
 
 const queryClient = new QueryClient();
 
 function App() {
   const [activeTab, setActiveTab] = useState<
-    'request' | 'workflows' | 'history'
+    'request' | 'workflows' | 'history' | 'routes'
   >('request');
 
   return (
@@ -36,6 +37,7 @@ function App() {
           {activeTab === 'request' && <RequestForm />}
           {activeTab === 'workflows' && <WorkflowDashboard />}
           {activeTab === 'history' && <HistoryView />}
+          {activeTab === 'routes' && <RoutesView />}
         </main>
       </div>
     </QueryClientProvider>
