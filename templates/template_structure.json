@@ -1,0 +1,79 @@
+{
+  "react-vite": {
+    "files": [
+      "package.json",
+      "vite.config.ts",
+      "tsconfig.json",
+      "index.html",
+      ".gitignore",
+      ".env.sample",
+      "README.md"
+    ],
+    "directories": [
+      "src",
+      "src/components",
+      "src/api",
+      ".claude",
+      ".claude/commands"
+    ],
+    "scripts": {
+      "dev": "vite",
+      "build": "vite build",
+      "preview": "vite preview",
+      "test": "vitest",
+      "test:ui": "vitest --ui",
+      "lint": "eslint . --ext ts,tsx --report-unused-disable-directives --max-warnings 0",
+      "type-check": "tsc --noEmit"
+    },
+    "ports": {
+      "dev": 5173,
+      "preview": 4173
+    },
+    "description": "Modern React application with Vite, TypeScript, and hot module replacement"
+  },
+  "nextjs": {
+    "files": [
+      "package.json",
+      "next.config.js",
+      "tsconfig.json",
+      ".gitignore",
+      ".env.sample",
+      "README.md"
+    ],
+    "directories": [
+      "app",
+      "app/api",
+      "components",
+      "lib",
+      ".claude",
+      ".claude/commands"
+    ],
+    "scripts": {
+      "dev": "next dev",
+      "build": "next build",
+      "start": "next start",
+      "test": "jest",
+      "test:watch": "jest --watch",
+      "lint": "next lint",
+      "type-check": "tsc --noEmit"
+    },
+    "ports": {
+      "dev": 3000,
+      "start": 3000
+    },
+    "description": "Next.js application with App Router, TypeScript, and server components"
+  },
+  "vanilla": {
+    "files": [
+      "index.html",
+      "style.css",
+      "script.js",
+      ".gitignore",
+      "README.md"
+    ],
+    "directories": [],
+    "scripts": {},
+    "ports": {},
+    "description": "Minimal vanilla JavaScript template for learning and prototyping"
+  }
+}

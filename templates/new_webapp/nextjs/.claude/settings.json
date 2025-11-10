@@ -1,0 +1,12 @@
+{
+  "mcpServers": {},
+  "rules": [
+    "When implementing features, always include tests using Jest and React Testing Library",
+    "Use TypeScript for all new files",
+    "Follow Next.js App Router patterns and best practices",
+    "Use Server Components by default, Client Components only when necessary",
+    "Ensure all components are properly typed",
+    "Place API routes in app/api/ directory",
+    "Use Next.js Image component for images"
+  ]
+}
