@@ -5,6 +5,7 @@ import type {
   SubmitRequestData,
   SubmitRequestResponse,
   ConfirmResponse,
+  RoutesResponse,
 } from '../types';
 
 const API_BASE = '/api';
@@ -53,4 +54,8 @@ export async function listWorkflows(): Promise<Workflow[]> {
 
 export async function getHistory(limit: number = 20): Promise<HistoryItem[]> {
   return fetchJSON<HistoryItem[]>(`${API_BASE}/history?limit=${limit}`);
+}
+
+export async function getRoutes(): Promise<RoutesResponse> {
+  return fetchJSON<RoutesResponse>(`${API_BASE}/routes`);
 }

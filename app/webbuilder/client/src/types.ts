@@ -38,3 +38,15 @@ export interface ConfirmResponse {
   issue_number: number;
   github_url: string;
 }
+
+export interface Route {
+  path: string;
+  method: string;
+  handler: string;
+  description: string;
+}
+
+export interface RoutesResponse {
+  routes: Route[];
+  total: number;
+}

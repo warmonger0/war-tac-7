@@ -121,3 +121,14 @@ class NLProcessResponse(BaseModel):
     github_issue: GitHubIssue
     project_context: ProjectContext
     error: Optional[str] = None
+
+# Routes Visualization Models
+class Route(BaseModel):
+    path: str = Field(..., description="Route path (e.g., /api/upload)")
+    method: str = Field(..., description="HTTP method (GET, POST, PUT, DELETE, PATCH)")
+    handler: str = Field(..., description="Handler function name")
+    description: str = Field(..., description="Route description from docstring")
+
+class RoutesResponse(BaseModel):
+    routes: List[Route] = Field(..., description="List of routes")
+    total: int = Field(..., description="Total number of routes")

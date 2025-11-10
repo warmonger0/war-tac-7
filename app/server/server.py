@@ -21,7 +21,9 @@ from core.data_models import (
     ColumnInfo,
     RandomQueryResponse,
     ExportRequest,
-    QueryExportRequest
+    QueryExportRequest,
+    Route,
+    RoutesResponse
 )
 from core.file_processor import convert_csv_to_sqlite, convert_json_to_sqlite, convert_jsonl_to_sqlite
 from core.llm_processor import generate_sql, generate_random_query
@@ -34,6 +36,7 @@ from core.sql_security import (
     SQLSecurityError
 )
 from core.export_utils import generate_csv_from_data, generate_csv_from_table
+from core.routes_analyzer import RoutesAnalyzer
 
 # Load .env file from server directory
 load_dotenv()
@@ -349,7 +352,7 @@ async def export_query_results(request: QueryExportRequest) -> Response:
     try:
         # Generate CSV from query results
         csv_data = generate_csv_from_data(request.data, request.columns)
-        
+
         # Return CSV response
         return Response(
             content=csv_data,
@@ -362,6 +365,27 @@ async def export_query_results(request: QueryExportRequest) -> Response:
         logger.error(f"[ERROR] Query export failed: {str(e)}")
         logger.error(f"[ERROR] Full traceback:\n{traceback.format_exc()}")
         raise HTTPException(500, f"Error exporting query results: {str(e)}")
+
+@app.get("/api/routes", response_model=RoutesResponse)
+async def get_routes() -> RoutesResponse:
+    """Get all API routes with metadata"""
+    try:
+        analyzer = RoutesAnalyzer("server.py")
+        route_list = analyzer.analyze_routes()
+
+        # Convert to Pydantic models
+        routes = [Route(**route) for route in route_list]
+
+        response = RoutesResponse(
+            routes=routes,
+            total=len(routes)
+        )
+        logger.info(f"[SUCCESS] Routes retrieved: {len(routes)} routes")
+        return response
+    except Exception as e:
+        logger.error(f"[ERROR] Routes retrieval failed: {str(e)}")
+        logger.error(f"[ERROR] Full traceback:\n{traceback.format_exc()}")
+        raise HTTPException(500, f"Error retrieving routes: {str(e)}")
 
 if __name__ == "__main__":
     import uvicorn
