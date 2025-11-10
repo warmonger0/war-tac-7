@@ -169,3 +169,13 @@ This prompt helps you determine what documentation you should read based on the 
     - When creating example requests or troubleshooting guides
     - When understanding template structure definitions and template design principles
     - When working with template testing infrastructure
+
+- app_docs/feature-ba7c9f28-playwright-mcp-integration.md
+  - Conditions:
+    - When integrating Playwright MCP into project templates
+    - When working with MCP configuration files (.mcp.json.sample, playwright-mcp-config.json)
+    - When modifying scaffolding scripts to include MCP setup
+    - When implementing E2E testing infrastructure
+    - When troubleshooting MCP integration in templates or generated projects
+    - When understanding how MCP integrates with ADW workflows
+    - When working with browser automation and video recording configuration
