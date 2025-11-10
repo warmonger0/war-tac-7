@@ -6,7 +6,7 @@
     },
     "contextOptions": {
       "recordVideo": {
-        "dir": "/Users/Warmonger0/tac/tac-7/trees/9fb089a7/videos",
+        "dir": "./videos",
         "size": {
           "width": 1920,
           "height": 1080
