@@ -29,30 +29,62 @@ tac-webbuilder is a natural language interface for web development that transfor
 ```bash
 cd /path/to/tac-webbuilder
 uv sync
+
+# Interactive setup (recommended)
+./scripts/setup_env.sh
+
+# Or manual setup
 cp .env.sample .env
 # Edit .env and add your API keys
 ```
 
 ### Configuration
 
-Add to `.env`:
+**Interactive Setup (Recommended):**
+
+Run the interactive setup script for guided configuration:
+
+```bash
+./scripts/setup_env.sh
+```
+
+This will:
+- Create `.env` from `.env.sample`
+- Prompt for required configuration (Anthropic API key)
+- Offer optional configuration (GitHub, ADW, Cloud services)
+- Detect Claude Code installation path automatically
+
+**Manual Setup:**
+
+Copy `.env.sample` to `.env` and edit:
 
 ```env
 # Required
 ANTHROPIC_API_KEY=your-anthropic-key
-GITHUB_TOKEN=your-github-token
 
 # Optional
+GITHUB_PAT=your-github-token
 GITHUB_REPO_URL=https://github.com/owner/repo
-API_URL=http://localhost:8002
-LOG_LEVEL=INFO
 ```
 
-Get GitHub token:
+Get GitHub authentication:
 ```bash
 gh auth login
-gh auth token
 ```
+
+**Validate Configuration:**
+
+After setup, validate your configuration:
+
+```bash
+./scripts/test_config.sh
+```
+
+This checks:
+- Required environment variables are set
+- Claude Code is installed and accessible
+- GitHub CLI is installed and authenticated
+- Optional services are configured correctly
 
 ### Use the CLI
 
