@@ -4,8 +4,8 @@
       "command": "npx",
       "args": [
         "-y",
-        "@executeautomation/playwright-mcp-server",
-        "/Users/Warmonger0/tac/tac-7/trees/5afcc315/playwright-mcp-config.json"
+        "@anaisbetts/mcp-playwright@latest",
+        "/Users/Warmonger0/tac/tac-7/trees/04a76d25/playwright-mcp-config.json"
       ]
     }
   }
