@@ -1,7 +1,6 @@
 """Tests for MCP configuration presence in all templates."""
 
 import json
-import os
 from pathlib import Path
 
 # Get project root (5 levels up from this file)

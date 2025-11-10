@@ -1,7 +1,6 @@
 """Tests for root-level MCP configuration validity."""
 
 import json
-import os
 from pathlib import Path
 
 # Get project root (4 levels up from this file)
