@@ -179,3 +179,13 @@ This prompt helps you determine what documentation you should read based on the 
     - When troubleshooting MCP integration in templates or generated projects
     - When understanding how MCP integrates with ADW workflows
     - When working with browser automation and video recording configuration
+
+- app_docs/feature-f4d9b5e1-env-setup-scripts.md
+  - Conditions:
+    - When working with environment configuration or .env files
+    - When implementing setup scripts or interactive configuration tools
+    - When troubleshooting environment variable issues or missing configuration
+    - When creating validation scripts for project setup
+    - When working with bash scripts that handle cross-platform compatibility
+    - When implementing onboarding workflows for new developers
+    - When documenting configuration requirements or setup procedures
