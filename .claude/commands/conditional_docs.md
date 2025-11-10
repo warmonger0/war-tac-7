@@ -200,3 +200,16 @@ This prompt helps you determine what documentation you should read based on the 
     - When creating environment variables reference tables
     - When documenting advanced configuration topics (CI/CD, multiple environments)
     - When enhancing README configuration sections
+
+- app_docs/feature-04a76d25-validation-optimization-routes-viz.md
+  - Conditions:
+    - When working with API routes visualization or route discovery features
+    - When implementing route analysis using AST parsing
+    - When working with the routes analyzer module (app/server/core/routes_analyzer.py)
+    - When adding or modifying the Routes tab in the web UI
+    - When implementing validation scripts for feature completeness
+    - When working with codebase indexing or metadata extraction
+    - When implementing optimization testing frameworks
+    - When troubleshooting routes endpoint (/api/routes) or route filtering
+    - When creating E2E tests for routes visualization
+    - When working with lightweight codebase metadata for context reduction strategies
