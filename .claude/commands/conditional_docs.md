@@ -213,3 +213,16 @@ This prompt helps you determine what documentation you should read based on the 
     - When troubleshooting routes endpoint (/api/routes) or route filtering
     - When creating E2E tests for routes visualization
     - When working with lightweight codebase metadata for context reduction strategies
+
+- app_docs/feature-b5e84e34-frontend-migration.md
+  - Conditions:
+    - When working with the React frontend architecture or component structure
+    - When migrating from vanilla TypeScript to React
+    - When implementing or modifying frontend components (App, WorkflowDashboard, RequestForm, etc.)
+    - When troubleshooting frontend build or startup issues
+    - When working with TanStack Query, Zustand, or React hooks
+    - When configuring Vite with React plugin and dynamic ports
+    - When implementing WebSocket connections for real-time updates
+    - When working with Tailwind CSS styling in the frontend
+    - When understanding the app/client directory structure post-migration
+    - When setting up or troubleshooting the frontend startup scripts

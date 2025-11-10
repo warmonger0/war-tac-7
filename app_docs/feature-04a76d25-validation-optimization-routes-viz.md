@@ -13,7 +13,7 @@ This feature implements a comprehensive validation, optimization testing, and ro
 ### 1. Routes Analyzer & Visualization
 - **Routes Analyzer Module** (`app/server/core/routes_analyzer.py`): Python module that uses AST parsing to scan FastAPI route definitions and extract metadata including HTTP method, path, handler name, and description from docstrings
 - **Routes API Endpoint**: GET `/api/routes` endpoint that returns structured JSON with all discovered routes
-- **Routes Visualization UI** (`app/webbuilder/client/src/components/RoutesView.tsx`): React component with interactive table, method filtering (GET/POST/PUT/DELETE/PATCH), text search, and color-coded method badges
+- **Routes Visualization UI** (`app/client/src/components/RoutesView.tsx`): React component with interactive table, method filtering (GET/POST/PUT/DELETE/PATCH), text search, and color-coded method badges
 - **Tab Integration**: Routes tab added to tac-webbuilder's tab navigation system
 
 ### 2. Validation System
@@ -39,9 +39,9 @@ This feature implements a comprehensive validation, optimization testing, and ro
 - `app/server/tests/test_routes_endpoint.py` (83 lines): Integration tests for routes API endpoint
 
 **Frontend:**
-- `app/webbuilder/client/src/components/RoutesView.tsx` (190 lines): Full-featured routes visualization with filtering, search, responsive design, loading/error states
-- `app/webbuilder/client/src/types.ts` (+12 lines): TypeScript interfaces for Route and RoutesResponse
-- `app/webbuilder/client/src/api/client.ts` (+5 lines): API client method `getRoutes()`
+- `app/client/src/components/RoutesView.tsx` (190 lines): Full-featured routes visualization with filtering, search, responsive design, loading/error states
+- `app/client/src/types.ts` (+12 lines): TypeScript interfaces for Route and RoutesResponse
+- `app/client/src/api/client.ts` (+5 lines): API client method `getRoutes()`
 
 **Validation & Optimization:**
 - `scripts/validate_implementation.py` (319 lines): Comprehensive validation logic with 54 checks across 7 categories
@@ -64,8 +64,8 @@ This feature implements a comprehensive validation, optimization testing, and ro
 
 - `app/server/core/data_models.py` (+13 lines): Added `Route` and `RoutesResponse` Pydantic models
 - `app/server/server.py` (+28 lines): Added `/api/routes` endpoint with routes analyzer integration
-- `app/webbuilder/client/src/App.tsx` (+4 lines): Integrated RoutesView component and routes tab
-- `app/webbuilder/client/src/components/TabBar.tsx` (+5 lines): Added "API Routes" tab to navigation
+- `app/client/src/App.tsx` (+4 lines): Integrated RoutesView component and routes tab
+- `app/client/src/components/TabBar.tsx` (+5 lines): Added "API Routes" tab to navigation
 
 ### Key Changes
 
@@ -90,7 +90,7 @@ This feature implements a comprehensive validation, optimization testing, and ro
 
 2. Start the web client:
    ```bash
-   cd app/webbuilder/client && bun run dev
+   cd app/client && bun run dev
    ```
 
 3. Navigate to `http://localhost:5173` (or configured port)
@@ -185,13 +185,13 @@ Key test files:
 ### Frontend Type Checking
 
 ```bash
-cd app/webbuilder/client && bun tsc --noEmit
+cd app/client && bun tsc --noEmit
 ```
 
 ### Frontend Build
 
 ```bash
-cd app/webbuilder/client && bun run build
+cd app/client && bun run build
 ```
 
 ### E2E Testing
