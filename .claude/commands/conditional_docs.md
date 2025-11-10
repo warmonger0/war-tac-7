@@ -189,3 +189,14 @@ This prompt helps you determine what documentation you should read based on the 
     - When working with bash scripts that handle cross-platform compatibility
     - When implementing onboarding workflows for new developers
     - When documenting configuration requirements or setup procedures
+
+- app_docs/feature-e6104340-env-setup-documentation.md
+  - Conditions:
+    - When working with comprehensive configuration documentation
+    - When documenting environment variables, cloud services, or setup procedures
+    - When creating or updating configuration guides (docs/configuration.md)
+    - When adding configuration troubleshooting sections
+    - When documenting best practices for security, performance, or team collaboration
+    - When creating environment variables reference tables
+    - When documenting advanced configuration topics (CI/CD, multiple environments)
+    - When enhancing README configuration sections
