@@ -102,3 +102,61 @@ This prompt helps you determine what documentation you should read based on the 
     - When adding integration documentation sections to README files
     - When creating documentation that bridges high-level README and detailed technical docs
     - When working on documentation patches that add feature overview sections
+
+- docs/cli.md
+  - Conditions:
+    - When working with CLI commands or command-line interface functionality
+    - When implementing new CLI commands or options
+    - When troubleshooting CLI issues or user workflows
+
+- docs/web-ui.md
+  - Conditions:
+    - When working with the React frontend or web interface
+    - When implementing UI components or features
+    - When troubleshooting web UI issues or WebSocket connections
+
+- docs/api.md
+  - Conditions:
+    - When working with FastAPI backend or API endpoints
+    - When implementing new API routes or modifying existing ones
+    - When troubleshooting API connectivity or response issues
+
+- docs/architecture.md
+  - Conditions:
+    - When understanding overall system design and data flow
+    - When planning major architectural changes
+    - When onboarding to the codebase
+
+- docs/examples.md
+  - Conditions:
+    - When creating new features to understand common patterns
+    - When writing documentation or examples
+    - When helping users understand what requests are possible
+
+- docs/troubleshooting.md
+  - Conditions:
+    - When debugging issues or errors
+    - When setting up the development environment
+    - When users report problems
+
+- templates/existing_webapp/integration_guide.md
+  - Conditions:
+    - When integrating ADW into existing projects
+    - When working with project detection or framework identification
+    - When implementing integration scripts or workflows
+
+- templates/template_structure.json
+  - Conditions:
+    - When working with project templates
+    - When adding new templates or modifying existing ones
+    - When implementing scaffolding scripts
+
+- app_docs/feature-0f04f66d-project-templates-docs.md
+  - Conditions:
+    - When working with project templates (React-Vite, Next.js, Vanilla JS)
+    - When implementing or modifying scaffolding scripts (setup_new_project.sh)
+    - When working with existing codebase integration (integrate_existing.sh)
+    - When adding or updating comprehensive documentation (CLI, Web UI, API, Architecture)
+    - When creating example requests or troubleshooting guides
+    - When understanding template structure definitions and template design principles
+    - When working with template testing infrastructure

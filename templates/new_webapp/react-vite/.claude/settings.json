@@ -1,0 +1,10 @@
+{
+  "mcpServers": {},
+  "rules": [
+    "When implementing features, always include tests using Vitest and React Testing Library",
+    "Use TypeScript for all new files",
+    "Follow React best practices and hooks patterns",
+    "Ensure all components are properly typed",
+    "Update API client in src/api/ when adding new endpoints"
+  ]
+}
