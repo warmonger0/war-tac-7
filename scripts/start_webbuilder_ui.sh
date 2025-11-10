@@ -1,5 +1,5 @@
 #!/bin/bash
-cd "$(dirname "$0")/../app/webbuilder/client"
+cd "$(dirname "$0")/../app/client"
 
 echo "🎨 Starting webbuilder frontend on port 5174..."
 npm run dev

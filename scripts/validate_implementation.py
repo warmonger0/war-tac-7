@@ -89,8 +89,8 @@ def check_directory_structure() -> List[Dict[str, Any]]:
         "app/server/core",
         "app/server/tests",
         "app/webbuilder",
-        "app/webbuilder/client",
-        "app/webbuilder/client/src",
+        "app/client",
+        "app/client/src",
         "scripts",
         "docs",
         "templates",
@@ -141,14 +141,14 @@ def check_webbuilder_client() -> List[Dict[str, Any]]:
     checks = []
 
     files = [
-        ("app/webbuilder/client/src/App.tsx", "Main app component"),
-        ("app/webbuilder/client/src/components/TabBar.tsx", "Tab navigation"),
-        ("app/webbuilder/client/src/components/RequestForm.tsx", "Request form"),
-        ("app/webbuilder/client/src/components/HistoryView.tsx", "History view"),
-        ("app/webbuilder/client/src/components/RoutesView.tsx", "Routes visualization"),
-        ("app/webbuilder/client/src/api/client.ts", "API client"),
-        ("app/webbuilder/client/src/types.ts", "TypeScript types"),
-        ("app/webbuilder/client/package.json", "Package configuration"),
+        ("app/client/src/App.tsx", "Main app component"),
+        ("app/client/src/components/TabBar.tsx", "Tab navigation"),
+        ("app/client/src/components/RequestForm.tsx", "Request form"),
+        ("app/client/src/components/HistoryView.tsx", "History view"),
+        ("app/client/src/components/RoutesView.tsx", "Routes visualization"),
+        ("app/client/src/api/client.ts", "API client"),
+        ("app/client/src/types.ts", "TypeScript types"),
+        ("app/client/package.json", "Package configuration"),
     ]
 
     for file_path, description in files:
@@ -264,7 +264,7 @@ def check_configuration_files() -> List[Dict[str, Any]]:
         (".gitignore", "Git ignore rules"),
         (".mcp.json.sample", "MCP configuration template"),
         ("app/server/pyproject.toml", "Python project configuration"),
-        ("app/webbuilder/client/package.json", "Client package configuration"),
+        ("app/client/package.json", "Client package configuration"),
     ]
 
     for config_path, description in configs:
