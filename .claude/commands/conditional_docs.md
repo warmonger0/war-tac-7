@@ -94,3 +94,11 @@ This prompt helps you determine what documentation you should read based on the 
     - When troubleshooting CLI command execution or parameter handling
     - When implementing CLI convenience scripts or module entry points
     - When working with interfaces/cli/ directory
+
+- app_docs/feature-e7613043-playwright-mcp-readme.md
+  - Conditions:
+    - When updating tac-webbuilder README documentation
+    - When documenting Playwright MCP integration features
+    - When adding integration documentation sections to README files
+    - When creating documentation that bridges high-level README and detailed technical docs
+    - When working on documentation patches that add feature overview sections

@@ -165,6 +165,35 @@ tac-webbuilder includes a complete copy of tac-7's ADW system. For comprehensive
 - `adw_build_iso` - Build only
 - And more - see [ADW README](adws/README.md)
 
+## Playwright MCP Integration
+
+tac-webbuilder includes Playwright Model Context Protocol (MCP) integration that enables Claude Code to control browsers programmatically for testing and validation.
+
+### Key Capabilities
+
+- **Browser Control**: Navigate, interact with elements, and test workflows automatically
+- **E2E Testing**: Run end-to-end tests with real browser automation
+- **Visual Validation**: Capture screenshots and videos for review
+- **Multi-Browser Support**: Test with Chromium, Firefox, or WebKit
+- **ADW Integration**: Automatically used in ADW workflow testing and review phases
+
+### Quick Start
+
+```bash
+# Copy MCP configuration
+cp .mcp.json.sample .mcp.json
+
+# Install Playwright
+npm install -D playwright
+npx playwright install chromium
+```
+
+The Playwright MCP server will start automatically when Claude Code runs.
+
+### Documentation
+
+For comprehensive documentation on configuration, usage, troubleshooting, and best practices, see [Playwright MCP Documentation](docs/playwright-mcp.md).
+
 ## Development
 
 ### Running Tests
