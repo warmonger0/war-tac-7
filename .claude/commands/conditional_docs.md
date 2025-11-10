@@ -150,3 +150,13 @@ This prompt helps you determine what documentation you should read based on the 
     - When working with project templates
     - When adding new templates or modifying existing ones
     - When implementing scaffolding scripts
+
+- app_docs/feature-0f04f66d-project-templates-docs.md
+  - Conditions:
+    - When working with project templates (React-Vite, Next.js, Vanilla JS)
+    - When implementing or modifying scaffolding scripts (setup_new_project.sh)
+    - When working with existing codebase integration (integrate_existing.sh)
+    - When adding or updating comprehensive documentation (CLI, Web UI, API, Architecture)
+    - When creating example requests or troubleshooting guides
+    - When understanding template structure definitions and template design principles
+    - When working with template testing infrastructure
