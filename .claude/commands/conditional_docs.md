@@ -226,3 +226,13 @@ This prompt helps you determine what documentation you should read based on the 
     - When working with Tailwind CSS styling in the frontend
     - When understanding the app/client directory structure post-migration
     - When setting up or troubleshooting the frontend startup scripts
+
+- app_docs/feature-7a8b6bca-backend-reorganization.md
+  - Conditions:
+    - When working with backend entry points or main.py
+    - When modifying startup scripts for the backend server
+    - When troubleshooting backend import paths or module structure
+    - When working with the app/server directory structure
+    - When understanding the migration from interfaces/web to app/server
+    - When configuring uvicorn entry points or server startup
+    - When updating MCP configuration paths for new tree directories
