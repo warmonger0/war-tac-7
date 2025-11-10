@@ -8,27 +8,28 @@ Summary metrics across all ADW runs.
 
 | Metric            | Value          | Last Updated                 |
 | ----------------- | -------------- | ---------------------------- |
-| Current Streak    | 10             | Mon Nov 10 03:34:27 PST 2025 |
-| Longest Streak    | 10             | Mon Nov 10 03:34:27 PST 2025 |
-| Total Plan Size   | 2704 lines     | Mon Nov 10 03:34:27 PST 2025 |
-| Largest Plan Size | 566 lines      | Mon Nov 10 03:34:27 PST 2025 |
-| Total Diff Size   | 23246 lines    | Mon Nov 10 03:34:27 PST 2025 |
-| Largest Diff Size | 7804 lines     | Mon Nov 10 03:34:27 PST 2025 |
-| Average Presence  | 1.0            | Mon Nov 10 03:34:27 PST 2025 |
+| Current Streak    | 11             | Mon Nov 10 08:52:47 PST 2025 |
+| Longest Streak    | 11             | Mon Nov 10 08:52:47 PST 2025 |
+| Total Plan Size   | 2819 lines     | Mon Nov 10 08:52:47 PST 2025 |
+| Largest Plan Size | 566 lines      | Mon Nov 10 08:52:47 PST 2025 |
+| Total Diff Size   | 31498 lines    | Mon Nov 10 08:52:47 PST 2025 |
+| Largest Diff Size | 8252 lines     | Mon Nov 10 08:52:47 PST 2025 |
+| Average Presence  | 1.0            | Mon Nov 10 08:52:47 PST 2025 |
 
 ## ADW KPIs
 
 Detailed metrics for individual ADW workflow runs.
 
-| Date       | ADW ID   | Issue Number | Issue Class | Attempts | Plan Size (lines) | Diff Size (Added/Removed/Files) | Created                      | Updated |
-| ---------- | -------- | ------------ | ----------- | -------- | ----------------- | ------------------------------- | ---------------------------- | ------- |
-| 2025-07-31 | cc73faf1 | 47           | /chore      | 1        | 39                | 274/5/10                        | Thu Jul 31 12:06:52 CDT 2025 |         |
-| 2025-11-09 | 1afd9aba | 12           | /feature    | 1        | 332               | 654/3/6                         | Sun Nov  9 05:16:45 PST 2025 |         |
-| 2025-11-09 | e2bbe1a5 | 14           | /feature    | 1        | 310               | 3749/408/18                     | Sun Nov  9 06:33:54 PST 2025 |         |
-| 2025-11-09 | fd9119bc | 16           | /feature    | 1        | 343               | 576/3/5                         | Sun Nov  9 15:22:04 PST 2025 |         |
-| 2025-11-09 | e7613043 | 18           | /feature    | 1        | 0                 | 995/3/14                        | Sun Nov  9 16:55:33 PST 2025 |         |
-| 2025-11-09 | 0f04f66d | 26           | /feature    | 1        | 430               | 6124/259/48                     | Sun Nov  9 23:51:04 PST 2025 |         |
-| 2025-11-10 | ba7c9f28 | 28           | /feature    | 1        | 566               | 1034/8/21                       | Mon Nov 10 00:27:53 PST 2025 |         |
-| 2025-11-10 | f4d9b5e1 | 30           | /feature    | 1        | 198               | 711/21/8                        | Mon Nov 10 00:57:17 PST 2025 |         |
-| 2025-11-10 | e6104340 | 32           | /chore      | 1        | 155               | 614/1/5                         | Mon Nov 10 01:20:50 PST 2025 |         |
-| 2025-11-10 | 04a76d25 | 34           | /feature    | 1        | 331               | 7794/10/25                      | Mon Nov 10 03:34:27 PST 2025 |         |
+| Date       | ADW ID   | Issue Number | Issue Class | Attempts | Plan Size (lines) | Diff Size (Added/Removed/Files) | Created                      | Updated                      |
+| ---------- | -------- | ------------ | ----------- | -------- | ----------------- | ------------------------------- | ---------------------------- | ---------------------------- |
+| 2025-07-31 | cc73faf1 | 47           | /chore      | 1        | 39                | 274/5/10                        | Thu Jul 31 12:06:52 CDT 2025 |                              |
+| 2025-11-09 | 1afd9aba | 12           | /feature    | 1        | 332               | 654/3/6                         | Sun Nov  9 05:16:45 PST 2025 |                              |
+| 2025-11-09 | e2bbe1a5 | 14           | /feature    | 1        | 310               | 3749/408/18                     | Sun Nov  9 06:33:54 PST 2025 |                              |
+| 2025-11-09 | fd9119bc | 16           | /feature    | 1        | 343               | 576/3/5                         | Sun Nov  9 15:22:04 PST 2025 |                              |
+| 2025-11-09 | e7613043 | 18           | /feature    | 1        | 0                 | 995/3/14                        | Sun Nov  9 16:55:33 PST 2025 |                              |
+| 2025-11-09 | 0f04f66d | 26           | /feature    | 1        | 430               | 6124/259/48                     | Sun Nov  9 23:51:04 PST 2025 |                              |
+| 2025-11-10 | ba7c9f28 | 28           | /feature    | 1        | 566               | 1034/8/21                       | Mon Nov 10 00:27:53 PST 2025 |                              |
+| 2025-11-10 | f4d9b5e1 | 30           | /feature    | 1        | 198               | 711/21/8                        | Mon Nov 10 00:57:17 PST 2025 |                              |
+| 2025-11-10 | e6104340 | 32           | /chore      | 1        | 155               | 614/1/5                         | Mon Nov 10 01:20:50 PST 2025 |                              |
+| 2025-11-10 | 04a76d25 | 34           | /feature    | 1        | 331               | 7794/10/25                      | Mon Nov 10 03:34:27 PST 2025 |                              |
+| 2025-11-10 | b5e84e34 | 38           | /chore      | 1        | 115               | 7139/1113/52                    | Mon Nov 10 08:52:47 PST 2025 |                              |
