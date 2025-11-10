@@ -4,6 +4,7 @@ Solutions to common issues when using tac-webbuilder.
 
 ## Table of Contents
 
+- [Configuration Issues](#configuration-issues)
 - [Environment Setup](#environment-setup)
 - [Playwright MCP](#playwright-mcp)
 - [API and Backend](#api-and-backend)
@@ -12,6 +13,139 @@ Solutions to common issues when using tac-webbuilder.
 - [ADW Workflow](#adw-workflow)
 - [Templates and Integration](#templates-and-integration)
 - [Performance](#performance)
+
+## Configuration Issues
+
+### Environment Setup
+
+**Problem**: `.env file not found`
+
+**Solution**:
+```bash
+# Run interactive setup
+./scripts/setup_env.sh
+
+# Or manual setup
+cp .env.sample .env
+```
+
+---
+
+**Problem**: `ANTHROPIC_API_KEY not set`
+
+**Solution**:
+1. Get key from https://console.anthropic.com/settings/keys
+2. Add to `.env`: `ANTHROPIC_API_KEY=sk-ant-xxx...`
+3. Verify with: `./scripts/test_config.sh`
+
+---
+
+**Problem**: `Claude Code not found`
+
+**Solution**:
+1. Check installation: `which claude`
+2. Update path in `.env`: `CLAUDE_CODE_PATH=/path/to/claude`
+3. Verify with: `./scripts/test_config.sh`
+
+See [Configuration Guide](configuration.md) for detailed setup instructions.
+
+---
+
+### GitHub Authentication
+
+**Problem**: `GitHub not authenticated`
+
+**Solution**:
+```bash
+gh auth login
+```
+
+Follow the prompts to authenticate with your GitHub account.
+
+---
+
+**Problem**: `Cannot create issues`
+
+**Solution**:
+1. Verify auth: `gh auth status`
+2. Check token scopes if using `GITHUB_PAT` (needs `repo`, `workflow`)
+3. Test issue creation: `gh issue create --title "Test" --body "Test"`
+
+See [Configuration Guide](configuration.md#github-configuration) for details.
+
+---
+
+### Cloud Services
+
+**Problem**: `E2B API key invalid`
+
+**Solution**:
+1. Verify key at https://e2b.dev/dashboard
+2. Check key format: `sk_e2b_...`
+3. Update in `.env`
+
+---
+
+**Problem**: `Cloudflare tunnel not working`
+
+**Solution**:
+1. Verify tunnel token
+2. Check cloudflared is installed: `cloudflared --version`
+3. Test tunnel: `cloudflared tunnel run`
+
+---
+
+**Problem**: `R2 screenshot upload fails`
+
+**Solution**:
+1. Verify all R2 variables are set in `.env`:
+   - `CLOUDFLARE_ACCOUNT_ID`
+   - `CLOUDFLARE_R2_ACCESS_KEY_ID`
+   - `CLOUDFLARE_R2_SECRET_ACCESS_KEY`
+   - `CLOUDFLARE_R2_BUCKET_NAME`
+   - `CLOUDFLARE_R2_PUBLIC_DOMAIN`
+2. Check bucket exists and is public
+3. Test credentials with AWS CLI (R2 is S3-compatible)
+
+See [Configuration Guide](configuration.md#cloudflare-r2-screenshot-upload) for setup details.
+
+---
+
+### Port Conflicts
+
+**Problem**: `Port 5174 already in use`
+
+**Solution**:
+```bash
+# Find process using port
+lsof -ti:5174
+
+# Kill process
+kill -9 <pid>
+
+# Or change port in .env
+echo "WEB_UI_PORT=3000" >> .env
+```
+
+---
+
+**Problem**: `Port 8002 already in use`
+
+**Solution**:
+```bash
+# Find process using port
+lsof -ti:8002
+
+# Kill process
+kill -9 <pid>
+
+# Or change port in .env
+echo "WEB_API_PORT=8000" >> .env
+```
+
+See [Configuration Guide](configuration.md#web-ui-configuration) for port configuration.
+
+---
 
 ## Environment Setup
 

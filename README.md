@@ -40,6 +40,31 @@ cp .env.sample .env
 
 ### Configuration
 
+**Quick Setup:**
+
+```bash
+./scripts/setup_env.sh
+```
+
+**Verify Setup:**
+
+```bash
+./scripts/test_config.sh
+```
+
+**Manual Configuration:**
+
+See [Configuration Guide](docs/configuration.md) for detailed information.
+
+**Required:**
+- `ANTHROPIC_API_KEY` - Get from https://console.anthropic.com/settings/keys
+- GitHub authentication via `gh auth login`
+
+**Optional:**
+- E2B cloud sandbox for isolated code execution
+- Cloudflare tunnel for webhooks
+- Cloudflare R2 for screenshot uploads
+
 **Interactive Setup (Recommended):**
 
 Run the interactive setup script for guided configuration:
@@ -85,6 +110,8 @@ This checks:
 - Claude Code is installed and accessible
 - GitHub CLI is installed and authenticated
 - Optional services are configured correctly
+
+Full details in [docs/configuration.md](docs/configuration.md)
 
 ### Use the CLI
 
