@@ -213,3 +213,14 @@ This prompt helps you determine what documentation you should read based on the 
     - When troubleshooting routes endpoint (/api/routes) or route filtering
     - When creating E2E tests for routes visualization
     - When working with lightweight codebase metadata for context reduction strategies
+
+- app_docs/feature-9fb089a7-frontend-relocation.md
+  - Conditions:
+    - When working with frontend path references or directory structure
+    - When modifying startup scripts (start_webbuilder_ui.sh)
+    - When updating validation scripts for new frontend paths
+    - When troubleshooting frontend location issues
+    - When working with projects/tac-webbuilder directory structure
+    - When migrating or reorganizing project directories
+    - When configuring frontend port settings via .ports.env
+    - When updating path references in MCP configuration
