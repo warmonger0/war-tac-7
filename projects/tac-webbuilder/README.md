@@ -165,6 +165,245 @@ tac-webbuilder includes a complete copy of tac-7's ADW system. For comprehensive
 - `adw_build_iso` - Build only
 - And more - see [ADW README](adws/README.md)
 
+## Web Backend API
+
+tac-webbuilder provides a FastAPI-based web backend that powers the web interface with REST API endpoints and WebSocket support for real-time updates.
+
+### Quick Start
+
+Start the web backend server:
+
+```bash
+cd /Users/Warmonger0/tac/tac-7/projects/tac-webbuilder
+./scripts/start_web.sh
+```
+
+The API will be available at:
+- **API Base**: http://localhost:8002
+- **API Documentation**: http://localhost:8002/docs (Swagger UI)
+- **Alternative Docs**: http://localhost:8002/redoc (ReDoc)
+- **Health Check**: http://localhost:8002/api/health
+- **WebSocket**: ws://localhost:8002/ws
+
+### Configuration
+
+Configure the web backend via environment variables or config.yaml:
+
+```bash
+# Environment variables
+TWB_WEB_BACKEND_HOST=0.0.0.0          # Listen address (default: 0.0.0.0)
+TWB_WEB_BACKEND_PORT=8002             # API port (default: 8002)
+TWB_FRONTEND_ORIGIN=http://localhost:5174  # CORS allowed origin
+```
+
+```yaml
+# config.yaml
+interfaces:
+  web:
+    enabled: true
+    port: 5174  # Frontend port (backend runs on 8002)
+```
+
+### API Endpoints
+
+#### Health & Info
+- `GET /api/health` - Health check endpoint
+- `GET /` - API root with links to documentation
+
+#### Requests (Issue Creation)
+- `POST /api/request` - Submit NL request and get preview
+- `GET /api/preview/{request_id}` - Get formatted GitHub issue preview
+- `POST /api/confirm/{request_id}` - Confirm and post issue to GitHub
+
+#### Workflows (ADW Monitoring)
+- `GET /api/workflows` - List active ADW workflows
+- `GET /api/workflows/{adw_id}` - Get detailed workflow status and logs
+
+#### Projects (Context Detection)
+- `GET /api/projects` - List configured projects
+- `POST /api/projects` - Add new project and detect context
+- `GET /api/projects/{project_id}/context` - Get project context
+
+#### History
+- `GET /api/history` - Get request history with pagination
+
+### API Usage Examples
+
+#### Submit a Request
+```bash
+curl -X POST http://localhost:8002/api/request \
+  -H "Content-Type: application/json" \
+  -d '{
+    "nl_input": "Add a dark mode toggle to the settings page",
+    "project_path": "/path/to/project"
+  }'
+```
+
+**Response:**
+```json
+{
+  "request_id": "abc-123",
+  "github_issue": {
+    "title": "Add a dark mode toggle to the settings page",
+    "body": "## Description\n...",
+    "labels": ["tac-webbuilder", "enhancement"]
+  },
+  "project_context": {
+    "project_name": "my-project",
+    "language": "Python",
+    "framework": "FastAPI"
+  }
+}
+```
+
+#### List Workflows
+```bash
+curl http://localhost:8002/api/workflows
+```
+
+**Response:**
+```json
+{
+  "workflows": [
+    {
+      "adw_id": "adw-xyz",
+      "issue_number": 42,
+      "current_phase": "build",
+      "status": "running",
+      "started_at": "2025-11-09T10:00:00",
+      "pr_url": null
+    }
+  ],
+  "total_count": 1
+}
+```
+
+#### Add a Project
+```bash
+curl -X POST http://localhost:8002/api/projects \
+  -H "Content-Type: application/json" \
+  -d '{
+    "project_path": "/Users/me/projects/my-app"
+  }'
+```
+
+**Response:**
+```json
+{
+  "project_path": "/Users/me/projects/my-app",
+  "project_name": "my-app",
+  "framework": "React",
+  "language": "TypeScript",
+  "tech_stack": ["Node.js"],
+  "build_tools": ["npm"],
+  "test_frameworks": ["vitest"],
+  "has_git": true,
+  "repo_url": "https://github.com/user/my-app"
+}
+```
+
+### WebSocket Real-time Updates
+
+Connect to the WebSocket endpoint for real-time workflow updates:
+
+```javascript
+const ws = new WebSocket('ws://localhost:8002/ws');
+
+ws.onopen = () => {
+  console.log('Connected to tac-webbuilder API');
+};
+
+ws.onmessage = (event) => {
+  const message = JSON.parse(event.data);
+  console.log('Received:', message.type, message.data);
+
+  switch (message.type) {
+    case 'workflow_started':
+      console.log('Workflow started:', message.data.adw_id);
+      break;
+    case 'workflow_progress':
+      console.log('Progress:', message.data.phase, message.data.status);
+      break;
+    case 'workflow_completed':
+      console.log('PR created:', message.data.pr_url);
+      break;
+  }
+};
+```
+
+**Message Types:**
+- `workflow_started` - New workflow execution began
+- `workflow_progress` - Phase progress update
+- `workflow_completed` - Workflow finished successfully
+- `workflow_failed` - Workflow encountered an error
+
+### Testing the API
+
+#### Unit Tests
+```bash
+# Run web API tests
+uv run pytest tests/interfaces/web/ -v
+
+# With coverage
+uv run pytest tests/interfaces/web/ --cov=interfaces.web
+```
+
+#### E2E Tests
+```bash
+# Follow the E2E test guide
+cat .claude/commands/e2e/test_web_api.md
+
+# Or run individual curl commands
+curl http://localhost:8002/api/health
+```
+
+### Troubleshooting
+
+#### Port Already in Use
+```bash
+# Kill process on port 8002
+lsof -ti:8002 | xargs kill -9
+
+# Or use the startup script (it handles this automatically)
+./scripts/start_web.sh
+```
+
+#### CORS Errors
+Make sure your frontend origin is configured:
+```bash
+export TWB_FRONTEND_ORIGIN=http://localhost:5174
+./scripts/start_web.sh
+```
+
+#### WebSocket Connection Refused
+Check that the server is running and accessible:
+```bash
+curl http://localhost:8002/api/health
+```
+
+### Development
+
+The web API is built with:
+- **FastAPI**: Modern, fast web framework
+- **Uvicorn**: ASGI server with WebSocket support
+- **Pydantic**: Data validation and serialization
+- **WebSockets**: Real-time bidirectional communication
+
+Project structure:
+```
+interfaces/web/
+├── server.py           # Main FastAPI application
+├── models.py           # Pydantic request/response models
+├── state.py            # Request state management
+├── websocket.py        # WebSocket connection manager
+├── workflow_monitor.py # ADW workflow monitoring
+└── routes/
+    ├── requests.py     # Request submission routes
+    ├── workflows.py    # Workflow monitoring routes
+    ├── projects.py     # Project management routes
+    └── history.py      # Request history routes
+```
+
 ## Playwright MCP Integration
 
 tac-webbuilder includes Playwright Model Context Protocol (MCP) integration that enables Claude Code to control browsers programmatically for testing and validation.
