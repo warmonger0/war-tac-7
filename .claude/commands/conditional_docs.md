@@ -317,3 +317,16 @@ This prompt helps you determine what documentation you should read based on the 
     - When creating E2E tests for visual design validation
     - When working with responsive design for landing pages
     - When troubleshooting landing page styling or layout issues
+
+- app_docs/feature-5b192684-extraction-validation-tooling.md
+  - Conditions:
+    - When working with project extraction or standalone deployment
+    - When implementing or modifying validation scripts for project integrity
+    - When creating or updating extraction scripts (extract_project.sh, validate_standalone.sh)
+    - When setting up configuration files for standalone projects (.env.sample, config.yaml.sample)
+    - When troubleshooting parent path references or project dependencies
+    - When implementing rsync-based file copying with exclusions
+    - When working with git initialization for extracted projects
+    - When setting up Python virtual environments or Node.js dependencies
+    - When creating tests for extraction and validation logic
+    - When understanding how to make projects portable and self-contained
