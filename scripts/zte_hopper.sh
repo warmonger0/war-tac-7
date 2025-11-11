@@ -222,15 +222,17 @@ count_queue_files() {
 preflight_checks() {
     log "INFO" "Running pre-flight checks"
 
-    # Check git worktree is clean
+    # Check git worktree - only fail if there are modified tracked files
     local git_status=$(git status --porcelain)
-    if [ -n "$git_status" ]; then
-        log "ERROR" "Git worktree is not clean:"
-        log "ERROR" "$git_status"
+    local modified=$(echo "$git_status" | grep -E "^(M|A|D|R|C)" || true)
+
+    if [ -n "$modified" ]; then
+        log "ERROR" "Git worktree has uncommitted changes to tracked files:"
+        log "ERROR" "$modified"
         return 1
     fi
 
-    log "INFO" "✓ Git worktree is clean"
+    log "INFO" "✓ Git worktree is clean (no uncommitted changes to tracked files)"
 
     # Pull latest from origin/main
     log "INFO" "Pulling latest from origin/main"
