@@ -75,4 +75,17 @@ Extract the chore details from the `issue_json` variable (parse the JSON and use
 
 ## Report
 
-- IMPORTANT: Return exclusively the path to the plan file created and nothing else.
+CRITICAL: You MUST return the ABSOLUTE path where you actually saved the file.
+
+Steps:
+1. Run `pwd` to confirm your current working directory
+2. Verify the file exists: `ls -la specs/issue-{issue_number}-adw-{adw_id}-sdlc_planner-*.md`
+3. Construct absolute path: `$(pwd)/specs/issue-{issue_number}-adw-{adw_id}-sdlc_planner-*.md`
+4. Return ONLY the absolute path and nothing else
+
+Example output format:
+```
+/Users/Warmonger0/tac/tac-7/trees/b05fd7a4/specs/issue-45-adw-b05fd7a4-sdlc_planner-update-dependencies.md
+```
+
+IMPORTANT: Return the absolute path only, no other text.
