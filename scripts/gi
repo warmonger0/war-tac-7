@@ -1,0 +1,81 @@
+#!/bin/bash
+# GitHub Issue Creator - Creates GitHub issues from markdown files
+# Usage: ./scripts/gi --title "Issue Title" --body-file path/to/file.md
+
+set -euo pipefail
+
+# Parse command-line arguments
+TITLE=""
+BODY_FILE=""
+
+while [[ $# -gt 0 ]]; do
+    case $1 in
+        --title)
+            TITLE="$2"
+            shift 2
+            ;;
+        --body-file)
+            BODY_FILE="$2"
+            shift 2
+            ;;
+        *)
+            echo "Error: Unknown option $1" >&2
+            echo "Usage: $0 --title 'Issue Title' --body-file path/to/file.md" >&2
+            exit 1
+            ;;
+    esac
+done
+
+# Validate required parameters
+if [ -z "$TITLE" ]; then
+    echo "Error: --title is required" >&2
+    echo "Usage: $0 --title 'Issue Title' --body-file path/to/file.md" >&2
+    exit 1
+fi
+
+if [ -z "$BODY_FILE" ]; then
+    echo "Error: --body-file is required" >&2
+    echo "Usage: $0 --title 'Issue Title' --body-file path/to/file.md" >&2
+    exit 1
+fi
+
+# Validate body file exists
+if [ ! -f "$BODY_FILE" ]; then
+    echo "Error: Body file '$BODY_FILE' does not exist" >&2
+    exit 1
+fi
+
+# Read body from file
+BODY=$(cat "$BODY_FILE")
+
+# Check if body already contains ADW workflow trigger
+if ! echo "$BODY" | grep -q "adw_sdlc_zte_iso"; then
+    # Append ZTE workflow trigger to body
+    BODY="${BODY}
+
+---
+
+Please process this with Zero Touch Execution: adw_sdlc_zte_iso"
+fi
+
+# Create GitHub issue and capture output
+echo "Creating GitHub issue: $TITLE"
+OUTPUT=$(gh issue create --title "$TITLE" --body "$BODY" 2>&1)
+
+# Check if creation was successful
+if [ $? -ne 0 ]; then
+    echo "Error: Failed to create GitHub issue" >&2
+    echo "$OUTPUT" >&2
+    exit 1
+fi
+
+# Extract issue number from output (gh returns URL like https://github.com/owner/repo/issues/123)
+ISSUE_NUMBER=$(echo "$OUTPUT" | grep -oE '/issues/[0-9]+$' | grep -oE '[0-9]+$')
+
+if [ -z "$ISSUE_NUMBER" ]; then
+    echo "Warning: Could not extract issue number from output" >&2
+    echo "$OUTPUT"
+else
+    echo "Issue created successfully: #$ISSUE_NUMBER"
+    echo "$OUTPUT"
+fi
