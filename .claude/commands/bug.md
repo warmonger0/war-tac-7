@@ -103,17 +103,16 @@ Extract the bug details from the `issue_json` variable (parse the JSON and use t
 
 ## Report
 
-CRITICAL: You MUST return the ABSOLUTE path where you actually saved the file.
+CRITICAL: Use bash to construct and output ONLY the absolute path.
 
-Steps:
-1. Run `pwd` to confirm your current working directory
-2. Verify the file exists: `ls -la specs/issue-{issue_number}-adw-{adw_id}-sdlc_planner-*.md`
-3. Construct absolute path: `$(pwd)/specs/issue-{issue_number}-adw-{adw_id}-sdlc_planner-*.md`
-4. Return ONLY the absolute path and nothing else
-
-Example output format:
-```
-/Users/Warmonger0/tac/tac-7/trees/b05fd7a4/specs/issue-45-adw-b05fd7a4-sdlc_planner-fix-authentication.md
+Run this exact command and return ONLY its output:
+```bash
+PLAN_FILE=$(ls specs/issue-{issue_number}-adw-{adw_id}-sdlc_planner-*.md 2>/dev/null | head -1) && echo "$(pwd)/$PLAN_FILE"
 ```
 
-IMPORTANT: Return the absolute path only, no other text.
+This will:
+1. Find the plan file you created
+2. Get the current directory
+3. Output the complete absolute path
+
+DO NOT add any other text, explanations, or formatting. Return ONLY the output of this command.

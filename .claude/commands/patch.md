@@ -89,17 +89,16 @@ Execute every command to validate the patch is complete with zero regressions.
 
 ## Report
 
-CRITICAL: You MUST return the ABSOLUTE path where you actually saved the file.
+CRITICAL: Use bash to construct and output ONLY the absolute path.
 
-Steps:
-1. Run `pwd` to confirm your current working directory
-2. Verify the file exists: `ls -la specs/patch/patch-adw-{adw_id}-*.md`
-3. Construct absolute path: `$(pwd)/specs/patch/patch-adw-{adw_id}-*.md`
-4. Return ONLY the absolute path and nothing else
-
-Example output format:
-```
-/Users/Warmonger0/tac/tac-7/trees/b05fd7a4/specs/patch/patch-adw-b05fd7a4-fix-validation.md
+Run this exact command and return ONLY its output:
+```bash
+PATCH_FILE=$(ls specs/patch/patch-adw-{adw_id}-*.md 2>/dev/null | head -1) && echo "$(pwd)/$PATCH_FILE"
 ```
 
-IMPORTANT: Return the absolute path only, no other text.
+This will:
+1. Find the patch file you created
+2. Get the current directory
+3. Output the complete absolute path
+
+DO NOT add any other text, explanations, or formatting. Return ONLY the output of this command.
