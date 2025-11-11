@@ -66,3 +66,12 @@
 .prose a:hover {
   color: #2563eb;
 }
+
+/* Visual separator with drop shadow effect */
+.visual-separator {
+  height: 3px;
+  width: 100%;
+  background-color: #10b981; /* Emerald green */
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1), 0 4px 8px rgba(0, 0, 0, 0.05);
+  margin: 0;
+}

@@ -12,7 +12,7 @@ export function TabBar({ activeTab, onChange }: TabBarProps) {
   ];
 
   return (
-    <div className="flex gap-1">
+    <div className="flex gap-1 justify-center">
       {tabs.map((tab) => (
         <button
           key={tab.id}

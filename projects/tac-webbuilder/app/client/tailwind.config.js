@@ -9,6 +9,7 @@ export default {
       colors: {
         primary: '#3b82f6',
         secondary: '#64748b',
+        'separator-green': '#10b981', // Emerald green for visual separator
       }
     },
   },

@@ -17,7 +17,7 @@ function App() {
     <QueryClientProvider client={queryClient}>
       <div className="min-h-screen bg-gray-50">
         <header className="bg-white border-b border-gray-200">
-          <div className="container mx-auto px-4 py-6">
+          <div className="container mx-auto px-4 py-6 text-center">
             <h1 className="text-3xl font-bold text-gray-900">
               tac-webbuilder
             </h1>
@@ -32,6 +32,8 @@ function App() {
             <TabBar activeTab={activeTab} onChange={setActiveTab} />
           </div>
         </nav>
+
+        <div className="visual-separator" />
 
         <main className="container mx-auto px-4 py-8">
           {activeTab === 'request' && <RequestForm />}
