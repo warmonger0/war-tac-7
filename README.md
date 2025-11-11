@@ -458,6 +458,34 @@ ADW automatically selects the appropriate workflow based on:
 - Project structure and size
 - Test coverage requirements
 
+### ZTE Hopper - Batch Processing
+
+Process multiple GitHub issues sequentially through ZTE workflows without manual intervention:
+
+```bash
+# Add issues to queue (just drop .md files)
+cp issue-1.md issue-2.md issue-3.md zte-hopper/queue/
+
+# Start batch processing
+./scripts/zte_hopper.sh --work
+
+# Monitor progress
+./scripts/zte_hopper.sh --status
+
+# Graceful stop after current issue
+./scripts/zte_hopper.sh --stop
+```
+
+**Features:**
+- FIFO queue processing (oldest first)
+- Automated issue creation via `./scripts/gi`
+- Waits for ZTE workflow completion
+- Validates each issue with comprehensive sanity checks
+- Stops on failure for manual intervention
+- Process management with PID locking and graceful shutdown
+
+See [zte-hopper/README.md](zte-hopper/README.md) for complete ZTE Hopper documentation.
+
 ### Monitoring Workflows
 
 **Via Web UI:**
