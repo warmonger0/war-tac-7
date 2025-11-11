@@ -222,17 +222,83 @@ count_queue_files() {
 preflight_checks() {
     log "INFO" "Running pre-flight checks"
 
-    # Check git worktree - only fail if there are modified tracked files
+    # Check git worktree - allow frontend changes, block backend/infrastructure changes
     local git_status=$(git status --porcelain)
     local modified=$(echo "$git_status" | grep -E "^(M|A|D|R|C)" || true)
 
     if [ -n "$modified" ]; then
-        log "ERROR" "Git worktree has uncommitted changes to tracked files:"
-        log "ERROR" "$modified"
-        return 1
-    fi
+        log "INFO" "Found uncommitted changes, checking if they're frontend-only"
 
-    log "INFO" "✓ Git worktree is clean (no uncommitted changes to tracked files)"
+        # Define frontend patterns (can be modified in parallel with hopper)
+        local frontend_patterns=(
+            "app/client/"
+            "app/webbuilder/"
+            ".*/client/"
+            ".*/frontend/"
+            ".*\.(tsx|jsx|css|scss|html)$"
+            ".*vite\.config\.*"
+            ".*tailwind\.config\.*"
+            ".*postcss\.config\.*"
+        )
+
+        # Define backend/critical patterns (must be committed before hopper runs)
+        local backend_patterns=(
+            "app/server/"
+            ".*/server/"
+            ".*/backend/"
+            ".*\.py$"
+            ".*pyproject\.toml$"
+            ".*requirements.*\.txt$"
+            ".*\.sh$"
+            "adws/"
+            "scripts/"
+            "zte-hopper/"
+        )
+
+        # Check each modified file
+        local backend_changes=""
+        while IFS= read -r line; do
+            # Extract filename (skip status prefix)
+            local file=$(echo "$line" | awk '{print $2}')
+
+            # Check if it matches frontend patterns
+            local is_frontend=false
+            for pattern in "${frontend_patterns[@]}"; do
+                if echo "$file" | grep -qE "$pattern"; then
+                    is_frontend=true
+                    break
+                fi
+            done
+
+            # Check if it matches backend patterns
+            local is_backend=false
+            for pattern in "${backend_patterns[@]}"; do
+                if echo "$file" | grep -qE "$pattern"; then
+                    is_backend=true
+                    break
+                fi
+            done
+
+            # If it's backend but not frontend, this is a blocking change
+            if [ "$is_backend" = true ] && [ "$is_frontend" = false ]; then
+                backend_changes="${backend_changes}${line}\n"
+            fi
+        done <<< "$modified"
+
+        if [ -n "$backend_changes" ]; then
+            log "ERROR" "Git worktree has uncommitted backend/infrastructure changes:"
+            echo -e "$backend_changes" | while read -r line; do
+                log "ERROR" "  $line"
+            done
+            log "ERROR" "Commit or stash backend changes before running hopper"
+            log "INFO" "Frontend changes are allowed and will not block hopper"
+            return 1
+        else
+            log "INFO" "✓ Only frontend changes detected - safe to proceed"
+        fi
+    else
+        log "INFO" "✓ Git worktree is clean (no uncommitted changes to tracked files)"
+    fi
 
     # Pull latest from origin/main
     log "INFO" "Pulling latest from origin/main"
