@@ -270,3 +270,15 @@ This prompt helps you determine what documentation you should read based on the 
     - When working with process management, PID files, or graceful shutdown handlers
     - When implementing sanity checks for git worktree state or issue completion
     - When creating systems that poll GitHub for issue status or completion markers
+    - When documenting application architecture in README files
+
+- app_docs/feature-0a6c3431-docs-structure-indexes.md
+  - Conditions:
+    - When working with documentation organization or structure
+    - When creating new documentation directories or README index files
+    - When implementing documentation navigation systems
+    - When updating ARCHITECTURE.md or other high-level documentation
+    - When establishing documentation standards or templates
+    - When creating issue tracking directories (planning/active/completed)
+    - When implementing cross-referenced documentation with "See Also" sections
+    - When understanding the project's documentation hierarchy and layout
