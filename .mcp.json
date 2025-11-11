@@ -5,7 +5,7 @@
       "args": [
         "-y",
         "@anaisbetts/mcp-playwright@latest",
-        "/Users/Warmonger0/tac/tac-7/trees/0a6c3431/playwright-mcp-config.json"
+        "/Users/Warmonger0/tac/tac-7/trees/48b36590/playwright-mcp-config.json"
       ]
     }
   }
