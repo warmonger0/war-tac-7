@@ -257,3 +257,16 @@ This prompt helps you determine what documentation you should read based on the 
     - When creating scripts that coordinate multiple services (backend + frontend)
     - When working with the scripts/start_full.sh script
     - When documenting application architecture in README files
+
+- app_docs/feature-09115cf1-zte-hopper-queue-system.md
+  - Conditions:
+    - When working with the ZTE Hopper queue processing system
+    - When implementing batch processing of GitHub issues through ZTE workflows
+    - When creating or modifying scripts/zte_hopper.sh or scripts/gi
+    - When troubleshooting automated issue creation and validation workflows
+    - When working with ADW completion detection and validation logic
+    - When implementing queue-based processing systems or FIFO ordering
+    - When setting up automated GitHub issue management pipelines
+    - When working with process management, PID files, or graceful shutdown handlers
+    - When implementing sanity checks for git worktree state or issue completion
+    - When creating systems that poll GitHub for issue status or completion markers
