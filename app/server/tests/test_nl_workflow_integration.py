@@ -330,3 +330,310 @@ dependencies = [
                 await process_request("Add feature", project_context)
 
             assert "ANTHROPIC_API_KEY" in str(exc_info.value)
+
+
+class TestNLWorkflowFailureScenarios:
+    """Test failure scenarios and edge cases in the NL workflow integration."""
+
+    @pytest.mark.asyncio
+    @patch('core.nl_processor.Anthropic')
+    async def test_partial_api_failure_intent_succeeds_requirements_fails(
+        self, mock_anthropic_class, tmp_path
+    ):
+        """Test partial failure where intent analysis succeeds but requirement extraction fails."""
+        mock_client = MagicMock()
+        mock_anthropic_class.return_value = mock_client
+
+        # First call succeeds (intent)
+        intent_response = MagicMock()
+        intent_response.content[0].text = json.dumps({
+            "intent_type": "feature",
+            "summary": "Add feature",
+            "technical_area": "general"
+        })
+
+        # Second call fails (requirements)
+        mock_client.messages.create.side_effect = [
+            intent_response,
+            Exception("Requirements API timeout")
+        ]
+
+        # Create project
+        project_dir = tmp_path / "project"
+        project_dir.mkdir()
+        (project_dir / "package.json").write_text('{"name":"test"}')
+
+        from core.data_models import ProjectContext
+        context = ProjectContext(
+            path=str(project_dir),
+            is_new_project=False,
+            complexity="low"
+        )
+
+        with patch.dict('os.environ', {'ANTHROPIC_API_KEY': 'test-key'}):
+            with pytest.raises(Exception) as exc_info:
+                await process_request("Add feature", context)
+            # Should propagate the requirement extraction error
+            assert "Error processing NL request" in str(exc_info.value)
+
+    @pytest.mark.asyncio
+    @patch('core.nl_processor.Anthropic')
+    async def test_malformed_api_response_recovery(self, mock_anthropic_class, tmp_path):
+        """Test handling of malformed JSON in API responses."""
+        mock_client = MagicMock()
+        mock_anthropic_class.return_value = mock_client
+
+        intent_response = MagicMock()
+        intent_response.content[0].text = "This is not valid JSON"
+
+        mock_client.messages.create.return_value = intent_response
+
+        project_dir = tmp_path / "project"
+        project_dir.mkdir()
+
+        from core.data_models import ProjectContext
+        context = ProjectContext(
+            path=str(project_dir),
+            is_new_project=False,
+            complexity="low"
+        )
+
+        with patch.dict('os.environ', {'ANTHROPIC_API_KEY': 'test-key'}):
+            with pytest.raises(Exception) as exc_info:
+                await process_request("Add feature", context)
+            assert "Error processing NL request" in str(exc_info.value)
+
+    @pytest.mark.asyncio
+    @patch('core.nl_processor.Anthropic')
+    async def test_empty_requirements_list_handling(self, mock_anthropic_class, tmp_path):
+        """Test workflow when API returns empty requirements list."""
+        mock_client = MagicMock()
+        mock_anthropic_class.return_value = mock_client
+
+        intent_response = MagicMock()
+        intent_response.content[0].text = json.dumps({
+            "intent_type": "chore",
+            "summary": "Simple maintenance task",
+            "technical_area": "maintenance"
+        })
+
+        requirements_response = MagicMock()
+        requirements_response.content[0].text = json.dumps([])
+
+        mock_client.messages.create.side_effect = [intent_response, requirements_response]
+
+        project_dir = tmp_path / "project"
+        project_dir.mkdir()
+
+        from core.data_models import ProjectContext
+        context = ProjectContext(
+            path=str(project_dir),
+            is_new_project=False,
+            complexity="low"
+        )
+
+        with patch.dict('os.environ', {'ANTHROPIC_API_KEY': 'test-key'}):
+            issue = await process_request("Simple task", context)
+            assert issue.title == "Simple maintenance task"
+            assert "## Requirements" in issue.body
+
+    @pytest.mark.asyncio
+    @patch('core.nl_processor.Anthropic')
+    async def test_api_rate_limit_error(self, mock_anthropic_class, tmp_path):
+        """Test handling of API rate limit errors."""
+        mock_client = MagicMock()
+        mock_anthropic_class.return_value = mock_client
+
+        # Simulate rate limit error
+        mock_client.messages.create.side_effect = Exception("Rate limit exceeded")
+
+        project_dir = tmp_path / "project"
+        project_dir.mkdir()
+
+        from core.data_models import ProjectContext
+        context = ProjectContext(
+            path=str(project_dir),
+            is_new_project=False,
+            complexity="low"
+        )
+
+        with patch.dict('os.environ', {'ANTHROPIC_API_KEY': 'test-key'}):
+            with pytest.raises(Exception) as exc_info:
+                await process_request("Add feature", context)
+            assert "Error processing NL request" in str(exc_info.value)
+
+    @pytest.mark.asyncio
+    @patch('core.nl_processor.Anthropic')
+    async def test_very_long_input_handling(self, mock_anthropic_class, tmp_path):
+        """Test handling of very long NL input."""
+        mock_client = MagicMock()
+        mock_anthropic_class.return_value = mock_client
+
+        intent_response = MagicMock()
+        intent_response.content[0].text = json.dumps({
+            "intent_type": "feature",
+            "summary": "Complex feature with many requirements",
+            "technical_area": "fullstack"
+        })
+
+        requirements_response = MagicMock()
+        requirements_response.content[0].text = json.dumps([
+            f"Requirement {i}" for i in range(100)
+        ])
+
+        mock_client.messages.create.side_effect = [intent_response, requirements_response]
+
+        project_dir = tmp_path / "project"
+        project_dir.mkdir()
+
+        from core.data_models import ProjectContext
+        context = ProjectContext(
+            path=str(project_dir),
+            is_new_project=False,
+            complexity="high"
+        )
+
+        very_long_input = "Add a feature that " + "does something amazing " * 200
+
+        with patch.dict('os.environ', {'ANTHROPIC_API_KEY': 'test-key'}):
+            issue = await process_request(very_long_input, context)
+            assert issue is not None
+            assert len(issue.body) > 0
+
+    def test_project_detection_failure_recovery(self, tmp_path):
+        """Test recovery when project detection fails."""
+        non_existent_dir = tmp_path / "does_not_exist"
+
+        # Should handle non-existent directory gracefully
+        with pytest.raises(Exception):
+            context = detect_project_context(str(non_existent_dir))
+
+    @pytest.mark.asyncio
+    @patch('core.nl_processor.Anthropic')
+    async def test_unicode_in_nl_input(self, mock_anthropic_class, tmp_path):
+        """Test workflow with Unicode characters in input."""
+        mock_client = MagicMock()
+        mock_anthropic_class.return_value = mock_client
+
+        intent_response = MagicMock()
+        intent_response.content[0].text = json.dumps({
+            "intent_type": "feature",
+            "summary": "Add emoji support 🎉 and i18n",
+            "technical_area": "i18n"
+        })
+
+        requirements_response = MagicMock()
+        requirements_response.content[0].text = json.dumps([
+            "Support Unicode characters (中文, 日本語)",
+            "Add emoji picker 🎨",
+            "Implement RTL languages"
+        ])
+
+        mock_client.messages.create.side_effect = [intent_response, requirements_response]
+
+        project_dir = tmp_path / "project"
+        project_dir.mkdir()
+
+        from core.data_models import ProjectContext
+        context = ProjectContext(
+            path=str(project_dir),
+            is_new_project=False,
+            complexity="medium"
+        )
+
+        unicode_input = "Add emoji support 🎉 and internationalization (中文, 日本語)"
+
+        with patch.dict('os.environ', {'ANTHROPIC_API_KEY': 'test-key'}):
+            issue = await process_request(unicode_input, context)
+            assert "🎉" in issue.title or "emoji" in issue.title.lower()
+
+    @pytest.mark.asyncio
+    @patch('core.nl_processor.Anthropic')
+    async def test_concurrent_workflow_isolation(self, mock_anthropic_class, tmp_path):
+        """Test that concurrent workflows don't interfere with each other."""
+        mock_client = MagicMock()
+        mock_anthropic_class.return_value = mock_client
+
+        # Setup responses for two different requests
+        intent1 = MagicMock()
+        intent1.content[0].text = json.dumps({
+            "intent_type": "feature",
+            "summary": "Feature 1",
+            "technical_area": "UI"
+        })
+
+        req1 = MagicMock()
+        req1.content[0].text = json.dumps(["Requirement 1"])
+
+        intent2 = MagicMock()
+        intent2.content[0].text = json.dumps({
+            "intent_type": "bug",
+            "summary": "Bug 1",
+            "technical_area": "backend"
+        })
+
+        req2 = MagicMock()
+        req2.content[0].text = json.dumps(["Fix 1"])
+
+        mock_client.messages.create.side_effect = [intent1, req1, intent2, req2]
+
+        project_dir = tmp_path / "project"
+        project_dir.mkdir()
+
+        from core.data_models import ProjectContext
+        context = ProjectContext(
+            path=str(project_dir),
+            is_new_project=False,
+            complexity="low"
+        )
+
+        with patch.dict('os.environ', {'ANTHROPIC_API_KEY': 'test-key'}):
+            issue1 = await process_request("Add feature 1", context)
+            issue2 = await process_request("Fix bug 1", context)
+
+            # Verify they're independent
+            assert issue1.classification == "feature"
+            assert issue2.classification == "bug"
+            assert issue1.title != issue2.title
+
+    @pytest.mark.asyncio
+    @patch('core.nl_processor.Anthropic')
+    async def test_workflow_with_all_project_types(self, mock_anthropic_class, tmp_path):
+        """Test workflow works with all supported project types."""
+        mock_client = MagicMock()
+        mock_anthropic_class.return_value = mock_client
+
+        intent_response = MagicMock()
+        intent_response.content[0].text = json.dumps({
+            "intent_type": "feature",
+            "summary": "Add feature",
+            "technical_area": "general"
+        })
+
+        requirements_response = MagicMock()
+        requirements_response.content[0].text = json.dumps(["Requirement 1"])
+
+        # Test with various project configurations
+        project_configs = [
+            ("new_project", True, None),
+            ("react_project", False, "react-vite"),
+            ("nextjs_project", False, "nextjs"),
+            ("vue_project", False, "vue-vite"),
+        ]
+
+        from core.data_models import ProjectContext
+
+        for name, is_new, framework in project_configs:
+            mock_client.messages.create.side_effect = [intent_response, requirements_response]
+
+            context = ProjectContext(
+                path=str(tmp_path / name),
+                is_new_project=is_new,
+                framework=framework,
+                complexity="low"
+            )
+
+            with patch.dict('os.environ', {'ANTHROPIC_API_KEY': 'test-key'}):
+                issue = await process_request("Add feature", context)
+                assert issue is not None
+                assert issue.classification == "feature"
