@@ -252,6 +252,20 @@ def main():
     logger.info("Getting plan file path")
     plan_file_path_raw = plan_response.output.strip()
 
+    # Extract just the file path if agent added extra text
+    # Look for lines that look like file paths (contain "specs/" and end with ".md")
+    for line in plan_file_path_raw.split('\n'):
+        line = line.strip()
+        if 'specs/' in line and line.endswith('.md'):
+            # Remove any leading/trailing quotes or backticks
+            line = line.strip('`').strip('"').strip("'")
+            # If line starts with specs/ or /, use it
+            if line.startswith('specs/') or line.startswith('/'):
+                plan_file_path_raw = line
+                break
+
+    logger.info(f"Extracted path: {plan_file_path_raw}")
+
     # Validate the path exists (within worktree)
     if not plan_file_path_raw:
         error = "No plan file path returned from planning agent"

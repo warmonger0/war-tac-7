@@ -705,6 +705,18 @@ def create_and_implement_patch(
     # Extract the patch plan file path from the response
     patch_file_path_raw = response.output.strip()
 
+    # Extract just the file path if agent added extra text
+    # Look for lines that look like file paths (contain "specs/patch/" and end with ".md")
+    for line in patch_file_path_raw.split('\n'):
+        line = line.strip()
+        if 'specs/patch/' in line and line.endswith('.md'):
+            # Remove any leading/trailing quotes or backticks
+            line = line.strip('`').strip('"').strip("'")
+            # If line starts with specs/ or /, use it
+            if line.startswith('specs/') or line.startswith('/'):
+                patch_file_path_raw = line
+                break
+
     logger.info(f"Agent reported patch file: {patch_file_path_raw}")
 
     # Handle both absolute and relative paths with fallback recovery
