@@ -282,3 +282,14 @@ This prompt helps you determine what documentation you should read based on the 
     - When creating issue tracking directories (planning/active/completed)
     - When implementing cross-referenced documentation with "See Also" sections
     - When understanding the project's documentation hierarchy and layout
+
+- app_docs/feature-afc2e0dd-nl-processing-tests.md
+  - Conditions:
+    - When adding or extending tests for the NL processing module
+    - When implementing tests for framework detection (Angular, Svelte, Vite, Fastify, NestJS)
+    - When working with project detector tests for backend frameworks (Django, Flask, FastAPI)
+    - When testing detection from pyproject.toml or requirements.txt
+    - When implementing markdown special character handling tests
+    - When understanding test coverage for app/server/tests/core/test_project_detector.py
+    - When troubleshooting project detection test failures
+    - When extending test coverage for issue formatter functionality

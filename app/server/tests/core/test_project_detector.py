@@ -393,3 +393,145 @@ dependencies = [
             detect_project_context("/nonexistent/path")
 
         assert "Project path does not exist" in str(exc_info.value)
+
+    def test_detect_framework_vite_only(self, tmp_path):
+        """Test detecting Vite without specific framework."""
+        project_dir = tmp_path / "vite_only"
+        project_dir.mkdir()
+
+        (project_dir / "vite.config.js").touch()
+
+        result = detect_framework(project_dir)
+        assert result == "vite"
+
+    def test_detect_framework_angular(self, tmp_path):
+        """Test detecting Angular."""
+        project_dir = tmp_path / "angular_project"
+        project_dir.mkdir()
+
+        package_json = {
+            "dependencies": {
+                "@angular/core": "^17.0.0"
+            }
+        }
+        (project_dir / "package.json").write_text(json.dumps(package_json))
+
+        result = detect_framework(project_dir)
+        assert result == "angular"
+
+    def test_detect_framework_svelte(self, tmp_path):
+        """Test detecting Svelte."""
+        project_dir = tmp_path / "svelte_project"
+        project_dir.mkdir()
+
+        package_json = {
+            "dependencies": {
+                "svelte": "^4.0.0"
+            }
+        }
+        (project_dir / "package.json").write_text(json.dumps(package_json))
+
+        result = detect_framework(project_dir)
+        assert result == "svelte"
+
+    def test_detect_framework_pyproject_exists(self, tmp_path):
+        """Test that pyproject.toml returns None for frontend framework."""
+        project_dir = tmp_path / "python_project"
+        project_dir.mkdir()
+
+        (project_dir / "pyproject.toml").touch()
+
+        result = detect_framework(project_dir)
+        assert result is None
+
+    def test_detect_backend_django_pyproject(self, tmp_path):
+        """Test detecting Django from pyproject.toml."""
+        project_dir = tmp_path / "django_project"
+        project_dir.mkdir()
+
+        pyproject_content = """
+[project]
+dependencies = [
+    "Django==5.0.0"
+]
+"""
+        (project_dir / "pyproject.toml").write_text(pyproject_content)
+
+        result = detect_backend(project_dir)
+        assert result == "django"
+
+    def test_detect_backend_flask_pyproject(self, tmp_path):
+        """Test detecting Flask from pyproject.toml."""
+        project_dir = tmp_path / "flask_project"
+        project_dir.mkdir()
+
+        pyproject_content = """
+[project]
+dependencies = [
+    "Flask==3.0.0"
+]
+"""
+        (project_dir / "pyproject.toml").write_text(pyproject_content)
+
+        result = detect_backend(project_dir)
+        assert result == "flask"
+
+    def test_detect_backend_django_requirements(self, tmp_path):
+        """Test detecting Django from requirements.txt."""
+        project_dir = tmp_path / "django_req_project"
+        project_dir.mkdir()
+
+        (project_dir / "requirements.txt").write_text("Django==5.0.0\n")
+
+        result = detect_backend(project_dir)
+        assert result == "django"
+
+    def test_detect_backend_flask_requirements(self, tmp_path):
+        """Test detecting Flask from requirements.txt."""
+        project_dir = tmp_path / "flask_req_project"
+        project_dir.mkdir()
+
+        (project_dir / "requirements.txt").write_text("Flask==3.0.0\n")
+
+        result = detect_backend(project_dir)
+        assert result == "flask"
+
+    def test_detect_backend_fastapi_requirements(self, tmp_path):
+        """Test detecting FastAPI from requirements.txt."""
+        project_dir = tmp_path / "fastapi_req_project"
+        project_dir.mkdir()
+
+        (project_dir / "requirements.txt").write_text("fastapi==0.100.0\n")
+
+        result = detect_backend(project_dir)
+        assert result == "fastapi"
+
+    def test_detect_backend_fastify(self, tmp_path):
+        """Test detecting Fastify."""
+        project_dir = tmp_path / "fastify_project"
+        project_dir.mkdir()
+
+        package_json = {
+            "dependencies": {
+                "fastify": "^4.0.0"
+            }
+        }
+        (project_dir / "package.json").write_text(json.dumps(package_json))
+
+        result = detect_backend(project_dir)
+        assert result == "fastify"
+
+    def test_detect_backend_nestjs(self, tmp_path):
+        """Test detecting NestJS."""
+        project_dir = tmp_path / "nestjs_project"
+        project_dir.mkdir()
+
+        package_json = {
+            "dependencies": {
+                "@nestjs/core": "^10.0.0"
+            }
+        }
+        (project_dir / "package.json").write_text(json.dumps(package_json))
+
+        result = detect_backend(project_dir)
+        assert result == "nestjs"

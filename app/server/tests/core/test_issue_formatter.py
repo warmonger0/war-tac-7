@@ -279,3 +279,13 @@ This is a test issue.
         assert "{description}" in ISSUE_TEMPLATES["chore"]
         assert "{tasks}" in ISSUE_TEMPLATES["chore"]
         assert "{workflow}" in ISSUE_TEMPLATES["chore"]
+
+    def test_escape_markdown_special_chars(self):
+        """Test escaping markdown special characters."""
+        from core.issue_formatter import escape_markdown_special_chars
+
+        # Test that function exists and handles text
+        text = "Text with *asterisks* and _underscores_"
+        result = escape_markdown_special_chars(text)
+        # For now, the function leaves markdown intact (as per implementation)
+        assert result == text
