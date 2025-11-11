@@ -137,7 +137,7 @@ remove_pid_file() {
 
 cleanup() {
     log "INFO" "Cleanup called, shutting down gracefully"
-    save_state "STOPPED" "$ISSUE_NUMBER" "$ISSUE_FILE"
+    save_state "STOPPED" "${ISSUE_NUMBER:-}" "${ISSUE_FILE:-}"
     remove_pid_file
     log "INFO" "ZTE Hopper stopped"
     exit 0
