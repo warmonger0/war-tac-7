@@ -1,0 +1,3488 @@
+{
+  "project_root": "/Users/Warmonger0/tac/tac-7/projects/tac-webbuilder",
+  "files": {
+    ".env.sample": {
+      "path": ".env.sample",
+      "extension": ".sample",
+      "size_bytes": 2170,
+      "lines": 0,
+      "tokens": 0
+    },
+    ".coverage": {
+      "path": ".coverage",
+      "extension": "",
+      "size_bytes": 53248,
+      "lines": 0,
+      "tokens": 0
+    },
+    ".codebase_index.json": {
+      "path": ".codebase_index.json",
+      "extension": ".json",
+      "size_bytes": 0,
+      "lines": 0,
+      "tokens": 0
+    },
+    "pyproject.toml": {
+      "path": "pyproject.toml",
+      "extension": ".toml",
+      "size_bytes": 1252,
+      "lines": 0,
+      "tokens": 0
+    },
+    "config.yaml": {
+      "path": "config.yaml",
+      "extension": ".yaml",
+      "size_bytes": 1319,
+      "lines": 0,
+      "tokens": 0
+    },
+    "config.yaml.sample": {
+      "path": "config.yaml.sample",
+      "extension": ".sample",
+      "size_bytes": 1319,
+      "lines": 0,
+      "tokens": 0
+    },
+    "README.md": {
+      "path": "README.md",
+      "extension": ".md",
+      "size_bytes": 24074,
+      "lines": 805,
+      "tokens": 5742
+    },
+    ".env": {
+      "path": ".env",
+      "extension": "",
+      "size_bytes": 2170,
+      "lines": 0,
+      "tokens": 0
+    },
+    "core/config.py": {
+      "path": "core/config.py",
+      "extension": ".py",
+      "size_bytes": 7025,
+      "imports": [
+        "typing",
+        "yaml",
+        "pydantic",
+        "pathlib",
+        "pydantic_settings",
+        "os"
+      ],
+      "classes": {
+        "GitHubConfig": {
+          "line_start": 18,
+          "line_end": 46,
+          "methods": [
+            "validate_repo_format"
+          ]
+        },
+        "ADWConfig": {
+          "line_start": 49,
+          "line_end": 61,
+          "methods": []
+        },
+        "CLIConfig": {
+          "line_start": 64,
+          "line_end": 72,
+          "methods": []
+        },
+        "WebConfig": {
+          "line_start": 75,
+          "line_end": 99,
+          "methods": [
+            "validate_port"
+          ]
+        },
+        "InterfacesConfig": {
+          "line_start": 102,
+          "line_end": 108,
+          "methods": []
+        },
+        "ClaudeConfig": {
+          "line_start": 111,
+          "line_end": 123,
+          "methods": []
+        },
+        "AppConfig": {
+          "line_start": 126,
+          "line_end": 219,
+          "methods": [
+            "from_yaml",
+            "load"
+          ]
+        }
+      },
+      "functions": {
+        "load_config": {
+          "line_start": 223,
+          "line_end": 233
+        }
+      },
+      "lines": 234,
+      "tokens": 1756
+    },
+    "core/__init__.py": {
+      "path": "core/__init__.py",
+      "extension": ".py",
+      "size_bytes": 245,
+      "imports": [],
+      "classes": {},
+      "functions": {},
+      "lines": 10,
+      "tokens": 61
+    },
+    "adws/adw_sdlc_iso.py": {
+      "path": "adws/adw_sdlc_iso.py",
+      "extension": ".py",
+      "size_bytes": 4642,
+      "imports": [
+        "subprocess",
+        "os",
+        "sys",
+        "adw_modules.workflow_ops"
+      ],
+      "classes": {},
+      "functions": {
+        "main": {
+          "line_start": 31,
+          "line_end": 148
+        }
+      },
+      "lines": 152,
+      "tokens": 1160
+    },
+    "adws/adw_review_iso.py": {
+      "path": "adws/adw_review_iso.py",
+      "extension": ".py",
+      "size_bytes": 19176,
+      "imports": [
+        "adw_modules.state",
+        "dotenv",
+        "adw_modules.agent",
+        "adw_modules.github",
+        "adw_modules.worktree_ops",
+        "logging",
+        "sys",
+        "adw_modules.workflow_ops",
+        "adw_modules.utils",
+        "typing",
+        "adw_modules.data_types",
+        "adw_modules.git_ops",
+        "adw_modules.r2_uploader",
+        "json",
+        "os"
+      ],
+      "classes": {},
+      "functions": {
+        "run_review": {
+          "line_start": 71,
+          "line_end": 115
+        },
+        "create_review_patch_plan": {
+          "line_start": 118,
+          "line_end": 141
+        },
+        "upload_review_screenshots": {
+          "line_start": 144,
+          "line_end": 199
+        },
+        "resolve_blocker_issues": {
+          "line_start": 202,
+          "line_end": 250
+        },
+        "build_review_summary": {
+          "line_start": 253,
+          "line_end": 312
+        },
+        "main": {
+          "line_start": 315,
+          "line_end": 531
+        }
+      },
+      "lines": 535,
+      "tokens": 4779
+    },
+    "adws/adw_patch_iso.py": {
+      "path": "adws/adw_patch_iso.py",
+      "extension": ".py",
+      "size_bytes": 14202,
+      "imports": [
+        "adw_modules.state",
+        "dotenv",
+        "adw_modules.agent",
+        "adw_modules.github",
+        "adw_modules.worktree_ops",
+        "logging",
+        "sys",
+        "adw_modules.workflow_ops",
+        "adw_modules.utils",
+        "typing",
+        "adw_modules.data_types",
+        "adw_modules.git_ops",
+        "subprocess",
+        "json",
+        "os"
+      ],
+      "classes": {},
+      "functions": {
+        "get_patch_content": {
+          "line_start": 79,
+          "line_end": 138
+        },
+        "main": {
+          "line_start": 141,
+          "line_end": 428
+        }
+      },
+      "lines": 433,
+      "tokens": 3538
+    },
+    "adws/adw_plan_iso.py": {
+      "path": "adws/adw_plan_iso.py",
+      "extension": ".py",
+      "size_bytes": 11306,
+      "imports": [
+        "adw_modules.state",
+        "dotenv",
+        "adw_modules.agent",
+        "adw_modules.github",
+        "adw_modules.worktree_ops",
+        "logging",
+        "sys",
+        "adw_modules.workflow_ops",
+        "adw_modules.utils",
+        "typing",
+        "adw_modules.data_types",
+        "adw_modules.git_ops",
+        "json",
+        "os"
+      ],
+      "classes": {},
+      "functions": {
+        "main": {
+          "line_start": 66,
+          "line_end": 334
+        }
+      },
+      "lines": 338,
+      "tokens": 2815
+    },
+    "adws/adw_ship_iso.py": {
+      "path": "adws/adw_ship_iso.py",
+      "extension": ".py",
+      "size_bytes": 11241,
+      "imports": [
+        "adw_modules.state",
+        "dotenv",
+        "adw_modules.github",
+        "adw_modules.worktree_ops",
+        "logging",
+        "sys",
+        "adw_modules.workflow_ops",
+        "adw_modules.utils",
+        "typing",
+        "adw_modules.data_types",
+        "subprocess",
+        "json",
+        "os"
+      ],
+      "classes": {},
+      "functions": {
+        "get_main_repo_root": {
+          "line_start": 52,
+          "line_end": 55
+        },
+        "manual_merge_to_main": {
+          "line_start": 58,
+          "line_end": 147
+        },
+        "validate_state_completeness": {
+          "line_start": 150,
+          "line_end": 178
+        },
+        "main": {
+          "line_start": 181,
+          "line_end": 313
+        }
+      },
+      "lines": 317,
+      "tokens": 2798
+    },
+    "adws/README.md": {
+      "path": "adws/README.md",
+      "extension": ".md",
+      "size_bytes": 23327,
+      "lines": 788,
+      "tokens": 5770
+    },
+    "adws/adw_document_iso.py": {
+      "path": "adws/adw_document_iso.py",
+      "extension": ".py",
+      "size_bytes": 16956,
+      "imports": [
+        "adw_modules.state",
+        "dotenv",
+        "adw_modules.agent",
+        "adw_modules.github",
+        "adw_modules.worktree_ops",
+        "logging",
+        "sys",
+        "adw_modules.workflow_ops",
+        "adw_modules.utils",
+        "typing",
+        "adw_modules.data_types",
+        "adw_modules.git_ops",
+        "datetime",
+        "subprocess",
+        "json",
+        "os"
+      ],
+      "classes": {},
+      "functions": {
+        "check_for_changes": {
+          "line_start": 63,
+          "line_end": 96
+        },
+        "generate_documentation": {
+          "line_start": 99,
+          "line_end": 183
+        },
+        "track_agentic_kpis": {
+          "line_start": 186,
+          "line_end": 285
+        },
+        "main": {
+          "line_start": 288,
+          "line_end": 515
+        }
+      },
+      "lines": 520,
+      "tokens": 4223
+    },
+    "adws/adw_test_iso.py": {
+      "path": "adws/adw_test_iso.py",
+      "extension": ".py",
+      "size_bytes": 29971,
+      "imports": [
+        "adw_modules.state",
+        "dotenv",
+        "adw_modules.agent",
+        "adw_modules.github",
+        "adw_modules.worktree_ops",
+        "logging",
+        "sys",
+        "adw_modules.data_types",
+        "adw_modules.utils",
+        "typing",
+        "adw_modules.workflow_ops",
+        "adw_modules.git_ops",
+        "subprocess",
+        "json",
+        "os"
+      ],
+      "classes": {},
+      "functions": {
+        "run_tests": {
+          "line_start": 68,
+          "line_end": 88
+        },
+        "parse_test_results": {
+          "line_start": 91,
+          "line_end": 105
+        },
+        "format_test_results_comment": {
+          "line_start": 108,
+          "line_end": 157
+        },
+        "parse_e2e_test_results": {
+          "line_start": 160,
+          "line_end": 174
+        },
+        "post_comprehensive_test_summary": {
+          "line_start": 177,
+          "line_end": 242
+        },
+        "run_e2e_tests": {
+          "line_start": 245,
+          "line_end": 269
+        },
+        "resolve_failed_tests": {
+          "line_start": 272,
+          "line_end": 343
+        },
+        "run_tests_with_resolution": {
+          "line_start": 346,
+          "line_end": 453
+        },
+        "resolve_failed_e2e_tests": {
+          "line_start": 456,
+          "line_end": 527
+        },
+        "run_e2e_tests_with_resolution": {
+          "line_start": 530,
+          "line_end": 645
+        },
+        "main": {
+          "line_start": 648,
+          "line_end": 878
+        }
+      },
+      "lines": 882,
+      "tokens": 7465
+    },
+    "adws/adw_sdlc_zte_iso.py": {
+      "path": "adws/adw_sdlc_zte_iso.py",
+      "extension": ".py",
+      "size_bytes": 7941,
+      "imports": [
+        "adw_modules.github",
+        "sys",
+        "adw_modules.workflow_ops",
+        "subprocess",
+        "os"
+      ],
+      "classes": {},
+      "functions": {
+        "main": {
+          "line_start": 36,
+          "line_end": 234
+        }
+      },
+      "lines": 239,
+      "tokens": 1969
+    },
+    "tests/conftest.py": {
+      "path": "tests/conftest.py",
+      "extension": ".py",
+      "size_bytes": 36,
+      "imports": [],
+      "classes": {},
+      "functions": {},
+      "lines": 2,
+      "tokens": 9
+    },
+    "tests/__init__.py": {
+      "path": "tests/__init__.py",
+      "extension": ".py",
+      "size_bytes": 39,
+      "imports": [],
+      "classes": {},
+      "functions": {},
+      "lines": 4,
+      "tokens": 9
+    },
+    "tests/test_config.py": {
+      "path": "tests/test_config.py",
+      "extension": ".py",
+      "size_bytes": 7186,
+      "imports": [
+        "core.config",
+        "yaml",
+        "tempfile",
+        "pathlib",
+        "os",
+        "pytest"
+      ],
+      "classes": {
+        "TestGitHubConfig": {
+          "line_start": 21,
+          "line_end": 52,
+          "methods": [
+            "test_default_values",
+            "test_repo_format_validation",
+            "test_environment_variable_loading"
+          ]
+        },
+        "TestADWConfig": {
+          "line_start": 55,
+          "line_end": 75,
+          "methods": [
+            "test_default_values",
+            "test_environment_variable_loading"
+          ]
+        },
+        "TestInterfacesConfig": {
+          "line_start": 78,
+          "line_end": 102,
+          "methods": [
+            "test_default_values",
+            "test_port_validation"
+          ]
+        },
+        "TestClaudeConfig": {
+          "line_start": 105,
+          "line_end": 112,
+          "methods": [
+            "test_default_values"
+          ]
+        },
+        "TestAppConfig": {
+          "line_start": 115,
+          "line_end": 216,
+          "methods": [
+            "test_default_values",
+            "test_from_yaml",
+            "test_from_yaml_file_not_found",
+            "test_yaml_values_loaded",
+            "test_load_with_default_config",
+            "test_load_config_function"
+          ]
+        }
+      },
+      "functions": {},
+      "lines": 217,
+      "tokens": 1796
+    },
+    ".claude/settings.json": {
+      "path": ".claude/settings.json",
+      "extension": ".json",
+      "size_bytes": 2153,
+      "lines": 0,
+      "tokens": 0
+    },
+    "docs/playwright-mcp.md": {
+      "path": "docs/playwright-mcp.md",
+      "extension": ".md",
+      "size_bytes": 8374,
+      "lines": 375,
+      "tokens": 2093
+    },
+    "scripts/setup.sh": {
+      "path": "scripts/setup.sh",
+      "extension": ".sh",
+      "size_bytes": 2984,
+      "lines": 0,
+      "tokens": 0
+    },
+    "scripts/start_cli.sh": {
+      "path": "scripts/start_cli.sh",
+      "extension": ".sh",
+      "size_bytes": 192,
+      "lines": 0,
+      "tokens": 0
+    },
+    "scripts/validate_adw.py": {
+      "path": "scripts/validate_adw.py",
+      "extension": ".py",
+      "size_bytes": 5245,
+      "imports": [
+        "pathlib",
+        "sys"
+      ],
+      "classes": {
+        "Colors": {
+          "line_start": 13,
+          "line_end": 17,
+          "methods": []
+        }
+      },
+      "functions": {
+        "check_file_exists": {
+          "line_start": 20,
+          "line_end": 27
+        },
+        "check_directory_exists": {
+          "line_start": 30,
+          "line_end": 38
+        },
+        "check_module_import": {
+          "line_start": 41,
+          "line_end": 49
+        },
+        "main": {
+          "line_start": 52,
+          "line_end": 184
+        }
+      },
+      "lines": 189,
+      "tokens": 1307
+    },
+    "scripts/start_web.sh": {
+      "path": "scripts/start_web.sh",
+      "extension": ".sh",
+      "size_bytes": 2148,
+      "lines": 0,
+      "tokens": 0
+    },
+    "templates/issue_template.md": {
+      "path": "templates/issue_template.md",
+      "extension": ".md",
+      "size_bytes": 190,
+      "lines": 20,
+      "tokens": 47
+    },
+    "interfaces/__init__.py": {
+      "path": "interfaces/__init__.py",
+      "extension": ".py",
+      "size_bytes": 189,
+      "imports": [],
+      "classes": {},
+      "functions": {},
+      "lines": 9,
+      "tokens": 47
+    },
+    "interfaces/web/server.py": {
+      "path": "interfaces/web/server.py",
+      "extension": ".py",
+      "size_bytes": 5596,
+      "imports": [
+        "interfaces.web.websocket",
+        "contextlib",
+        "logging",
+        "interfaces.web.routes",
+        "interfaces.web.state",
+        "typing",
+        "fastapi.responses",
+        "fastapi",
+        "interfaces.web.models",
+        "fastapi.middleware.cors",
+        "datetime",
+        "uvicorn",
+        "os"
+      ],
+      "classes": {},
+      "functions": {},
+      "lines": 206,
+      "tokens": 1399
+    },
+    "interfaces/web/models.py": {
+      "path": "interfaces/web/models.py",
+      "extension": ".py",
+      "size_bytes": 9106,
+      "imports": [
+        "typing",
+        "pydantic",
+        "enum",
+        "datetime"
+      ],
+      "classes": {
+        "GitHubIssue": {
+          "line_start": 18,
+          "line_end": 25,
+          "methods": []
+        },
+        "ProjectContext": {
+          "line_start": 28,
+          "line_end": 39,
+          "methods": []
+        },
+        "WorkflowPhase": {
+          "line_start": 42,
+          "line_end": 51,
+          "methods": []
+        },
+        "WorkflowStatus": {
+          "line_start": 54,
+          "line_end": 61,
+          "methods": []
+        },
+        "ADWState": {
+          "line_start": 64,
+          "line_end": 78,
+          "methods": []
+        },
+        "SubmitRequestModel": {
+          "line_start": 84,
+          "line_end": 89,
+          "methods": []
+        },
+        "AddProjectModel": {
+          "line_start": 92,
+          "line_end": 95,
+          "methods": []
+        },
+        "SelectOptionModel": {
+          "line_start": 98,
+          "line_end": 101,
+          "methods": []
+        },
+        "HealthResponse": {
+          "line_start": 107,
+          "line_end": 112,
+          "methods": []
+        },
+        "RequestPreviewResponse": {
+          "line_start": 115,
+          "line_end": 121,
+          "methods": []
+        },
+        "ConfirmResponse": {
+          "line_start": 124,
+          "line_end": 129,
+          "methods": []
+        },
+        "WorkflowSummary": {
+          "line_start": 132,
+          "line_end": 141,
+          "methods": []
+        },
+        "WorkflowListResponse": {
+          "line_start": 144,
+          "line_end": 148,
+          "methods": []
+        },
+        "WorkflowStatusResponse": {
+          "line_start": 151,
+          "line_end": 156,
+          "methods": []
+        },
+        "ProjectSummary": {
+          "line_start": 159,
+          "line_end": 167,
+          "methods": []
+        },
+        "ProjectListResponse": {
+          "line_start": 170,
+          "line_end": 174,
+          "methods": []
+        },
+        "RequestHistoryItem": {
+          "line_start": 177,
+          "line_end": 186,
+          "methods": []
+        },
+        "HistoryResponse": {
+          "line_start": 189,
+          "line_end": 194,
+          "methods": []
+        },
+        "WebSocketMessageType": {
+          "line_start": 200,
+          "line_end": 207,
+          "methods": []
+        },
+        "WebSocketMessage": {
+          "line_start": 210,
+          "line_end": 215,
+          "methods": []
+        },
+        "ErrorDetail": {
+          "line_start": 221,
+          "line_end": 226,
+          "methods": []
+        },
+        "ErrorResponse": {
+          "line_start": 229,
+          "line_end": 234,
+          "methods": []
+        }
+      },
+      "functions": {},
+      "lines": 235,
+      "tokens": 2276
+    },
+    "interfaces/web/__init__.py": {
+      "path": "interfaces/web/__init__.py",
+      "extension": ".py",
+      "size_bytes": 89,
+      "imports": [],
+      "classes": {},
+      "functions": {},
+      "lines": 6,
+      "tokens": 22
+    },
+    "interfaces/web/workflow_monitor.py": {
+      "path": "interfaces/web/workflow_monitor.py",
+      "extension": ".py",
+      "size_bytes": 9444,
+      "imports": [
+        "logging",
+        "typing",
+        "interfaces.web.models",
+        "datetime",
+        "pathlib",
+        "json"
+      ],
+      "classes": {
+        "WorkflowMonitor": {
+          "line_start": 24,
+          "line_end": 262,
+          "methods": [
+            "__init__",
+            "list_active_workflows",
+            "get_workflow_status",
+            "get_workflow_logs",
+            "_read_workflow_state",
+            "_create_minimal_state"
+          ]
+        }
+      },
+      "functions": {
+        "get_workflow_monitor": {
+          "line_start": 269,
+          "line_end": 279
+        }
+      },
+      "lines": 280,
+      "tokens": 2361
+    },
+    "interfaces/web/state.py": {
+      "path": "interfaces/web/state.py",
+      "extension": ".py",
+      "size_bytes": 12899,
+      "imports": [
+        "uuid",
+        "logging",
+        "subprocess",
+        "typing",
+        "interfaces.web.models",
+        "datetime",
+        "pathlib",
+        "json"
+      ],
+      "classes": {
+        "RequestState": {
+          "line_start": 23,
+          "line_end": 404,
+          "methods": [
+            "__init__",
+            "create_request",
+            "get_request",
+            "get_preview",
+            "confirm_and_post",
+            "cleanup_old_requests",
+            "_detect_project_context",
+            "_generate_issue_preview",
+            "_post_to_github"
+          ]
+        }
+      },
+      "functions": {
+        "get_request_state": {
+          "line_start": 411,
+          "line_end": 421
+        }
+      },
+      "lines": 422,
+      "tokens": 3224
+    },
+    "interfaces/web/websocket.py": {
+      "path": "interfaces/web/websocket.py",
+      "extension": ".py",
+      "size_bytes": 9997,
+      "imports": [
+        "logging",
+        "typing",
+        "asyncio",
+        "fastapi",
+        "interfaces.web.models",
+        "datetime",
+        "starlette.websockets"
+      ],
+      "classes": {
+        "ConnectionManager": {
+          "line_start": 21,
+          "line_end": 247,
+          "methods": [
+            "__init__"
+          ]
+        }
+      },
+      "functions": {
+        "get_connection_manager": {
+          "line_start": 254,
+          "line_end": 264
+        }
+      },
+      "lines": 324,
+      "tokens": 2499
+    },
+    "interfaces/cli/config_manager.py": {
+      "path": "interfaces/cli/config_manager.py",
+      "extension": ".py",
+      "size_bytes": 7040,
+      "imports": [
+        "interfaces.cli.output",
+        "core.config",
+        "typing",
+        "yaml",
+        "pathlib",
+        "os"
+      ],
+      "classes": {},
+      "functions": {
+        "ensure_config_dir": {
+          "line_start": 16,
+          "line_end": 25
+        },
+        "get_config_path": {
+          "line_start": 28,
+          "line_end": 41
+        },
+        "load_cli_config": {
+          "line_start": 44,
+          "line_end": 54
+        },
+        "get_config_value": {
+          "line_start": 57,
+          "line_end": 88
+        },
+        "set_config_value": {
+          "line_start": 91,
+          "line_end": 141
+        },
+        "list_config": {
+          "line_start": 144,
+          "line_end": 179
+        },
+        "display_config": {
+          "line_start": 182,
+          "line_end": 209
+        },
+        "reset_config": {
+          "line_start": 212,
+          "line_end": 230
+        },
+        "validate_config": {
+          "line_start": 233,
+          "line_end": 258
+        }
+      },
+      "lines": 259,
+      "tokens": 1760
+    },
+    "interfaces/cli/__init__.py": {
+      "path": "interfaces/cli/__init__.py",
+      "extension": ".py",
+      "size_bytes": 342,
+      "imports": [],
+      "classes": {},
+      "functions": {},
+      "lines": 15,
+      "tokens": 85
+    },
+    "interfaces/cli/interactive.py": {
+      "path": "interfaces/cli/interactive.py",
+      "extension": ".py",
+      "size_bytes": 6805,
+      "imports": [
+        "questionary",
+        "interfaces.cli.commands",
+        "interfaces.cli.output",
+        "typing",
+        "interfaces.cli.history",
+        "pathlib"
+      ],
+      "classes": {
+        "PathValidator": {
+          "line_start": 13,
+          "line_end": 29,
+          "methods": [
+            "validate"
+          ]
+        },
+        "NonEmptyValidator": {
+          "line_start": 32,
+          "line_end": 41,
+          "methods": [
+            "validate"
+          ]
+        }
+      },
+      "functions": {
+        "prompt_project_path": {
+          "line_start": 44,
+          "line_end": 74
+        },
+        "prompt_nl_request": {
+          "line_start": 77,
+          "line_end": 94
+        },
+        "handle_submit_request": {
+          "line_start": 97,
+          "line_end": 138
+        },
+        "handle_view_history": {
+          "line_start": 141,
+          "line_end": 175
+        },
+        "handle_create_project": {
+          "line_start": 178,
+          "line_end": 191
+        },
+        "handle_integrate_adw": {
+          "line_start": 194,
+          "line_end": 207
+        },
+        "run_interactive_mode": {
+          "line_start": 210,
+          "line_end": 266
+        }
+      },
+      "lines": 267,
+      "tokens": 1701
+    },
+    "interfaces/cli/main.py": {
+      "path": "interfaces/cli/main.py",
+      "extension": ".py",
+      "size_bytes": 6057,
+      "imports": [
+        "interfaces.cli",
+        "interfaces.cli.commands",
+        "interfaces.cli.output",
+        "typer",
+        "interfaces.cli.config_manager",
+        "rich.console",
+        "typing",
+        "interfaces.cli.history",
+        "interfaces.cli.interactive"
+      ],
+      "classes": {},
+      "functions": {
+        "request": {
+          "line_start": 33,
+          "line_end": 66
+        },
+        "interactive": {
+          "line_start": 70,
+          "line_end": 80
+        },
+        "history": {
+          "line_start": 84,
+          "line_end": 100
+        },
+        "config": {
+          "line_start": 104,
+          "line_end": 177
+        },
+        "integrate": {
+          "line_start": 181,
+          "line_end": 199
+        },
+        "new": {
+          "line_start": 203,
+          "line_end": 227
+        },
+        "version": {
+          "line_start": 231,
+          "line_end": 233
+        },
+        "main": {
+          "line_start": 236,
+          "line_end": 238
+        }
+      },
+      "lines": 243,
+      "tokens": 1514
+    },
+    "interfaces/cli/commands.py": {
+      "path": "interfaces/cli/commands.py",
+      "extension": ".py",
+      "size_bytes": 9791,
+      "imports": [
+        "pathlib",
+        "interfaces.cli.output",
+        "interfaces.cli.config_manager",
+        "typing",
+        "interfaces.cli.history",
+        "subprocess",
+        "os"
+      ],
+      "classes": {},
+      "functions": {
+        "check_dependencies": {
+          "line_start": 22,
+          "line_end": 62
+        },
+        "detect_project_context": {
+          "line_start": 65,
+          "line_end": 108
+        },
+        "get_github_repo_url": {
+          "line_start": 111,
+          "line_end": 137
+        },
+        "format_issue_preview": {
+          "line_start": 140,
+          "line_end": 165
+        },
+        "post_github_issue": {
+          "line_start": 168,
+          "line_end": 212
+        },
+        "handle_request": {
+          "line_start": 215,
+          "line_end": 332
+        },
+        "handle_new_project": {
+          "line_start": 335,
+          "line_end": 350
+        },
+        "handle_integrate": {
+          "line_start": 353,
+          "line_end": 367
+        }
+      },
+      "lines": 368,
+      "tokens": 2447
+    },
+    "interfaces/cli/__main__.py": {
+      "path": "interfaces/cli/__main__.py",
+      "extension": ".py",
+      "size_bytes": 189,
+      "imports": [
+        "interfaces.cli.main"
+      ],
+      "classes": {},
+      "functions": {},
+      "lines": 11,
+      "tokens": 47
+    },
+    "interfaces/cli/output.py": {
+      "path": "interfaces/cli/output.py",
+      "extension": ".py",
+      "size_bytes": 3916,
+      "imports": [
+        "rich.progress",
+        "rich.table",
+        "rich.markdown",
+        "rich.console",
+        "typing",
+        "rich.panel",
+        "rich.prompt",
+        "rich.syntax"
+      ],
+      "classes": {},
+      "functions": {
+        "show_error": {
+          "line_start": 16,
+          "line_end": 23
+        },
+        "show_success": {
+          "line_start": 26,
+          "line_end": 33
+        },
+        "show_info": {
+          "line_start": 36,
+          "line_end": 43
+        },
+        "show_warning": {
+          "line_start": 46,
+          "line_end": 53
+        },
+        "show_panel": {
+          "line_start": 56,
+          "line_end": 69
+        },
+        "create_table": {
+          "line_start": 72,
+          "line_end": 95
+        },
+        "print_table": {
+          "line_start": 98,
+          "line_end": 100
+        },
+        "show_markdown": {
+          "line_start": 103,
+          "line_end": 106
+        },
+        "show_syntax": {
+          "line_start": 109,
+          "line_end": 117
+        },
+        "get_progress_spinner": {
+          "line_start": 120,
+          "line_end": 126
+        },
+        "print_status": {
+          "line_start": 129,
+          "line_end": 131
+        },
+        "print_divider": {
+          "line_start": 134,
+          "line_end": 137
+        },
+        "confirm_action": {
+          "line_start": 140,
+          "line_end": 143
+        },
+        "prompt_input": {
+          "line_start": 146,
+          "line_end": 149
+        }
+      },
+      "lines": 150,
+      "tokens": 979
+    },
+    "interfaces/cli/history.py": {
+      "path": "interfaces/cli/history.py",
+      "extension": ".py",
+      "size_bytes": 7619,
+      "imports": [
+        "interfaces.cli.output",
+        "typing",
+        "datetime",
+        "pathlib",
+        "json"
+      ],
+      "classes": {
+        "RequestHistory": {
+          "line_start": 20,
+          "line_end": 251,
+          "methods": [
+            "__init__",
+            "_ensure_history_file",
+            "_read_history",
+            "_write_history",
+            "add_request",
+            "get_recent",
+            "get_all",
+            "clear",
+            "display",
+            "get_by_issue",
+            "update_status"
+          ]
+        }
+      },
+      "functions": {
+        "get_history": {
+          "line_start": 258,
+          "line_end": 268
+        }
+      },
+      "lines": 269,
+      "tokens": 1904
+    },
+    "interfaces/web/routes/__init__.py": {
+      "path": "interfaces/web/routes/__init__.py",
+      "extension": ".py",
+      "size_bytes": 34,
+      "imports": [],
+      "classes": {},
+      "functions": {},
+      "lines": 2,
+      "tokens": 8
+    },
+    "interfaces/web/routes/workflows.py": {
+      "path": "interfaces/web/routes/workflows.py",
+      "extension": ".py",
+      "size_bytes": 3605,
+      "imports": [
+        "interfaces.web.workflow_monitor",
+        "interfaces.web.models",
+        "logging",
+        "fastapi"
+      ],
+      "classes": {},
+      "functions": {},
+      "lines": 122,
+      "tokens": 901
+    },
+    "interfaces/web/routes/projects.py": {
+      "path": "interfaces/web/routes/projects.py",
+      "extension": ".py",
+      "size_bytes": 8365,
+      "imports": [
+        "logging",
+        "subprocess",
+        "typing",
+        "fastapi",
+        "interfaces.web.models",
+        "pathlib",
+        "json"
+      ],
+      "classes": {},
+      "functions": {
+        "_load_projects": {
+          "line_start": 30,
+          "line_end": 51
+        },
+        "_save_projects": {
+          "line_start": 54,
+          "line_end": 66
+        },
+        "_detect_project_context": {
+          "line_start": 69,
+          "line_end": 144
+        }
+      },
+      "lines": 293,
+      "tokens": 2091
+    },
+    "interfaces/web/routes/requests.py": {
+      "path": "interfaces/web/routes/requests.py",
+      "extension": ".py",
+      "size_bytes": 5179,
+      "imports": [
+        "logging",
+        "interfaces.web.state",
+        "typing",
+        "interfaces.web.models",
+        "fastapi"
+      ],
+      "classes": {},
+      "functions": {},
+      "lines": 176,
+      "tokens": 1294
+    },
+    "interfaces/web/routes/history.py": {
+      "path": "interfaces/web/routes/history.py",
+      "extension": ".py",
+      "size_bytes": 5072,
+      "imports": [
+        "logging",
+        "typing",
+        "fastapi",
+        "interfaces.web.models",
+        "datetime",
+        "pathlib",
+        "json"
+      ],
+      "classes": {},
+      "functions": {
+        "_load_history": {
+          "line_start": 25,
+          "line_end": 37
+        },
+        "_save_history_item": {
+          "line_start": 40,
+          "line_end": 55
+        },
+        "add_history_item": {
+          "line_start": 140,
+          "line_end": 168
+        }
+      },
+      "lines": 169,
+      "tokens": 1268
+    },
+    ".claude/hooks/post_tool_use.py": {
+      "path": ".claude/hooks/post_tool_use.py",
+      "extension": ".py",
+      "size_bytes": 1357,
+      "imports": [
+        "utils.constants",
+        "sys",
+        "pathlib",
+        "json",
+        "os"
+      ],
+      "classes": {},
+      "functions": {
+        "main": {
+          "line_start": 13,
+          "line_end": 49
+        }
+      },
+      "lines": 52,
+      "tokens": 339
+    },
+    ".claude/hooks/notification.py": {
+      "path": ".claude/hooks/notification.py",
+      "extension": ".py",
+      "size_bytes": 1804,
+      "imports": [
+        "dotenv",
+        "argparse",
+        "random",
+        "utils.constants",
+        "pathlib",
+        "sys",
+        "subprocess",
+        "json",
+        "os"
+      ],
+      "classes": {},
+      "functions": {
+        "main": {
+          "line_start": 28,
+          "line_end": 70
+        }
+      },
+      "lines": 73,
+      "tokens": 451
+    },
+    ".claude/hooks/stop.py": {
+      "path": ".claude/hooks/stop.py",
+      "extension": ".py",
+      "size_bytes": 2899,
+      "imports": [
+        "dotenv",
+        "argparse",
+        "random",
+        "utils.constants",
+        "pathlib",
+        "sys",
+        "datetime",
+        "subprocess",
+        "json",
+        "os"
+      ],
+      "classes": {},
+      "functions": {
+        "main": {
+          "line_start": 29,
+          "line_end": 95
+        }
+      },
+      "lines": 99,
+      "tokens": 724
+    },
+    ".claude/hooks/pre_tool_use.py": {
+      "path": ".claude/hooks/pre_tool_use.py",
+      "extension": ".py",
+      "size_bytes": 5278,
+      "imports": [
+        "utils.constants",
+        "re",
+        "sys",
+        "pathlib",
+        "json",
+        "os"
+      ],
+      "classes": {},
+      "functions": {
+        "is_dangerous_rm_command": {
+          "line_start": 14,
+          "line_end": 55
+        },
+        "is_env_file_access": {
+          "line_start": 57,
+          "line_end": 85
+        },
+        "main": {
+          "line_start": 87,
+          "line_end": 141
+        }
+      },
+      "lines": 144,
+      "tokens": 1319
+    },
+    ".claude/hooks/subagent_stop.py": {
+      "path": ".claude/hooks/subagent_stop.py",
+      "extension": ".py",
+      "size_bytes": 2912,
+      "imports": [
+        "dotenv",
+        "argparse",
+        "utils.constants",
+        "pathlib",
+        "sys",
+        "datetime",
+        "subprocess",
+        "json",
+        "os"
+      ],
+      "classes": {},
+      "functions": {
+        "main": {
+          "line_start": 28,
+          "line_end": 94
+        }
+      },
+      "lines": 98,
+      "tokens": 728
+    },
+    ".claude/hooks/pre_compact.py": {
+      "path": ".claude/hooks/pre_compact.py",
+      "extension": ".py",
+      "size_bytes": 1344,
+      "imports": [
+        "utils.constants",
+        "pathlib",
+        "json",
+        "sys"
+      ],
+      "classes": {},
+      "functions": {
+        "main": {
+          "line_start": 11,
+          "line_end": 47
+        }
+      },
+      "lines": 50,
+      "tokens": 336
+    },
+    ".claude/hooks/user_prompt_submit.py": {
+      "path": ".claude/hooks/user_prompt_submit.py",
+      "extension": ".py",
+      "size_bytes": 3267,
+      "imports": [
+        "dotenv",
+        "argparse",
+        "utils.constants",
+        "sys",
+        "datetime",
+        "pathlib",
+        "json",
+        "os"
+      ],
+      "classes": {},
+      "functions": {
+        "log_user_prompt": {
+          "line_start": 24,
+          "line_end": 45
+        },
+        "validate_prompt": {
+          "line_start": 48,
+          "line_end": 65
+        },
+        "main": {
+          "line_start": 68,
+          "line_end": 108
+        }
+      },
+      "lines": 112,
+      "tokens": 816
+    },
+    ".claude/commands/document.md": {
+      "path": ".claude/commands/document.md",
+      "extension": ".md",
+      "size_bytes": 4084,
+      "lines": 129,
+      "tokens": 1021
+    },
+    ".claude/commands/health_check.md": {
+      "path": ".claude/commands/health_check.md",
+      "extension": ".md",
+      "size_bytes": 97,
+      "lines": 5,
+      "tokens": 24
+    },
+    ".claude/commands/implement.md": {
+      "path": ".claude/commands/implement.md",
+      "extension": ".md",
+      "size_bytes": 365,
+      "lines": 12,
+      "tokens": 91
+    },
+    ".claude/commands/generate_branch_name.md": {
+      "path": ".claude/commands/generate_branch_name.md",
+      "extension": ".md",
+      "size_bytes": 1108,
+      "lines": 34,
+      "tokens": 277
+    },
+    ".claude/commands/prepare_app.md": {
+      "path": ".claude/commands/prepare_app.md",
+      "extension": ".md",
+      "size_bytes": 968,
+      "lines": 28,
+      "tokens": 242
+    },
+    ".claude/commands/install_worktree.md": {
+      "path": ".claude/commands/install_worktree.md",
+      "extension": ".md",
+      "size_bytes": 2617,
+      "lines": 82,
+      "tokens": 654
+    },
+    ".claude/commands/test_e2e.md": {
+      "path": ".claude/commands/test_e2e.md",
+      "extension": ".md",
+      "size_bytes": 3453,
+      "lines": 67,
+      "tokens": 862
+    },
+    ".claude/commands/install.md": {
+      "path": ".claude/commands/install.md",
+      "extension": ".md",
+      "size_bytes": 1603,
+      "lines": 30,
+      "tokens": 400
+    },
+    ".claude/commands/track_agentic_kpis.md": {
+      "path": ".claude/commands/track_agentic_kpis.md",
+      "extension": ".md",
+      "size_bytes": 4564,
+      "lines": 125,
+      "tokens": 1140
+    },
+    ".claude/commands/in_loop_review.md": {
+      "path": ".claude/commands/in_loop_review.md",
+      "extension": ".md",
+      "size_bytes": 930,
+      "lines": 31,
+      "tokens": 232
+    },
+    ".claude/commands/resolve_failed_e2e_test.md": {
+      "path": ".claude/commands/resolve_failed_e2e_test.md",
+      "extension": ".md",
+      "size_bytes": 2077,
+      "lines": 51,
+      "tokens": 519
+    },
+    ".claude/commands/classify_adw.md": {
+      "path": ".claude/commands/classify_adw.md",
+      "extension": ".md",
+      "size_bytes": 2912,
+      "lines": 57,
+      "tokens": 727
+    },
+    ".claude/commands/resolve_failed_test.md": {
+      "path": ".claude/commands/resolve_failed_test.md",
+      "extension": ".md",
+      "size_bytes": 1337,
+      "lines": 41,
+      "tokens": 334
+    },
+    ".claude/commands/conditional_docs.md": {
+      "path": ".claude/commands/conditional_docs.md",
+      "extension": ".md",
+      "size_bytes": 2627,
+      "lines": 63,
+      "tokens": 656
+    },
+    ".claude/commands/patch.md": {
+      "path": ".claude/commands/patch.md",
+      "extension": ".md",
+      "size_bytes": 4122,
+      "lines": 92,
+      "tokens": 1030
+    },
+    ".claude/commands/bug.md": {
+      "path": ".claude/commands/bug.md",
+      "extension": ".md",
+      "size_bytes": 6279,
+      "lines": 106,
+      "tokens": 1569
+    },
+    ".claude/commands/pull_request.md": {
+      "path": ".claude/commands/pull_request.md",
+      "extension": ".md",
+      "size_bytes": 1578,
+      "lines": 41,
+      "tokens": 394
+    },
+    ".claude/commands/cleanup_worktrees.md": {
+      "path": ".claude/commands/cleanup_worktrees.md",
+      "extension": ".md",
+      "size_bytes": 1283,
+      "lines": 44,
+      "tokens": 320
+    },
+    ".claude/commands/chore.md": {
+      "path": ".claude/commands/chore.md",
+      "extension": ".md",
+      "size_bytes": 4244,
+      "lines": 78,
+      "tokens": 1061
+    },
+    ".claude/commands/prime.md": {
+      "path": ".claude/commands/prime.md",
+      "extension": ".md",
+      "size_bytes": 289,
+      "lines": 10,
+      "tokens": 72
+    },
+    ".claude/commands/commit.md": {
+      "path": ".claude/commands/commit.md",
+      "extension": ".md",
+      "size_bytes": 1279,
+      "lines": 34,
+      "tokens": 319
+    },
+    ".claude/commands/review.md": {
+      "path": ".claude/commands/review.md",
+      "extension": ".md",
+      "size_bytes": 6357,
+      "lines": 85,
+      "tokens": 1589
+    },
+    ".claude/commands/start.md": {
+      "path": ".claude/commands/start.md",
+      "extension": ".md",
+      "size_bytes": 761,
+      "lines": 23,
+      "tokens": 190
+    },
+    ".claude/commands/feature.md": {
+      "path": ".claude/commands/feature.md",
+      "extension": ".md",
+      "size_bytes": 6798,
+      "lines": 124,
+      "tokens": 1699
+    },
+    ".claude/commands/test.md": {
+      "path": ".claude/commands/test.md",
+      "extension": ".md",
+      "size_bytes": 4610,
+      "lines": 115,
+      "tokens": 1152
+    },
+    ".claude/commands/tools.md": {
+      "path": ".claude/commands/tools.md",
+      "extension": ".md",
+      "size_bytes": 164,
+      "lines": 3,
+      "tokens": 41
+    },
+    ".claude/commands/classify_issue.md": {
+      "path": ".claude/commands/classify_issue.md",
+      "extension": ".md",
+      "size_bytes": 914,
+      "lines": 22,
+      "tokens": 228
+    },
+    ".claude/commands/e2e/test_random_query_generator.md": {
+      "path": ".claude/commands/e2e/test_random_query_generator.md",
+      "extension": ".md",
+      "size_bytes": 2327,
+      "lines": 53,
+      "tokens": 581
+    },
+    ".claude/commands/e2e/test_basic_query.md": {
+      "path": ".claude/commands/e2e/test_basic_query.md",
+      "extension": ".md",
+      "size_bytes": 1154,
+      "lines": 39,
+      "tokens": 288
+    },
+    ".claude/commands/e2e/test_complex_query.md": {
+      "path": ".claude/commands/e2e/test_complex_query.md",
+      "extension": ".md",
+      "size_bytes": 1086,
+      "lines": 33,
+      "tokens": 271
+    },
+    ".claude/commands/e2e/test_disable_input_debounce.md": {
+      "path": ".claude/commands/e2e/test_disable_input_debounce.md",
+      "extension": ".md",
+      "size_bytes": 2421,
+      "lines": 59,
+      "tokens": 605
+    },
+    ".claude/commands/e2e/test_export_functionality.md": {
+      "path": ".claude/commands/e2e/test_export_functionality.md",
+      "extension": ".md",
+      "size_bytes": 2105,
+      "lines": 55,
+      "tokens": 526
+    },
+    ".claude/commands/e2e/test_sql_injection.md": {
+      "path": ".claude/commands/e2e/test_sql_injection.md",
+      "extension": ".md",
+      "size_bytes": 975,
+      "lines": 30,
+      "tokens": 243
+    },
+    ".claude/commands/e2e/test_web_api.md": {
+      "path": ".claude/commands/e2e/test_web_api.md",
+      "extension": ".md",
+      "size_bytes": 6525,
+      "lines": 300,
+      "tokens": 1631
+    },
+    ".claude/commands/e2e/test_cli_interface.md": {
+      "path": ".claude/commands/e2e/test_cli_interface.md",
+      "extension": ".md",
+      "size_bytes": 5661,
+      "lines": 199,
+      "tokens": 1415
+    },
+    ".claude/hooks/utils/constants.py": {
+      "path": ".claude/hooks/utils/constants.py",
+      "extension": ".py",
+      "size_bytes": 959,
+      "imports": [
+        "pathlib",
+        "os"
+      ],
+      "classes": {},
+      "functions": {
+        "get_session_log_dir": {
+          "line_start": 17,
+          "line_end": 27
+        },
+        "ensure_session_log_dir": {
+          "line_start": 29,
+          "line_end": 41
+        }
+      },
+      "lines": 41,
+      "tokens": 239
+    },
+    ".claude/hooks/utils/llm/oai.py": {
+      "path": ".claude/hooks/utils/llm/oai.py",
+      "extension": ".py",
+      "size_bytes": 3216,
+      "imports": [
+        "dotenv",
+        "openai",
+        "sys",
+        "os"
+      ],
+      "classes": {},
+      "functions": {
+        "prompt_llm": {
+          "line_start": 15,
+          "line_end": 46
+        },
+        "generate_completion_message": {
+          "line_start": 49,
+          "line_end": 90
+        },
+        "main": {
+          "line_start": 93,
+          "line_end": 110
+        }
+      },
+      "lines": 114,
+      "tokens": 804
+    },
+    ".claude/hooks/utils/llm/anth.py": {
+      "path": ".claude/hooks/utils/llm/anth.py",
+      "extension": ".py",
+      "size_bytes": 3232,
+      "imports": [
+        "dotenv",
+        "sys",
+        "os",
+        "anthropic"
+      ],
+      "classes": {},
+      "functions": {
+        "prompt_llm": {
+          "line_start": 15,
+          "line_end": 46
+        },
+        "generate_completion_message": {
+          "line_start": 49,
+          "line_end": 90
+        },
+        "main": {
+          "line_start": 93,
+          "line_end": 110
+        }
+      },
+      "lines": 114,
+      "tokens": 808
+    },
+    "tests/core/__init__.py": {
+      "path": "tests/core/__init__.py",
+      "extension": ".py",
+      "size_bytes": 0,
+      "imports": [],
+      "classes": {},
+      "functions": {},
+      "lines": 1,
+      "tokens": 0
+    },
+    "tests/core/test_mcp_setup.py": {
+      "path": "tests/core/test_mcp_setup.py",
+      "extension": ".py",
+      "size_bytes": 4883,
+      "imports": [
+        "pathlib",
+        "json",
+        "pytest"
+      ],
+      "classes": {},
+      "functions": {
+        "test_mcp_config_exists": {
+          "line_start": 17,
+          "line_end": 27
+        },
+        "test_playwright_config_exists": {
+          "line_start": 30,
+          "line_end": 40
+        },
+        "test_mcp_config_valid_json": {
+          "line_start": 43,
+          "line_end": 71
+        },
+        "test_playwright_config_valid": {
+          "line_start": 74,
+          "line_end": 100
+        },
+        "test_playwright_config_uses_relative_paths": {
+          "line_start": 103,
+          "line_end": 135
+        }
+      },
+      "lines": 136,
+      "tokens": 1220
+    },
+    "tests/interfaces/test_cli_main.py": {
+      "path": "tests/interfaces/test_cli_main.py",
+      "extension": ".py",
+      "size_bytes": 9916,
+      "imports": [
+        "interfaces.cli.main",
+        "unittest.mock",
+        "typer.testing",
+        "pytest"
+      ],
+      "classes": {
+        "TestRequestCommand": {
+          "line_start": 13,
+          "line_end": 71,
+          "methods": [
+            "test_request_basic",
+            "test_request_with_project",
+            "test_request_with_auto_post",
+            "test_request_failure"
+          ]
+        },
+        "TestInteractiveCommand": {
+          "line_start": 74,
+          "line_end": 83,
+          "methods": [
+            "test_interactive"
+          ]
+        },
+        "TestHistoryCommand": {
+          "line_start": 86,
+          "line_end": 109,
+          "methods": [
+            "test_history_default",
+            "test_history_custom_limit"
+          ]
+        },
+        "TestConfigCommand": {
+          "line_start": 112,
+          "line_end": 203,
+          "methods": [
+            "test_config_list",
+            "test_config_get_success",
+            "test_config_get_not_found",
+            "test_config_set_success",
+            "test_config_set_failure",
+            "test_config_set_missing_args",
+            "test_config_reset_success",
+            "test_config_validate_success",
+            "test_config_invalid_action"
+          ]
+        },
+        "TestIntegrateCommand": {
+          "line_start": 206,
+          "line_end": 226,
+          "methods": [
+            "test_integrate",
+            "test_integrate_failure"
+          ]
+        },
+        "TestNewCommand": {
+          "line_start": 229,
+          "line_end": 262,
+          "methods": [
+            "test_new_default_framework",
+            "test_new_custom_framework",
+            "test_new_failure"
+          ]
+        },
+        "TestVersionCommand": {
+          "line_start": 265,
+          "line_end": 277,
+          "methods": [
+            "test_version"
+          ]
+        },
+        "TestHelpText": {
+          "line_start": 280,
+          "line_end": 316,
+          "methods": [
+            "test_help_main",
+            "test_help_request",
+            "test_help_interactive",
+            "test_help_history",
+            "test_help_config"
+          ]
+        }
+      },
+      "functions": {},
+      "lines": 317,
+      "tokens": 2479
+    },
+    "tests/interfaces/__init__.py": {
+      "path": "tests/interfaces/__init__.py",
+      "extension": ".py",
+      "size_bytes": 36,
+      "imports": [],
+      "classes": {},
+      "functions": {},
+      "lines": 2,
+      "tokens": 9
+    },
+    "tests/interfaces/test_output.py": {
+      "path": "tests/interfaces/test_output.py",
+      "extension": ".py",
+      "size_bytes": 5193,
+      "imports": [
+        "interfaces.cli.output",
+        "unittest.mock",
+        "io",
+        "pytest"
+      ],
+      "classes": {
+        "TestErrorMessages": {
+          "line_start": 29,
+          "line_end": 41,
+          "methods": [
+            "test_show_error",
+            "test_show_error_custom_title"
+          ]
+        },
+        "TestSuccessMessages": {
+          "line_start": 44,
+          "line_end": 55,
+          "methods": [
+            "test_show_success",
+            "test_show_success_custom_title"
+          ]
+        },
+        "TestInfoMessages": {
+          "line_start": 58,
+          "line_end": 64,
+          "methods": [
+            "test_show_info"
+          ]
+        },
+        "TestWarningMessages": {
+          "line_start": 67,
+          "line_end": 73,
+          "methods": [
+            "test_show_warning"
+          ]
+        },
+        "TestPanelDisplay": {
+          "line_start": 76,
+          "line_end": 87,
+          "methods": [
+            "test_show_panel_basic",
+            "test_show_panel_with_title"
+          ]
+        },
+        "TestTableCreation": {
+          "line_start": 90,
+          "line_end": 117,
+          "methods": [
+            "test_create_table_basic",
+            "test_create_table_empty_rows",
+            "test_print_table"
+          ]
+        },
+        "TestMarkdownDisplay": {
+          "line_start": 120,
+          "line_end": 127,
+          "methods": [
+            "test_show_markdown"
+          ]
+        },
+        "TestSyntaxDisplay": {
+          "line_start": 130,
+          "line_end": 143,
+          "methods": [
+            "test_show_syntax_python",
+            "test_show_syntax_custom_language"
+          ]
+        },
+        "TestStatusDisplay": {
+          "line_start": 146,
+          "line_end": 157,
+          "methods": [
+            "test_print_status",
+            "test_print_status_custom_style"
+          ]
+        },
+        "TestDivider": {
+          "line_start": 160,
+          "line_end": 173,
+          "methods": [
+            "test_print_divider_default",
+            "test_print_divider_custom_char"
+          ]
+        }
+      },
+      "functions": {
+        "mock_console": {
+          "line_start": 23,
+          "line_end": 26
+        }
+      },
+      "lines": 174,
+      "tokens": 1298
+    },
+    "tests/interfaces/test_commands.py": {
+      "path": "tests/interfaces/test_commands.py",
+      "extension": ".py",
+      "size_bytes": 11832,
+      "imports": [
+        "interfaces.cli.commands",
+        "unittest.mock",
+        "subprocess",
+        "tempfile",
+        "pathlib",
+        "pytest"
+      ],
+      "classes": {
+        "TestCheckDependencies": {
+          "line_start": 21,
+          "line_end": 50,
+          "methods": [
+            "test_check_dependencies_all_ok",
+            "test_check_dependencies_gh_missing",
+            "test_check_dependencies_gh_not_authenticated"
+          ]
+        },
+        "TestDetectProjectContext": {
+          "line_start": 53,
+          "line_end": 99,
+          "methods": [
+            "test_detect_project_context_python",
+            "test_detect_project_context_node",
+            "test_detect_project_context_git_repo",
+            "test_detect_project_context_nonexistent",
+            "test_detect_project_context_current_dir"
+          ]
+        },
+        "TestGetGitHubRepoUrl": {
+          "line_start": 102,
+          "line_end": 137,
+          "methods": [
+            "test_get_github_repo_url_from_config",
+            "test_get_github_repo_url_from_git",
+            "test_get_github_repo_url_none"
+          ]
+        },
+        "TestFormatIssuePreview": {
+          "line_start": 140,
+          "line_end": 156,
+          "methods": [
+            "test_format_issue_preview"
+          ]
+        },
+        "TestPostGitHubIssue": {
+          "line_start": 159,
+          "line_end": 196,
+          "methods": [
+            "test_post_github_issue_success",
+            "test_post_github_issue_failure",
+            "test_post_github_issue_timeout"
+          ]
+        },
+        "TestHandleRequest": {
+          "line_start": 199,
+          "line_end": 319,
+          "methods": [
+            "test_handle_request_success",
+            "test_handle_request_missing_dependencies",
+            "test_handle_request_invalid_project",
+            "test_handle_request_no_repo_url",
+            "test_handle_request_user_cancels"
+          ]
+        },
+        "TestHandleNewProject": {
+          "line_start": 322,
+          "line_end": 330,
+          "methods": [
+            "test_handle_new_project_stub"
+          ]
+        },
+        "TestHandleIntegrate": {
+          "line_start": 333,
+          "line_end": 341,
+          "methods": [
+            "test_handle_integrate_stub"
+          ]
+        }
+      },
+      "functions": {},
+      "lines": 342,
+      "tokens": 2958
+    },
+    "tests/interfaces/test_history.py": {
+      "path": "tests/interfaces/test_history.py",
+      "extension": ".py",
+      "size_bytes": 10574,
+      "imports": [
+        "unittest.mock",
+        "tempfile",
+        "datetime",
+        "interfaces.cli.history",
+        "pathlib",
+        "json",
+        "pytest"
+      ],
+      "classes": {
+        "TestHistoryInitialization": {
+          "line_start": 32,
+          "line_end": 48,
+          "methods": [
+            "test_init_creates_file",
+            "test_init_creates_directory"
+          ]
+        },
+        "TestAddRequest": {
+          "line_start": 51,
+          "line_end": 113,
+          "methods": [
+            "test_add_request_basic",
+            "test_add_request_with_url",
+            "test_add_request_with_error",
+            "test_add_multiple_requests",
+            "test_add_request_timestamp"
+          ]
+        },
+        "TestGetRecent": {
+          "line_start": 116,
+          "line_end": 146,
+          "methods": [
+            "test_get_recent_default_limit",
+            "test_get_recent_custom_limit",
+            "test_get_recent_order"
+          ]
+        },
+        "TestGetAll": {
+          "line_start": 149,
+          "line_end": 163,
+          "methods": [
+            "test_get_all_empty",
+            "test_get_all_with_entries"
+          ]
+        },
+        "TestClear": {
+          "line_start": 166,
+          "line_end": 180,
+          "methods": [
+            "test_clear_history"
+          ]
+        },
+        "TestDisplay": {
+          "line_start": 183,
+          "line_end": 215,
+          "methods": [
+            "test_display_empty",
+            "test_display_with_entries",
+            "test_display_with_limit"
+          ]
+        },
+        "TestGetByIssue": {
+          "line_start": 218,
+          "line_end": 236,
+          "methods": [
+            "test_get_by_issue_found",
+            "test_get_by_issue_not_found"
+          ]
+        },
+        "TestUpdateStatus": {
+          "line_start": 239,
+          "line_end": 275,
+          "methods": [
+            "test_update_status_success",
+            "test_update_status_with_error",
+            "test_update_status_not_found",
+            "test_update_status_adds_timestamp"
+          ]
+        },
+        "TestCorruptedHistory": {
+          "line_start": 278,
+          "line_end": 306,
+          "methods": [
+            "test_read_corrupted_json",
+            "test_read_non_list_json"
+          ]
+        },
+        "TestGetHistoryFunction": {
+          "line_start": 309,
+          "line_end": 316,
+          "methods": [
+            "test_get_history_singleton"
+          ]
+        }
+      },
+      "functions": {
+        "temp_history_file": {
+          "line_start": 14,
+          "line_end": 23
+        },
+        "history": {
+          "line_start": 27,
+          "line_end": 29
+        }
+      },
+      "lines": 317,
+      "tokens": 2643
+    },
+    "tests/interfaces/test_interactive.py": {
+      "path": "tests/interfaces/test_interactive.py",
+      "extension": ".py",
+      "size_bytes": 12016,
+      "imports": [
+        "questionary",
+        "unittest.mock",
+        "tempfile",
+        "pathlib",
+        "interfaces.cli.interactive",
+        "pytest"
+      ],
+      "classes": {
+        "TestValidators": {
+          "line_start": 21,
+          "line_end": 78,
+          "methods": [
+            "test_path_validator_valid",
+            "test_path_validator_nonexistent",
+            "test_path_validator_file",
+            "test_non_empty_validator_valid",
+            "test_non_empty_validator_empty",
+            "test_non_empty_validator_whitespace"
+          ]
+        },
+        "TestPromptProjectPath": {
+          "line_start": 81,
+          "line_end": 120,
+          "methods": [
+            "test_prompt_project_path_use_current",
+            "test_prompt_project_path_custom",
+            "test_prompt_project_path_cancelled",
+            "test_prompt_project_path_keyboard_interrupt"
+          ]
+        },
+        "TestPromptNLRequest": {
+          "line_start": 123,
+          "line_end": 151,
+          "methods": [
+            "test_prompt_nl_request_success",
+            "test_prompt_nl_request_cancelled",
+            "test_prompt_nl_request_keyboard_interrupt"
+          ]
+        },
+        "TestHandleSubmitRequest": {
+          "line_start": 154,
+          "line_end": 249,
+          "methods": [
+            "test_handle_submit_request_success",
+            "test_handle_submit_request_cancelled_path",
+            "test_handle_submit_request_cancelled_nl",
+            "test_handle_submit_request_cancelled_confirm"
+          ]
+        },
+        "TestHandleViewHistory": {
+          "line_start": 252,
+          "line_end": 290,
+          "methods": [
+            "test_handle_view_history_default",
+            "test_handle_view_history_all",
+            "test_handle_view_history_cancelled"
+          ]
+        },
+        "TestHandleCreateProject": {
+          "line_start": 293,
+          "line_end": 301,
+          "methods": [
+            "test_handle_create_project"
+          ]
+        },
+        "TestHandleIntegrateADW": {
+          "line_start": 304,
+          "line_end": 312,
+          "methods": [
+            "test_handle_integrate_adw"
+          ]
+        },
+        "TestRunInteractiveMode": {
+          "line_start": 315,
+          "line_end": 384,
+          "methods": [
+            "test_run_interactive_mode_exit",
+            "test_run_interactive_mode_submit_then_exit",
+            "test_run_interactive_mode_keyboard_interrupt"
+          ]
+        }
+      },
+      "functions": {},
+      "lines": 385,
+      "tokens": 3004
+    },
+    "tests/interfaces/test_config_manager.py": {
+      "path": "tests/interfaces/test_config_manager.py",
+      "extension": ".py",
+      "size_bytes": 10211,
+      "imports": [
+        "unittest.mock",
+        "interfaces.cli.config_manager",
+        "yaml",
+        "tempfile",
+        "pathlib",
+        "os",
+        "pytest"
+      ],
+      "classes": {
+        "TestConfigDirectory": {
+          "line_start": 54,
+          "line_end": 63,
+          "methods": [
+            "test_ensure_config_dir"
+          ]
+        },
+        "TestConfigPath": {
+          "line_start": 66,
+          "line_end": 80,
+          "methods": [
+            "test_get_config_path_default",
+            "test_get_config_path_custom"
+          ]
+        },
+        "TestConfigLoading": {
+          "line_start": 83,
+          "line_end": 99,
+          "methods": [
+            "test_load_cli_config_existing",
+            "test_load_cli_config_nonexistent"
+          ]
+        },
+        "TestGetConfig": {
+          "line_start": 102,
+          "line_end": 123,
+          "methods": [
+            "test_get_config_value_success",
+            "test_get_config_value_nested",
+            "test_get_config_value_nonexistent",
+            "test_get_config_value_boolean"
+          ]
+        },
+        "TestSetConfig": {
+          "line_start": 126,
+          "line_end": 176,
+          "methods": [
+            "test_set_config_value_success",
+            "test_set_config_value_boolean",
+            "test_set_config_value_integer",
+            "test_set_config_value_new_file"
+          ]
+        },
+        "TestListConfig": {
+          "line_start": 179,
+          "line_end": 195,
+          "methods": [
+            "test_list_config",
+            "test_list_config_includes_all_sections"
+          ]
+        },
+        "TestDisplayConfig": {
+          "line_start": 198,
+          "line_end": 213,
+          "methods": [
+            "test_display_config",
+            "test_display_config_empty"
+          ]
+        },
+        "TestResetConfig": {
+          "line_start": 216,
+          "line_end": 234,
+          "methods": [
+            "test_reset_config_existing",
+            "test_reset_config_nonexistent"
+          ]
+        },
+        "TestValidateConfig": {
+          "line_start": 237,
+          "line_end": 265,
+          "methods": [
+            "test_validate_config_valid",
+            "test_validate_config_invalid_repo_format"
+          ]
+        }
+      },
+      "functions": {
+        "temp_config_file": {
+          "line_start": 25,
+          "line_end": 43
+        },
+        "mock_config_path": {
+          "line_start": 47,
+          "line_end": 51
+        }
+      },
+      "lines": 266,
+      "tokens": 2552
+    },
+    "tests/interfaces/web/__init__.py": {
+      "path": "tests/interfaces/web/__init__.py",
+      "extension": ".py",
+      "size_bytes": 36,
+      "imports": [],
+      "classes": {},
+      "functions": {},
+      "lines": 2,
+      "tokens": 9
+    },
+    "tests/interfaces/web/test_state.py": {
+      "path": "tests/interfaces/web/test_state.py",
+      "extension": ".py",
+      "size_bytes": 1997,
+      "imports": [
+        "pathlib",
+        "interfaces.web.state",
+        "datetime",
+        "pytest"
+      ],
+      "classes": {},
+      "functions": {
+        "state": {
+          "line_start": 10,
+          "line_end": 12
+        },
+        "test_create_request": {
+          "line_start": 15,
+          "line_end": 26
+        },
+        "test_get_preview": {
+          "line_start": 29,
+          "line_end": 37
+        },
+        "test_get_preview_nonexistent": {
+          "line_start": 40,
+          "line_end": 43
+        },
+        "test_invalid_project_path": {
+          "line_start": 46,
+          "line_end": 49
+        },
+        "test_cleanup_old_requests": {
+          "line_start": 52,
+          "line_end": 66
+        }
+      },
+      "lines": 67,
+      "tokens": 499
+    },
+    "tests/interfaces/web/test_server.py": {
+      "path": "tests/interfaces/web/test_server.py",
+      "extension": ".py",
+      "size_bytes": 1478,
+      "imports": [
+        "fastapi.testclient",
+        "interfaces.web.server",
+        "pytest"
+      ],
+      "classes": {},
+      "functions": {
+        "client": {
+          "line_start": 10,
+          "line_end": 12
+        },
+        "test_health_check": {
+          "line_start": 15,
+          "line_end": 23
+        },
+        "test_root_endpoint": {
+          "line_start": 26,
+          "line_end": 35
+        },
+        "test_cors_headers": {
+          "line_start": 38,
+          "line_end": 49
+        },
+        "test_nonexistent_endpoint": {
+          "line_start": 52,
+          "line_end": 55
+        }
+      },
+      "lines": 56,
+      "tokens": 369
+    },
+    "tests/interfaces/web/test_models.py": {
+      "path": "tests/interfaces/web/test_models.py",
+      "extension": ".py",
+      "size_bytes": 0,
+      "imports": [],
+      "classes": {},
+      "functions": {},
+      "lines": 1,
+      "tokens": 0
+    },
+    "tests/interfaces/web/test_workflows_routes.py": {
+      "path": "tests/interfaces/web/test_workflows_routes.py",
+      "extension": ".py",
+      "size_bytes": 0,
+      "imports": [],
+      "classes": {},
+      "functions": {},
+      "lines": 1,
+      "tokens": 0
+    },
+    "tests/interfaces/web/test_requests_routes.py": {
+      "path": "tests/interfaces/web/test_requests_routes.py",
+      "extension": ".py",
+      "size_bytes": 0,
+      "imports": [],
+      "classes": {},
+      "functions": {},
+      "lines": 1,
+      "tokens": 0
+    },
+    "adws/adw_modules/git_ops.py": {
+      "path": "adws/adw_modules/git_ops.py",
+      "extension": ".py",
+      "size_bytes": 9217,
+      "imports": [
+        "adw_modules.github",
+        "logging",
+        "adw_modules.workflow_ops",
+        "typing",
+        "subprocess",
+        "json"
+      ],
+      "classes": {},
+      "functions": {
+        "get_current_branch": {
+          "line_start": 15,
+          "line_end": 23
+        },
+        "push_branch": {
+          "line_start": 26,
+          "line_end": 38
+        },
+        "check_pr_exists": {
+          "line_start": 41,
+          "line_end": 69
+        },
+        "create_branch": {
+          "line_start": 72,
+          "line_end": 94
+        },
+        "commit_changes": {
+          "line_start": 97,
+          "line_end": 121
+        },
+        "get_pr_number": {
+          "line_start": 124,
+          "line_end": 154
+        },
+        "approve_pr": {
+          "line_start": 157,
+          "line_end": 184
+        },
+        "merge_pr": {
+          "line_start": 187,
+          "line_end": 249
+        },
+        "finalize_git_operations": {
+          "line_start": 252,
+          "line_end": 316
+        }
+      },
+      "lines": 317,
+      "tokens": 2303
+    },
+    "adws/adw_modules/__init__.py": {
+      "path": "adws/adw_modules/__init__.py",
+      "extension": ".py",
+      "size_bytes": 21,
+      "imports": [],
+      "classes": {},
+      "functions": {},
+      "lines": 1,
+      "tokens": 5
+    },
+    "adws/adw_modules/data_types.py": {
+      "path": "adws/adw_modules/data_types.py",
+      "extension": ".py",
+      "size_bytes": 8150,
+      "imports": [
+        "typing",
+        "pydantic",
+        "enum",
+        "datetime"
+      ],
+      "classes": {
+        "RetryCode": {
+          "line_start": 10,
+          "line_end": 17,
+          "methods": []
+        },
+        "GitHubUser": {
+          "line_start": 72,
+          "line_end": 78,
+          "methods": []
+        },
+        "GitHubLabel": {
+          "line_start": 81,
+          "line_end": 87,
+          "methods": []
+        },
+        "GitHubMilestone": {
+          "line_start": 90,
+          "line_end": 97,
+          "methods": []
+        },
+        "GitHubComment": {
+          "line_start": 100,
+          "line_end": 109,
+          "methods": []
+        },
+        "GitHubIssueListItem": {
+          "line_start": 112,
+          "line_end": 123,
+          "methods": []
+        },
+        "GitHubIssue": {
+          "line_start": 126,
+          "line_end": 144,
+          "methods": []
+        },
+        "AgentPromptRequest": {
+          "line_start": 147,
+          "line_end": 156,
+          "methods": []
+        },
+        "AgentPromptResponse": {
+          "line_start": 159,
+          "line_end": 165,
+          "methods": []
+        },
+        "AgentTemplateRequest": {
+          "line_start": 168,
+          "line_end": 176,
+          "methods": []
+        },
+        "ClaudeCodeResultMessage": {
+          "line_start": 179,
+          "line_end": 190,
+          "methods": []
+        },
+        "TestResult": {
+          "line_start": 193,
+          "line_end": 200,
+          "methods": []
+        },
+        "E2ETestResult": {
+          "line_start": 203,
+          "line_end": 215,
+          "methods": [
+            "passed"
+          ]
+        },
+        "ADWStateData": {
+          "line_start": 218,
+          "line_end": 234,
+          "methods": []
+        },
+        "ReviewIssue": {
+          "line_start": 237,
+          "line_end": 247,
+          "methods": []
+        },
+        "ReviewResult": {
+          "line_start": 250,
+          "line_end": 263,
+          "methods": []
+        },
+        "DocumentationResult": {
+          "line_start": 266,
+          "line_end": 272,
+          "methods": []
+        },
+        "ADWExtractionResult": {
+          "line_start": 275,
+          "line_end": 285,
+          "methods": [
+            "has_workflow"
+          ]
+        },
+        "Config": {
+          "line_start": 143,
+          "line_end": 144,
+          "methods": []
+        }
+      },
+      "functions": {},
+      "lines": 286,
+      "tokens": 2037
+    },
+    "adws/adw_modules/r2_uploader.py": {
+      "path": "adws/adw_modules/r2_uploader.py",
+      "extension": ".py",
+      "size_bytes": 4959,
+      "imports": [
+        "boto3",
+        "botocore.exceptions",
+        "logging",
+        "botocore.client",
+        "typing",
+        "pathlib",
+        "os"
+      ],
+      "classes": {
+        "R2Uploader": {
+          "line_start": 12,
+          "line_end": 126,
+          "methods": [
+            "__init__",
+            "_initialize",
+            "upload_file",
+            "upload_screenshots"
+          ]
+        }
+      },
+      "functions": {},
+      "lines": 126,
+      "tokens": 1239
+    },
+    "adws/adw_modules/worktree_ops.py": {
+      "path": "adws/adw_modules/worktree_ops.py",
+      "extension": ".py",
+      "size_bytes": 8182,
+      "imports": [
+        "adw_modules.state",
+        "socket",
+        "logging",
+        "typing",
+        "subprocess",
+        "os"
+      ],
+      "classes": {},
+      "functions": {
+        "create_worktree": {
+          "line_start": 15,
+          "line_end": 72
+        },
+        "validate_worktree": {
+          "line_start": 75,
+          "line_end": 104
+        },
+        "get_worktree_path": {
+          "line_start": 107,
+          "line_end": 119
+        },
+        "remove_worktree": {
+          "line_start": 122,
+          "line_end": 148
+        },
+        "setup_worktree_environment": {
+          "line_start": 151,
+          "line_end": 171
+        },
+        "get_ports_for_adw": {
+          "line_start": 176,
+          "line_end": 198
+        },
+        "is_port_available": {
+          "line_start": 201,
+          "line_end": 216
+        },
+        "find_next_available_ports": {
+          "line_start": 219,
+          "line_end": 243
+        }
+      },
+      "lines": 243,
+      "tokens": 2045
+    },
+    "adws/adw_modules/utils.py": {
+      "path": "adws/adw_modules/utils.py",
+      "extension": ".py",
+      "size_bytes": 8391,
+      "imports": [
+        "uuid",
+        "re",
+        "logging",
+        "sys",
+        "typing",
+        "datetime",
+        "json",
+        "os"
+      ],
+      "classes": {},
+      "functions": {
+        "make_adw_id": {
+          "line_start": 15,
+          "line_end": 17
+        },
+        "setup_logger": {
+          "line_start": 20,
+          "line_end": 73
+        },
+        "get_logger": {
+          "line_start": 76,
+          "line_end": 85
+        },
+        "parse_json": {
+          "line_start": 88,
+          "line_end": 158
+        },
+        "check_env_vars": {
+          "line_start": 161,
+          "line_end": 186
+        },
+        "get_safe_subprocess_env": {
+          "line_start": 189,
+          "line_end": 242
+        }
+      },
+      "lines": 242,
+      "tokens": 2097
+    },
+    "adws/adw_modules/agent.py": {
+      "path": "adws/adw_modules/agent.py",
+      "extension": ".py",
+      "size_bytes": 21661,
+      "imports": [
+        "data_types",
+        "dotenv",
+        "re",
+        "logging",
+        "sys",
+        "state",
+        "typing",
+        "time",
+        "subprocess",
+        "json",
+        "os",
+        "utils"
+      ],
+      "classes": {},
+      "functions": {
+        "get_model_for_slash_command": {
+          "line_start": 52,
+          "line_end": 83
+        },
+        "truncate_output": {
+          "line_start": 86,
+          "line_end": 144
+        },
+        "check_claude_installed": {
+          "line_start": 147,
+          "line_end": 159
+        },
+        "parse_jsonl_output": {
+          "line_start": 162,
+          "line_end": 184
+        },
+        "convert_jsonl_to_json": {
+          "line_start": 187,
+          "line_end": 206
+        },
+        "get_claude_env": {
+          "line_start": 209,
+          "line_end": 222
+        },
+        "save_prompt": {
+          "line_start": 225,
+          "line_end": 247
+        },
+        "prompt_claude_code_with_retry": {
+          "line_start": 250,
+          "line_end": 301
+        },
+        "prompt_claude_code": {
+          "line_start": 304,
+          "line_end": 508
+        },
+        "execute_template": {
+          "line_start": 511,
+          "line_end": 561
+        }
+      },
+      "lines": 562,
+      "tokens": 5415
+    },
+    "adws/adw_modules/github.py": {
+      "path": "adws/adw_modules/github.py",
+      "extension": ".py",
+      "size_bytes": 9535,
+      "imports": [
+        "data_types",
+        "sys",
+        "typing",
+        "subprocess",
+        "json",
+        "os"
+      ],
+      "classes": {},
+      "functions": {
+        "get_github_env": {
+          "line_start": 27,
+          "line_end": 52
+        },
+        "get_repo_url": {
+          "line_start": 55,
+          "line_end": 70
+        },
+        "extract_repo_path": {
+          "line_start": 73,
+          "line_end": 76
+        },
+        "fetch_issue": {
+          "line_start": 79,
+          "line_end": 123
+        },
+        "make_issue_comment": {
+          "line_start": 126,
+          "line_end": 161
+        },
+        "mark_issue_in_progress": {
+          "line_start": 164,
+          "line_end": 206
+        },
+        "fetch_open_issues": {
+          "line_start": 209,
+          "line_end": 244
+        },
+        "fetch_issue_comments": {
+          "line_start": 247,
+          "line_end": 287
+        },
+        "find_keyword_from_comment": {
+          "line_start": 290,
+          "line_end": 312
+        }
+      },
+      "lines": 313,
+      "tokens": 2381
+    },
+    "adws/adw_modules/workflow_ops.py": {
+      "path": "adws/adw_modules/workflow_ops.py",
+      "extension": ".py",
+      "size_bytes": 23872,
+      "imports": [
+        "adw_modules.state",
+        "adw_modules.agent",
+        "adw_modules.github",
+        "glob",
+        "logging",
+        "re",
+        "adw_modules.data_types",
+        "adw_modules.utils",
+        "typing",
+        "adw_modules.git_ops",
+        "subprocess",
+        "json",
+        "os"
+      ],
+      "classes": {},
+      "functions": {
+        "format_issue_message": {
+          "line_start": 50,
+          "line_end": 57
+        },
+        "extract_adw_info": {
+          "line_start": 60,
+          "line_end": 112
+        },
+        "classify_issue": {
+          "line_start": 115,
+          "line_end": 163
+        },
+        "build_plan": {
+          "line_start": 166,
+          "line_end": 197
+        },
+        "implement_plan": {
+          "line_start": 200,
+          "line_end": 229
+        },
+        "generate_branch_name": {
+          "line_start": 232,
+          "line_end": 262
+        },
+        "create_commit": {
+          "line_start": 265,
+          "line_end": 301
+        },
+        "create_pull_request": {
+          "line_start": 304,
+          "line_end": 356
+        },
+        "ensure_plan_exists": {
+          "line_start": 359,
+          "line_end": 381
+        },
+        "ensure_adw_id": {
+          "line_start": 384,
+          "line_end": 429
+        },
+        "find_existing_branch_for_issue": {
+          "line_start": 432,
+          "line_end": 458
+        },
+        "find_plan_for_issue": {
+          "line_start": 461,
+          "line_end": 493
+        },
+        "create_or_find_branch": {
+          "line_start": 496,
+          "line_end": 580
+        },
+        "find_spec_file": {
+          "line_start": 583,
+          "line_end": 650
+        },
+        "create_and_implement_patch": {
+          "line_start": 653,
+          "line_end": 722
+        }
+      },
+      "lines": 723,
+      "tokens": 5968
+    },
+    "adws/adw_modules/state.py": {
+      "path": "adws/adw_modules/state.py",
+      "extension": ".py",
+      "size_bytes": 6259,
+      "imports": [
+        "logging",
+        "sys",
+        "adw_modules.data_types",
+        "typing",
+        "json",
+        "os"
+      ],
+      "classes": {
+        "ADWState": {
+          "line_start": 15,
+          "line_end": 172,
+          "methods": [
+            "__init__",
+            "update",
+            "get",
+            "append_adw_id",
+            "get_working_directory",
+            "get_state_path",
+            "save",
+            "load",
+            "from_stdin",
+            "to_stdout"
+          ]
+        }
+      },
+      "functions": {},
+      "lines": 173,
+      "tokens": 1564
+    },
+    "adws/adw_triggers/trigger_webhook.py": {
+      "path": "adws/adw_triggers/trigger_webhook.py",
+      "extension": ".py",
+      "size_bytes": 12669,
+      "imports": [
+        "adw_modules.state",
+        "dotenv",
+        "adw_modules.github",
+        "adw_modules.utils",
+        "sys",
+        "adw_modules.workflow_ops",
+        "typing",
+        "fastapi",
+        "uvicorn",
+        "subprocess",
+        "os"
+      ],
+      "classes": {},
+      "functions": {},
+      "lines": 334,
+      "tokens": 3161
+    },
+    "adws/adw_triggers/__init__.py": {
+      "path": "adws/adw_triggers/__init__.py",
+      "extension": ".py",
+      "size_bytes": 22,
+      "imports": [],
+      "classes": {},
+      "functions": {},
+      "lines": 1,
+      "tokens": 5
+    },
+    "adws/adw_triggers/trigger_cron.py": {
+      "path": "adws/adw_triggers/trigger_cron.py",
+      "extension": ".py",
+      "size_bytes": 7444,
+      "imports": [
+        "dotenv",
+        "pathlib",
+        "adw_modules.github",
+        "traceback",
+        "signal",
+        "sys",
+        "adw_modules.utils",
+        "typing",
+        "time",
+        "schedule",
+        "subprocess",
+        "os"
+      ],
+      "classes": {},
+      "functions": {
+        "signal_handler": {
+          "line_start": 61,
+          "line_end": 65
+        },
+        "should_process_issue": {
+          "line_start": 68,
+          "line_end": 95
+        },
+        "trigger_adw_workflow": {
+          "line_start": 98,
+          "line_end": 127
+        },
+        "check_and_process_issues": {
+          "line_start": 130,
+          "line_end": 189
+        },
+        "main": {
+          "line_start": 192,
+          "line_end": 214
+        }
+      },
+      "lines": 229,
+      "tokens": 1861
+    },
+    "adws/adw_tests/test_r2_uploader.py": {
+      "path": "adws/adw_tests/test_r2_uploader.py",
+      "extension": ".py",
+      "size_bytes": 5490,
+      "imports": [
+        "dotenv",
+        "logging",
+        "sys",
+        "requests",
+        "datetime",
+        "pathlib",
+        "adw_modules.r2_uploader",
+        "os"
+      ],
+      "classes": {},
+      "functions": {
+        "setup_logger": {
+          "line_start": 36,
+          "line_end": 47
+        },
+        "test_r2_upload": {
+          "line_start": 50,
+          "line_end": 167
+        },
+        "main": {
+          "line_start": 170,
+          "line_end": 173
+        }
+      },
+      "lines": 178,
+      "tokens": 1357
+    },
+    "adws/adw_tests/__init__.py": {
+      "path": "adws/adw_tests/__init__.py",
+      "extension": ".py",
+      "size_bytes": 19,
+      "imports": [],
+      "classes": {},
+      "functions": {},
+      "lines": 1,
+      "tokens": 4
+    },
+    "adws/adw_tests/test_webhook_simplified.py": {
+      "path": "adws/adw_tests/test_webhook_simplified.py",
+      "extension": ".py",
+      "size_bytes": 2453,
+      "imports": [
+        "os"
+      ],
+      "classes": {},
+      "functions": {
+        "test_workflow_support": {
+          "line_start": 18,
+          "line_end": 76
+        }
+      },
+      "lines": 80,
+      "tokens": 608
+    },
+    "adws/adw_tests/sandbox_poc.py": {
+      "path": "adws/adw_tests/sandbox_poc.py",
+      "extension": ".py",
+      "size_bytes": 4378,
+      "imports": [
+        "e2b_code_interpreter",
+        "dotenv",
+        "json",
+        "os"
+      ],
+      "classes": {},
+      "functions": {},
+      "lines": 120,
+      "tokens": 1093
+    },
+    "adws/adw_tests/health_check.py": {
+      "path": "adws/adw_tests/health_check.py",
+      "extension": ".py",
+      "size_bytes": 13128,
+      "imports": [
+        "dotenv",
+        "argparse",
+        "pathlib",
+        "adw_modules.github",
+        "adw_modules.utils",
+        "sys",
+        "typing",
+        "tempfile",
+        "pydantic",
+        "datetime",
+        "subprocess",
+        "json",
+        "os"
+      ],
+      "classes": {
+        "CheckResult": {
+          "line_start": 47,
+          "line_end": 53,
+          "methods": []
+        },
+        "HealthCheckResult": {
+          "line_start": 56,
+          "line_end": 63,
+          "methods": []
+        }
+      },
+      "functions": {
+        "check_env_vars": {
+          "line_start": 66,
+          "line_end": 110
+        },
+        "check_git_repo": {
+          "line_start": 113,
+          "line_end": 137
+        },
+        "check_claude_code": {
+          "line_start": 140,
+          "line_end": 227
+        },
+        "check_github_cli": {
+          "line_start": 230,
+          "line_end": 258
+        },
+        "run_health_check": {
+          "line_start": 261,
+          "line_end": 313
+        },
+        "main": {
+          "line_start": 316,
+          "line_end": 397
+        }
+      },
+      "lines": 402,
+      "tokens": 3271
+    },
+    "adws/adw_tests/test_model_selection.py": {
+      "path": "adws/adw_tests/test_model_selection.py",
+      "extension": ".py",
+      "size_bytes": 5923,
+      "imports": [
+        "adw_modules.state",
+        "adw_modules.agent",
+        "sys",
+        "adw_modules.data_types",
+        "typing",
+        "os"
+      ],
+      "classes": {},
+      "functions": {
+        "test_model_mapping_structure": {
+          "line_start": 18,
+          "line_end": 42
+        },
+        "test_model_mapping_lookups": {
+          "line_start": 45,
+          "line_end": 69
+        },
+        "test_model_differences": {
+          "line_start": 72,
+          "line_end": 88
+        },
+        "test_get_model_for_slash_command": {
+          "line_start": 91,
+          "line_end": 159
+        },
+        "main": {
+          "line_start": 162,
+          "line_end": 187
+        }
+      },
+      "lines": 191,
+      "tokens": 1469
+    },
+    "adws/adw_tests/test_agents.py": {
+      "path": "adws/adw_tests/test_agents.py",
+      "extension": ".py",
+      "size_bytes": 6088,
+      "imports": [
+        "dotenv",
+        "adw_modules.agent",
+        "concurrent.futures",
+        "adw_modules.utils",
+        "sys",
+        "adw_modules.data_types",
+        "json",
+        "os"
+      ],
+      "classes": {},
+      "functions": {
+        "test_model": {
+          "line_start": 37,
+          "line_end": 75
+        },
+        "test_retry_functionality": {
+          "line_start": 78,
+          "line_end": 122
+        },
+        "main": {
+          "line_start": 125,
+          "line_end": 187
+        }
+      },
+      "lines": 192,
+      "tokens": 1515
+    }
+  },
+  "summary": {
+    "total_files": 129,
+    "total_lines": 19865,
+    "total_tokens": 160569,
+    "by_extension": {
+      ".sample": {
+        "count": 2,
+        "total_lines": 0,
+        "total_tokens": 0
+      },
+      "": {
+        "count": 2,
+        "total_lines": 0,
+        "total_tokens": 0
+      },
+      ".json": {
+        "count": 2,
+        "total_lines": 0,
+        "total_tokens": 0
+      },
+      ".toml": {
+        "count": 1,
+        "total_lines": 0,
+        "total_tokens": 0
+      },
+      ".yaml": {
+        "count": 1,
+        "total_lines": 0,
+        "total_tokens": 0
+      },
+      ".md": {
+        "count": 39,
+        "total_lines": 4288,
+        "total_tokens": 36055
+      },
+      ".py": {
+        "count": 79,
+        "total_lines": 15577,
+        "total_tokens": 124514
+      },
+      ".sh": {
+        "count": 3,
+        "total_lines": 0,
+        "total_tokens": 0
+      }
+    }
+  }
+}
+✅ Indexed 129 files
+   Total lines: 19,865
+   Estimated tokens: 160,569
+
+   By extension:
+     .py     :   79 files,  124,514 tokens
+     .md     :   39 files,   36,055 tokens
+     .sh     :    3 files,        0 tokens
+     .sample :    2 files,        0 tokens
+     none    :    2 files,        0 tokens
+     .json   :    2 files,        0 tokens
+     .toml   :    1 files,        0 tokens
+     .yaml   :    1 files,        0 tokens
+

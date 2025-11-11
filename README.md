@@ -505,6 +505,56 @@ See [zte-hopper/README.md](zte-hopper/README.md) for complete ZTE Hopper documen
 
 See [adws/README.md](adws/README.md) for detailed ADW documentation.
 
+## Token Usage Monitoring
+
+Track and analyze token usage and costs for ADW workflows:
+
+### Real-time Monitoring
+
+Monitor token usage while running ADW commands:
+
+```bash
+# Run a command with token monitoring
+python3 adw_token_monitor.py claude --adw path/to/adw.md --phase implementation
+
+# Monitor any Claude Code command
+python3 adw_token_monitor.py claude --chat "explain this code" --phase analysis
+```
+
+### Analyze Usage History
+
+Review token usage from previous sessions:
+
+```bash
+# Analyze the most recent session
+python3 adw_token_monitor.py --analyze
+
+# Analyze a specific session
+python3 adw_token_monitor.py --analyze --session-id 1762750941
+
+# Use a different log file
+python3 adw_token_monitor.py --analyze --log-file custom_usage.jsonl
+```
+
+The analysis generates a report with:
+- Total operations and success rate
+- Phase-by-phase breakdown
+- Token usage estimates and totals
+- Duration statistics
+- Optimization recommendations
+
+Reports are saved to `adw_token_analysis_[timestamp].txt`.
+
+### Post-Execution Analysis
+
+Analyze costs from Claude Code conversation history:
+
+```bash
+python3 adw_token_usage.py
+```
+
+This reads the `.clinerval` file and provides detailed cost breakdowns.
+
 ## Testing
 
 ### Run All Tests

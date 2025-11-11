@@ -1,0 +1,21 @@
+
+ADW Token Usage Analysis Report
+Session ID: 1762753017
+Generated: 2025-11-11T06:52:08.637373
+============================================
+
+OPERATION SUMMARY
+-----------------
+Total operations: 1
+Successful operations: 1
+Success rate: 100.0%
+Total duration: 1.0 seconds
+
+PHASE BREAKDOWN
+---------------
+
+WEB_FRONTEND_TEST:
+  • Operations: 1
+  • Total duration: 1.0s
+  • Average duration: 1.0s
+  • Token estimates: 0 recorded
