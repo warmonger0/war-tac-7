@@ -57,8 +57,8 @@ log() {
         echo "$log_line" >> "$LOG_FILE"
     fi
 
-    # Also output to stdout for real-time monitoring
-    echo "$log_line"
+    # Also output to stderr for real-time monitoring (not stdout to avoid contaminating command substitution)
+    echo "$log_line" >&2
 }
 
 #############################################################################
