@@ -14,8 +14,8 @@ import json
 from unittest.mock import patch, MagicMock
 from core.nl_processor import analyze_intent, extract_requirements, process_request
 from core.project_detector import detect_project_context
-from core.issue_formatter import format_issue, create_feature_issue_body
-from core.data_models import GitHubIssue, ProjectContext
+from core.issue_formatter import create_feature_issue_body
+from core.data_models import ProjectContext
 from tests.fixtures import api_responses
 
 
@@ -322,7 +322,6 @@ class TestEndToEndPerformance:
         start_time = time.time()
 
         # Project detection
-        from core.data_models import ProjectContext
         context = ProjectContext(
             path=str(project_dir),
             is_new_project=False,
@@ -363,7 +362,6 @@ class TestEndToEndPerformance:
         project_dir = tmp_path / "project"
         project_dir.mkdir()
 
-        from core.data_models import ProjectContext
         context = ProjectContext(
             path=str(project_dir),
             is_new_project=False,

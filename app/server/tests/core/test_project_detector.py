@@ -19,13 +19,6 @@ from tests.fixtures.project_samples import (
     get_sample_project_json,
     CORRUPTED_PACKAGE_JSON,
     MIXED_FRAMEWORKS_PACKAGE_JSON,
-    SVELTEKIT_PACKAGE_JSON,
-    SOLIDJS_PACKAGE_JSON,
-    REMIX_PACKAGE_JSON,
-    NUXT_PACKAGE_JSON,
-    NESTJS_PACKAGE_JSON,
-    FASTIFY_PACKAGE_JSON,
-    HONO_PACKAGE_JSON,
 )
 
 

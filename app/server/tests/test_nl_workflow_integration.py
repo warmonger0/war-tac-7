@@ -506,7 +506,7 @@ class TestNLWorkflowFailureScenarios:
 
         # Should handle non-existent directory gracefully
         with pytest.raises(Exception):
-            context = detect_project_context(str(non_existent_dir))
+            detect_project_context(str(non_existent_dir))
 
     @pytest.mark.asyncio
     @patch('core.nl_processor.Anthropic')
