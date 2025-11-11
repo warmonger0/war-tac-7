@@ -257,3 +257,14 @@ This prompt helps you determine what documentation you should read based on the 
     - When creating scripts that coordinate multiple services (backend + frontend)
     - When working with the scripts/start_full.sh script
     - When documenting application architecture in README files
+
+- app_docs/feature-0a6c3431-docs-structure-indexes.md
+  - Conditions:
+    - When working with documentation organization or structure
+    - When creating new documentation directories or README index files
+    - When implementing documentation navigation systems
+    - When updating ARCHITECTURE.md or other high-level documentation
+    - When establishing documentation standards or templates
+    - When creating issue tracking directories (planning/active/completed)
+    - When implementing cross-referenced documentation with "See Also" sections
+    - When understanding the project's documentation hierarchy and layout

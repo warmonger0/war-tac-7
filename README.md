@@ -333,14 +333,12 @@ See [docs/architecture.md](docs/architecture.md) for detailed architecture.
 
 ## Documentation
 
-- **[CLI Reference](docs/cli.md)** - Complete CLI command reference
-- **[Web UI Guide](docs/web-ui.md)** - Using the web interface
-- **[API Documentation](docs/api.md)** - Backend API reference
-- **[Architecture](docs/architecture.md)** - System design and data flow
-- **[Example Requests](docs/examples.md)** - 30+ example natural language requests
-- **[Troubleshooting](docs/troubleshooting.md)** - Common issues and solutions
-- **[Integration Guide](templates/existing_webapp/integration_guide.md)** - Integrate into existing projects
-- **[ADW Workflows](adws/README.md)** - ADW system documentation
+- **[README](README.md)** - Getting started guide and quick reference
+- **[ARCHITECTURE](ARCHITECTURE.md)** - High-level system design and architecture
+- **[Features](app_docs/)** - Feature documentation and specifications
+- **[Technical](docs/)** - Integration guides, API docs, and technical references
+- **[Specs](specs/)** - Planning specifications and technical specs
+- **[Issues](issues/)** - Development tracking and issue lifecycle
 
 ## Project Structure
 
