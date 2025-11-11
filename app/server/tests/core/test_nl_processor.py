@@ -1,7 +1,7 @@
 import pytest
 import os
 import json
-from unittest.mock import patch, MagicMock, AsyncMock
+from unittest.mock import patch, MagicMock
 from core.nl_processor import (
     analyze_intent,
     extract_requirements,

@@ -1,8 +1,7 @@
 import pytest
 import json
-import os
 from pathlib import Path
-from unittest.mock import patch, MagicMock
+from unittest.mock import patch
 from core.project_detector import (
     detect_project_context,
     is_directory_empty,
