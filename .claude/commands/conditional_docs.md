@@ -306,3 +306,14 @@ This prompt helps you determine what documentation you should read based on the 
     - When setting up project templates or scaffolding scripts (setup_new_project.sh, integrate_existing.sh)
     - When troubleshooting documentation organization or cross-referencing between docs
     - When understanding the documentation coverage for the tac-webbuilder project
+
+- app_docs/feature-ba65b834-landing-page-visual-design.md
+  - Conditions:
+    - When working with tac-webbuilder landing page layout or design
+    - When implementing visual separators with drop shadow effects
+    - When center-aligning header content or navigation elements
+    - When working with Tailwind custom colors or theme configuration
+    - When implementing CSS-only visual enhancements
+    - When creating E2E tests for visual design validation
+    - When working with responsive design for landing pages
+    - When troubleshooting landing page styling or layout issues
