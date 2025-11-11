@@ -8,13 +8,13 @@ Summary metrics across all ADW runs.
 
 | Metric            | Value          | Last Updated                 |
 | ----------------- | -------------- | ---------------------------- |
-| Current Streak    | 18             | Tue Nov 11 14:45:29 PST 2025 |
-| Longest Streak    | 18             | Tue Nov 11 14:45:29 PST 2025 |
-| Total Plan Size   | 4108 lines     | Tue Nov 11 14:45:29 PST 2025 |
-| Largest Plan Size | 566 lines      | Tue Nov 11 14:45:29 PST 2025 |
-| Total Diff Size   | 42031 lines    | Tue Nov 11 14:45:29 PST 2025 |
-| Largest Diff Size | 8602 lines     | Tue Nov 11 14:45:29 PST 2025 |
-| Average Presence  | 1.00           | Tue Nov 11 14:45:29 PST 2025 |
+| Current Streak    | 19             | Tue Nov 11 15:49:01 PST 2025 |
+| Longest Streak    | 19             | Tue Nov 11 15:49:01 PST 2025 |
+| Total Plan Size   | 4331 lines     | Tue Nov 11 15:49:01 PST 2025 |
+| Largest Plan Size | 566 lines      | Tue Nov 11 15:49:01 PST 2025 |
+| Total Diff Size   | 42517 lines    | Tue Nov 11 15:49:01 PST 2025 |
+| Largest Diff Size | 8602 lines     | Tue Nov 11 15:49:01 PST 2025 |
+| Average Presence  | 1.00           | Tue Nov 11 15:49:01 PST 2025 |
 
 ## ADW KPIs
 
@@ -40,3 +40,4 @@ Detailed metrics for individual ADW workflow runs.
 | 2025-11-11 | afc2e0dd | 58           | /feature    | 1        | 265               | 322/1/6                         | Tue Nov 11 07:44:49 PST 2025 |                              |
 | 2025-11-11 | 5e6a13af | 60           | /chore      | 1        | 254               | 8572/30/63                      | Mon Nov 11 11:00:28 PST 2025 |                              |
 | 2025-11-11 | ba65b834 | 63           | /feature    | 1        | 213               | 203/4/9                         | Tue Nov 11 14:45:29 PST 2025 |                              |
+| 2025-11-11 | 5b192684 | 65           | /feature    | 1        | 223               | 484/2/11                        | Tue Nov 11 15:49:01 PST 2025 |                              |
