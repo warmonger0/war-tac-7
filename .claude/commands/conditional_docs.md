@@ -236,3 +236,13 @@ This prompt helps you determine what documentation you should read based on the 
     - When understanding the migration from interfaces/web to app/server
     - When configuring uvicorn entry points or server startup
     - When updating MCP configuration paths for new tree directories
+
+- app_docs/feature-26e44bd2-test-worktree-path-fix.md
+  - Conditions:
+    - When working with ADW worktree path functionality
+    - When implementing tests for worktree file creation
+    - When troubleshooting ADW planning agent path reporting
+    - When validating that files are created in correct worktree locations
+    - When debugging GitHub workflow path-related errors
+    - When understanding how MCP configuration relates to worktrees
+    - When creating test scripts for ADW functionality validation
