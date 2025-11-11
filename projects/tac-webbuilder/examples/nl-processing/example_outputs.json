@@ -1,0 +1,290 @@
+[
+  {
+    "category": "feature_simple",
+    "input": "Add a dark mode toggle to the settings page",
+    "expected_output": {
+      "title": "Add a dark mode toggle to the settings page",
+      "classification": "feature",
+      "workflow": "adw_sdlc_iso",
+      "model_set": "base",
+      "labels": ["feature", "ui"],
+      "sample_requirements": [
+        "Create toggle component in settings page",
+        "Implement theme switching logic",
+        "Add dark mode CSS styles",
+        "Persist theme preference in localStorage"
+      ]
+    }
+  },
+  {
+    "category": "feature_medium",
+    "input": "Implement user authentication with email/password login and JWT tokens",
+    "expected_output": {
+      "title": "Implement user authentication with email/password login and JWT tokens",
+      "classification": "feature",
+      "workflow": "adw_plan_build_test_iso",
+      "model_set": "base",
+      "labels": ["feature", "authentication"],
+      "sample_requirements": [
+        "Create login form with email and password fields",
+        "Implement JWT token generation and validation",
+        "Add password hashing with bcrypt",
+        "Create authentication middleware",
+        "Implement token refresh mechanism"
+      ]
+    }
+  },
+  {
+    "category": "feature_complex",
+    "input": "Build a real-time collaborative editing system with WebSocket connections, cursor tracking, conflict resolution, and presence indicators",
+    "expected_output": {
+      "title": "Build a real-time collaborative editing system",
+      "classification": "feature",
+      "workflow": "adw_plan_build_test_iso",
+      "model_set": "heavy",
+      "labels": ["feature", "collaboration", "websocket"],
+      "sample_requirements": [
+        "Set up WebSocket server infrastructure",
+        "Implement real-time cursor position tracking",
+        "Add operational transformation for conflict resolution",
+        "Create presence indicator UI components",
+        "Implement user session management",
+        "Add reconnection handling"
+      ]
+    }
+  },
+  {
+    "category": "bug_simple",
+    "input": "Login button doesn't respond when clicked",
+    "expected_output": {
+      "title": "Fix: Login button doesn't respond when clicked",
+      "classification": "bug",
+      "workflow": "adw_plan_build_test_iso",
+      "model_set": "base",
+      "labels": ["bug", "ui"],
+      "sample_requirements": [
+        "Investigate event handler attachment",
+        "Check for JavaScript errors in console",
+        "Verify button element is not disabled",
+        "Add proper click event listener"
+      ]
+    }
+  },
+  {
+    "category": "bug_detailed",
+    "input": "When clicking the login button, expected behavior is to show the login form. Actual behavior: nothing happens and console shows TypeError",
+    "expected_output": {
+      "title": "Fix: Login button TypeError preventing form display",
+      "classification": "bug",
+      "workflow": "adw_plan_build_test_iso",
+      "model_set": "base",
+      "labels": ["bug", "authentication"],
+      "sample_requirements": [
+        "Fix TypeError: Cannot read property 'email' of undefined",
+        "Add null checks for user object",
+        "Ensure login form displays on button click",
+        "Add error handling for undefined properties"
+      ]
+    }
+  },
+  {
+    "category": "chore_docs",
+    "input": "Update API documentation to include all new authentication endpoints",
+    "expected_output": {
+      "title": "Update API documentation for authentication endpoints",
+      "classification": "chore",
+      "workflow": "adw_sdlc_iso",
+      "model_set": "base",
+      "labels": ["chore", "documentation"],
+      "sample_requirements": [
+        "Document POST /api/auth/login endpoint",
+        "Document POST /api/auth/register endpoint",
+        "Document POST /api/auth/refresh endpoint",
+        "Add request/response examples",
+        "Update API reference with authentication flow"
+      ]
+    }
+  },
+  {
+    "category": "chore_refactor",
+    "input": "Refactor user service to use dependency injection",
+    "expected_output": {
+      "title": "Refactor user service to use dependency injection",
+      "classification": "chore",
+      "workflow": "adw_sdlc_iso",
+      "model_set": "base",
+      "labels": ["chore", "refactoring"],
+      "sample_requirements": [
+        "Create dependency injection container",
+        "Refactor UserService to accept dependencies via constructor",
+        "Update all UserService instantiations",
+        "Add interface definitions for dependencies",
+        "Update tests to use mock dependencies"
+      ]
+    }
+  },
+  {
+    "category": "chore_maintenance",
+    "input": "Update all dependencies to their latest stable versions",
+    "expected_output": {
+      "title": "Update all dependencies to latest stable versions",
+      "classification": "chore",
+      "workflow": "adw_sdlc_iso",
+      "model_set": "base",
+      "labels": ["chore", "maintenance"],
+      "sample_requirements": [
+        "Review current dependency versions",
+        "Check for available updates",
+        "Update package.json/pyproject.toml",
+        "Run tests to verify compatibility",
+        "Update lockfiles"
+      ]
+    }
+  },
+  {
+    "category": "feature_ui",
+    "input": "Add responsive navigation menu with mobile hamburger icon",
+    "expected_output": {
+      "title": "Add responsive navigation menu with mobile hamburger icon",
+      "classification": "feature",
+      "workflow": "adw_sdlc_iso",
+      "model_set": "base",
+      "labels": ["feature", "ui"],
+      "sample_requirements": [
+        "Create hamburger menu icon component",
+        "Implement responsive breakpoints",
+        "Add slide-out menu animation",
+        "Ensure touch-friendly mobile interaction",
+        "Add ARIA labels for accessibility"
+      ]
+    }
+  },
+  {
+    "category": "feature_api",
+    "input": "Create REST API endpoint for user profile management",
+    "expected_output": {
+      "title": "Create REST API endpoint for user profile management",
+      "classification": "feature",
+      "workflow": "adw_plan_build_test_iso",
+      "model_set": "base",
+      "labels": ["feature", "api"],
+      "sample_requirements": [
+        "Implement GET /api/users/:id endpoint",
+        "Implement PUT /api/users/:id endpoint",
+        "Implement DELETE /api/users/:id endpoint",
+        "Add input validation",
+        "Add authentication/authorization checks"
+      ]
+    }
+  },
+  {
+    "category": "bug_performance",
+    "input": "Page load time is 5+ seconds on the dashboard",
+    "expected_output": {
+      "title": "Fix: Slow dashboard page load time (5+ seconds)",
+      "classification": "bug",
+      "workflow": "adw_plan_build_test_iso",
+      "model_set": "base",
+      "labels": ["bug", "performance"],
+      "sample_requirements": [
+        "Profile dashboard rendering performance",
+        "Identify slow database queries",
+        "Implement data pagination",
+        "Add caching for frequently accessed data",
+        "Optimize asset loading"
+      ]
+    }
+  },
+  {
+    "category": "bug_security",
+    "input": "User passwords are stored in plain text in the database",
+    "expected_output": {
+      "title": "Security Fix: Hash user passwords with bcrypt",
+      "classification": "bug",
+      "workflow": "adw_plan_build_test_iso",
+      "model_set": "base",
+      "labels": ["bug", "security"],
+      "sample_requirements": [
+        "Implement bcrypt password hashing",
+        "Create migration to hash existing passwords",
+        "Update registration endpoint to hash passwords",
+        "Update login endpoint to verify hashed passwords",
+        "Add password strength validation"
+      ]
+    }
+  },
+  {
+    "category": "chore_testing",
+    "input": "Add unit tests for all authentication service methods",
+    "expected_output": {
+      "title": "Add unit tests for authentication service methods",
+      "classification": "chore",
+      "workflow": "adw_sdlc_iso",
+      "model_set": "base",
+      "labels": ["chore", "testing"],
+      "sample_requirements": [
+        "Write tests for login method",
+        "Write tests for registration method",
+        "Write tests for token validation",
+        "Write tests for password hashing",
+        "Achieve 80% code coverage"
+      ]
+    }
+  },
+  {
+    "category": "feature_integration",
+    "input": "Integrate Stripe payment processing with webhook support",
+    "expected_output": {
+      "title": "Integrate Stripe payment processing with webhook support",
+      "classification": "feature",
+      "workflow": "adw_plan_build_test_iso",
+      "model_set": "base",
+      "labels": ["feature", "integration", "payment"],
+      "sample_requirements": [
+        "Set up Stripe SDK integration",
+        "Implement payment intent creation",
+        "Create webhook endpoint for payment events",
+        "Add subscription management",
+        "Implement webhook signature verification",
+        "Handle payment success/failure flows"
+      ]
+    }
+  },
+  {
+    "category": "edge_case_vague",
+    "input": "Make the app better",
+    "expected_output": {
+      "title": "Improve application quality",
+      "classification": "feature",
+      "workflow": "adw_sdlc_iso",
+      "model_set": "base",
+      "labels": ["feature", "enhancement"],
+      "sample_requirements": [
+        "Identify areas for improvement",
+        "Enhance user interface",
+        "Optimize performance",
+        "Improve error handling"
+      ],
+      "note": "Vague input results in generic requirements. Better to be specific."
+    }
+  },
+  {
+    "category": "edge_case_markdown",
+    "input": "Add support for **bold**, *italic*, and `code` formatting in comments",
+    "expected_output": {
+      "title": "Add markdown formatting support in comments",
+      "classification": "feature",
+      "workflow": "adw_sdlc_iso",
+      "model_set": "base",
+      "labels": ["feature", "ui"],
+      "sample_requirements": [
+        "Implement markdown parser for comments",
+        "Add support for bold text (**text**)",
+        "Add support for italic text (*text*)",
+        "Add support for inline code (`code`)",
+        "Sanitize markdown input for security"
+      ],
+      "note": "Special markdown characters are preserved in the requirements"
+    }
+  }
+]

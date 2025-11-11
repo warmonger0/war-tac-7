@@ -293,3 +293,16 @@ This prompt helps you determine what documentation you should read based on the 
     - When understanding test coverage for app/server/tests/core/test_project_detector.py
     - When troubleshooting project detection test failures
     - When extending test coverage for issue formatter functionality
+
+- app_docs/feature-5e6a13af-nl-processing-docs.md
+  - Conditions:
+    - When understanding the comprehensive NL processing documentation structure
+    - When working with API documentation for nl_processor, issue_formatter, project_detector, or github_poster modules
+    - When creating or updating usage guides, architecture documentation, or examples for NL processing
+    - When implementing new documentation following the established patterns and structure
+    - When understanding how mermaid diagrams are used to document system architecture
+    - When creating working code examples or example input/output JSON files
+    - When enhancing README sections with technical documentation links
+    - When setting up project templates or scaffolding scripts (setup_new_project.sh, integrate_existing.sh)
+    - When troubleshooting documentation organization or cross-referencing between docs
+    - When understanding the documentation coverage for the tac-webbuilder project

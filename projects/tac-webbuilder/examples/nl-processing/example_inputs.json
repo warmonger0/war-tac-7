@@ -1,0 +1,102 @@
+[
+  {
+    "category": "feature_simple",
+    "description": "Simple feature request with clear requirements",
+    "input": "Add a dark mode toggle to the settings page"
+  },
+  {
+    "category": "feature_medium",
+    "description": "Medium complexity feature with multiple requirements",
+    "input": "Implement user authentication with email/password login and JWT tokens"
+  },
+  {
+    "category": "feature_complex",
+    "description": "Complex feature with many interdependent requirements",
+    "input": "Build a real-time collaborative editing system with WebSocket connections, cursor tracking, conflict resolution, and presence indicators for multiple users editing simultaneously"
+  },
+  {
+    "category": "bug_simple",
+    "description": "Simple bug report",
+    "input": "Login button doesn't respond when clicked"
+  },
+  {
+    "category": "bug_detailed",
+    "description": "Detailed bug report with expected vs actual behavior",
+    "input": "When clicking the login button, expected behavior is to show the login form. Actual behavior: nothing happens and console shows TypeError: Cannot read property 'email' of undefined"
+  },
+  {
+    "category": "chore_docs",
+    "description": "Documentation chore",
+    "input": "Update API documentation to include all new authentication endpoints"
+  },
+  {
+    "category": "chore_refactor",
+    "description": "Refactoring chore",
+    "input": "Refactor user service to use dependency injection instead of direct instantiation"
+  },
+  {
+    "category": "chore_maintenance",
+    "description": "Maintenance chore",
+    "input": "Update all dependencies to their latest stable versions"
+  },
+  {
+    "category": "edge_case_vague",
+    "description": "Very vague request",
+    "input": "Make the app better"
+  },
+  {
+    "category": "edge_case_short",
+    "description": "Very short request",
+    "input": "fix bug"
+  },
+  {
+    "category": "edge_case_markdown",
+    "description": "Request with markdown special characters",
+    "input": "Add support for **bold**, *italic*, and `code` formatting in comments"
+  },
+  {
+    "category": "edge_case_technical",
+    "description": "Highly technical request",
+    "input": "Implement GraphQL schema stitching for the federated microservices architecture with Apollo Federation v2 directives"
+  },
+  {
+    "category": "feature_ui",
+    "description": "UI/UX focused feature",
+    "input": "Add responsive navigation menu with mobile hamburger icon and smooth animations"
+  },
+  {
+    "category": "feature_api",
+    "description": "API focused feature",
+    "input": "Create REST API endpoint for user profile management with CRUD operations"
+  },
+  {
+    "category": "feature_database",
+    "description": "Database focused feature",
+    "input": "Add database migration system with rollback support and schema versioning"
+  },
+  {
+    "category": "bug_performance",
+    "description": "Performance bug",
+    "input": "Page load time is 5+ seconds on the dashboard. Should be under 2 seconds."
+  },
+  {
+    "category": "bug_security",
+    "description": "Security bug",
+    "input": "User passwords are stored in plain text in the database. Need to implement bcrypt hashing immediately."
+  },
+  {
+    "category": "chore_testing",
+    "description": "Testing chore",
+    "input": "Add unit tests for all authentication service methods to achieve 80% coverage"
+  },
+  {
+    "category": "chore_ci_cd",
+    "description": "CI/CD chore",
+    "input": "Set up GitHub Actions workflow for automated testing and deployment"
+  },
+  {
+    "category": "feature_integration",
+    "description": "Third-party integration",
+    "input": "Integrate Stripe payment processing with webhook support for subscription management"
+  }
+]

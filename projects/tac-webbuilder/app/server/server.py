@@ -9,7 +9,7 @@ from dotenv import load_dotenv
 import logging
 import sys
 
-from app.server.core.data_models import (
+from core.data_models import (
     FileUploadResponse,
     QueryRequest,
     QueryResponse,
@@ -25,18 +25,18 @@ from app.server.core.data_models import (
     Route,
     RoutesResponse
 )
-from app.server.core.file_processor import convert_csv_to_sqlite, convert_json_to_sqlite, convert_jsonl_to_sqlite
-from app.server.core.llm_processor import generate_sql, generate_random_query
-from app.server.core.sql_processor import execute_sql_safely, get_database_schema
-from app.server.core.insights import generate_insights
-from app.server.core.sql_security import (
+from core.file_processor import convert_csv_to_sqlite, convert_json_to_sqlite, convert_jsonl_to_sqlite
+from core.llm_processor import generate_sql, generate_random_query
+from core.sql_processor import execute_sql_safely, get_database_schema
+from core.insights import generate_insights
+from core.sql_security import (
     execute_query_safely,
     validate_identifier,
     check_table_exists,
     SQLSecurityError
 )
-from app.server.core.export_utils import generate_csv_from_data, generate_csv_from_table
-from app.server.core.routes_analyzer import RoutesAnalyzer
+from core.export_utils import generate_csv_from_data, generate_csv_from_table
+from core.routes_analyzer import RoutesAnalyzer
 
 # Load .env file from server directory
 load_dotenv()

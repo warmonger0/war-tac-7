@@ -3,7 +3,7 @@ Issue formatting module for GitHub issue generation.
 """
 
 from typing import Dict, Any
-from app.server.core.data_models import GitHubIssue
+from core.data_models import GitHubIssue
 
 
 # Issue templates for different types

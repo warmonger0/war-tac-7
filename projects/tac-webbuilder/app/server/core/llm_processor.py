@@ -2,7 +2,7 @@ import os
 from typing import Dict, Any
 from openai import OpenAI
 from anthropic import Anthropic
-from app.server.core.data_models import QueryRequest
+from core.data_models import QueryRequest
 
 def generate_sql_with_openai(query_text: str, schema_info: Dict[str, Any]) -> str:
     """

@@ -6,18 +6,44 @@ Analyzes project structure to determine framework, tools, and complexity.
 import json
 from pathlib import Path
 from typing import Optional, List
-from app.server.core.data_models import ProjectContext
+from core.data_models import ProjectContext
 
 
 def detect_project_context(path: str) -> ProjectContext:
     """
     Detect project context by analyzing directory structure and files.
 
+    This is the main entry point for project analysis. It orchestrates multiple
+    detection functions to build a complete picture of the project's technology
+    stack, complexity, and characteristics. The information is used to make
+    intelligent workflow recommendations.
+
+    Detection Strategy:
+    1. Validate directory exists
+    2. Check if project is new (empty directory)
+    3. Detect frontend framework (React, Vue, Next.js, etc.)
+    4. Detect backend framework (FastAPI, Django, Express, etc.)
+    5. Identify build tools (Vite, Webpack, TypeScript, etc.)
+    6. Identify package manager (npm, yarn, uv, poetry, etc.)
+    7. Check git initialization
+    8. Calculate complexity score from project structure
+
     Args:
-        path: Path to project directory
+        path: Path to project directory (can be relative or absolute)
 
     Returns:
-        ProjectContext object with detected information
+        ProjectContext object containing all detected information:
+        - path: Normalized absolute path
+        - is_new_project: Whether directory is empty
+        - framework: Frontend framework or None
+        - backend: Backend framework or None
+        - complexity: "low", "medium", or "high"
+        - build_tools: List of detected build tools
+        - package_manager: Detected package manager or None
+        - has_git: Whether .git directory exists
+
+    Raises:
+        ValueError: If the project path does not exist
     """
     project_path = Path(path)
 
@@ -296,11 +322,29 @@ def calculate_complexity_from_structure(
     """
     Calculate project complexity based on structure.
 
+    This function implements a scoring system that evaluates multiple factors
+    to determine overall project complexity. The complexity level influences
+    which ADW workflow and model set are recommended.
+
+    Scoring Factors:
+    - File count: More files = higher complexity
+      * >100 files: +2 points
+      * >50 files: +1 point
+    - Framework presence: Any framework adds +1 point
+    - Backend presence: Any backend adds +1 point
+    - Build tool count: >2 tools adds +1 point
+    - Monorepo structure: packages/ or apps/ directory adds +2 points
+
+    Thresholds:
+    - Score >= 5: High complexity
+    - Score >= 3: Medium complexity
+    - Score < 3: Low complexity
+
     Args:
         path: Project path
-        framework: Detected framework
-        backend: Detected backend
-        build_tools: List of build tools
+        framework: Detected framework (e.g., "react-vite")
+        backend: Detected backend (e.g., "fastapi")
+        build_tools: List of build tools (e.g., ["vite", "typescript"])
 
     Returns:
         Complexity level: "low", "medium", or "high"

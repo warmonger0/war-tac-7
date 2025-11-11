@@ -1,0 +1,74 @@
+{
+  "react-vite": {
+    "description": "React application with Vite bundler and TypeScript",
+    "files": [
+      "package.json",
+      "vite.config.ts",
+      "tsconfig.json",
+      "README.md",
+      ".gitignore",
+      ".mcp.json.sample",
+      "playwright-mcp-config.json",
+      "src/main.tsx",
+      "src/App.tsx",
+      "src/types.d.ts",
+      ".claude/settings.json"
+    ],
+    "directories": [
+      "src",
+      ".claude"
+    ],
+    "scripts": {
+      "dev": "vite",
+      "build": "tsc && vite build",
+      "preview": "vite preview"
+    },
+    "ports": {
+      "dev": 5173
+    }
+  },
+  "nextjs": {
+    "description": "Next.js application with App Router and TypeScript",
+    "files": [
+      "package.json",
+      "next.config.js",
+      "tsconfig.json",
+      "README.md",
+      ".gitignore",
+      ".mcp.json.sample",
+      "playwright-mcp-config.json",
+      "app/layout.tsx",
+      "app/page.tsx",
+      "app/api/hello/route.ts",
+      ".claude/settings.json"
+    ],
+    "directories": [
+      "app",
+      "app/api",
+      ".claude"
+    ],
+    "scripts": {
+      "dev": "next dev",
+      "build": "next build",
+      "start": "next start"
+    },
+    "ports": {
+      "dev": 3000
+    }
+  },
+  "vanilla": {
+    "description": "Vanilla HTML/CSS/JavaScript application",
+    "files": [
+      "index.html",
+      "style.css",
+      "script.js",
+      "README.md",
+      ".gitignore",
+      ".mcp.json.sample",
+      "playwright-mcp-config.json"
+    ],
+    "directories": [],
+    "scripts": {},
+    "ports": {}
+  }
+}
