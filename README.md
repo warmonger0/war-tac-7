@@ -131,16 +131,32 @@ Full details in [docs/configuration.md](docs/configuration.md)
 
 ### Use the Web UI
 
-```bash
-# Start both backend and frontend
-./scripts/start_web_full.sh
+**Full Stack (Recommended):**
 
-# Or start separately:
+```bash
+./scripts/start_full.sh
+```
+
+This starts both backend and frontend with automatic health checking:
+- Backend: http://localhost:8002
+- Frontend: http://localhost:5174
+- API Docs: http://localhost:8002/docs
+
+**Or start separately:**
+
+```bash
 # Terminal 1: Backend
-./scripts/start_web_backend.sh
+./scripts/start_webbuilder.sh
 
 # Terminal 2: Frontend
-./scripts/start_web_frontend.sh
+./scripts/start_client.sh
+```
+
+**Architecture:**
+```
+app/
+├── client/     # React + Vite frontend
+└── server/     # FastAPI backend
 ```
 
 Then open [http://localhost:5174](http://localhost:5174) in your browser.

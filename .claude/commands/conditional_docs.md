@@ -246,3 +246,14 @@ This prompt helps you determine what documentation you should read based on the 
     - When debugging GitHub workflow path-related errors
     - When understanding how MCP configuration relates to worktrees
     - When creating test scripts for ADW functionality validation
+
+- app_docs/feature-23bd15ec-integration-cleanup.md
+  - Conditions:
+    - When implementing full-stack startup scripts or orchestration
+    - When working with health checking and process management for services
+    - When updating quick start documentation or developer onboarding guides
+    - When troubleshooting full-stack startup or shutdown issues
+    - When implementing graceful shutdown handlers with trap and signal management
+    - When creating scripts that coordinate multiple services (backend + frontend)
+    - When working with the scripts/start_full.sh script
+    - When documenting application architecture in README files
