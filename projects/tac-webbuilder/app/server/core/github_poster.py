@@ -7,7 +7,7 @@ from typing import Optional
 from rich.console import Console
 from rich.panel import Panel
 from rich.markdown import Markdown
-from app.server.core.data_models import GitHubIssue
+from core.data_models import GitHubIssue
 
 
 class GitHubPoster:

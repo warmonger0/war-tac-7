@@ -2,7 +2,7 @@ import os
 import json
 from typing import Tuple, List
 from anthropic import Anthropic
-from app.server.core.data_models import GitHubIssue, ProjectContext
+from core.data_models import GitHubIssue, ProjectContext
 
 
 async def analyze_intent(nl_input: str) -> dict:

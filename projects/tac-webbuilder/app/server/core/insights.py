@@ -1,6 +1,6 @@
 import sqlite3
 from typing import List, Optional
-from app.server.core.data_models import ColumnInsight
+from core.data_models import ColumnInsight
 from .sql_security import (
     execute_query_safely,
     validate_identifier,

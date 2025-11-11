@@ -6,7 +6,7 @@ Analyzes project structure to determine framework, tools, and complexity.
 import json
 from pathlib import Path
 from typing import Optional, List
-from app.server.core.data_models import ProjectContext
+from core.data_models import ProjectContext
 
 
 def detect_project_context(path: str) -> ProjectContext:

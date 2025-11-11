@@ -1,0 +1,8 @@
+{
+  "rules": [
+    "Use TypeScript with strict mode enabled",
+    "Follow React best practices and hooks guidelines",
+    "Use functional components over class components",
+    "Maintain clean code organization in the src directory"
+  ]
+}
