@@ -89,7 +89,21 @@ tac-webbuilder/
 ├── templates/               # Issue and workflow templates
 │   └── issue_template.md  # GitHub issue template
 ├── docs/                    # Documentation
+│   ├── api/                # API documentation
+│   │   └── nl-processing.md # NL processing API reference
+│   ├── guides/             # Usage guides
+│   │   └── nl-processing-guide.md # NL processing usage guide
+│   ├── architecture/       # Architecture documentation
+│   │   └── nl-processing-architecture.md # System architecture
 │   └── playwright-mcp.md  # Playwright MCP integration guide
+├── examples/                # Example code
+│   └── nl-processing/      # NL processing examples
+│       ├── README.md       # Examples overview
+│       ├── basic_usage.py  # Basic usage example
+│       ├── advanced_usage.py # Advanced usage example
+│       ├── edge_cases.py   # Edge cases example
+│       ├── example_inputs.json # Sample inputs
+│       └── example_outputs.json # Sample outputs
 ├── scripts/                 # Utility scripts
 │   ├── setup.sh            # Initial setup script
 │   ├── start_cli.sh        # Start CLI interface
@@ -246,6 +260,124 @@ Access the API at:
 See [Web Backend API Documentation](#web-backend-api) for full details.
 
 **Note:** A web frontend UI is planned but not yet implemented. The web backend provides a REST API that can be consumed by any HTTP client or used to build a custom frontend.
+
+## Natural Language Processing
+
+tac-webbuilder includes a powerful Natural Language (NL) Processing system that converts plain English descriptions into structured GitHub issues with automatic ADW workflow recommendations. This is the core feature that enables you to simply describe what you want, and the system handles the rest.
+
+### How It Works
+
+1. **Intent Analysis**: The system uses Claude API to understand your request type (feature, bug, or chore)
+2. **Requirement Extraction**: Breaks down your description into actionable technical requirements
+3. **Project Detection**: Analyzes your project structure to determine frameworks, tools, and complexity
+4. **Issue Generation**: Creates properly formatted GitHub issues with appropriate ADW workflows
+5. **GitHub Integration**: Posts issues directly to GitHub with preview and confirmation
+
+### Quick Example
+
+```python
+import asyncio
+from app.server.core.nl_processor import process_request
+from app.server.core.project_detector import detect_project_context
+from app.server.core.github_poster import GitHubPoster
+
+async def main():
+    # Detect your project context
+    context = detect_project_context("/path/to/your/project")
+
+    # Process natural language request
+    issue = await process_request(
+        "Add a dark mode toggle to the settings page",
+        context
+    )
+
+    # Post to GitHub
+    poster = GitHubPoster()
+    issue_number = poster.post_issue(issue, confirm=True)
+    print(f"Created issue #{issue_number}")
+
+asyncio.run(main())
+```
+
+### Supported Project Types
+
+The system automatically detects and adapts to:
+
+- **Frontend**: React, Vue, Next.js, Angular, Svelte
+- **Backend**: FastAPI, Django, Flask, Express, NestJS
+- **Build Tools**: Vite, Webpack, TypeScript, Docker
+- **Package Managers**: npm, yarn, pnpm, bun, pip, uv, poetry
+
+### Workflow Recommendations
+
+The system automatically recommends ADW workflows based on issue type and project complexity:
+
+| Issue Type | Complexity | Workflow | Model Set |
+|------------|-----------|----------|-----------|
+| Feature | Low | `adw_sdlc_iso` | `base` |
+| Feature | Medium | `adw_plan_build_test_iso` | `base` |
+| Feature | High | `adw_plan_build_test_iso` | `heavy` |
+| Bug | Any | `adw_plan_build_test_iso` | `base` |
+| Chore | Any | `adw_sdlc_iso` | `base` |
+
+### Setup Requirements
+
+1. **Set ANTHROPIC_API_KEY**:
+   ```bash
+   export ANTHROPIC_API_KEY="sk-ant-api03-xxxxx"
+   ```
+
+2. **Authenticate with GitHub CLI** (for posting issues):
+   ```bash
+   gh auth login
+   ```
+
+### Documentation
+
+- **[API Reference](docs/api/nl-processing.md)** - Complete API documentation for all NL processing modules
+- **[Usage Guide](docs/guides/nl-processing-guide.md)** - Step-by-step guide with examples and best practices
+- **[Architecture](docs/architecture/nl-processing-architecture.md)** - System design and component diagrams
+- **[Examples](examples/nl-processing/README.md)** - Working code examples and edge cases
+
+### Example Inputs
+
+Here are some example natural language inputs the system can process:
+
+**Feature Requests:**
+```
+"Add a dark mode toggle to the settings page"
+"Implement user authentication with JWT tokens"
+"Build a real-time chat feature with WebSockets"
+```
+
+**Bug Reports:**
+```
+"Login button doesn't respond when clicked"
+"Dashboard page loads slowly (5+ seconds)"
+"User passwords are stored in plain text"
+```
+
+**Chores:**
+```
+"Update API documentation for authentication endpoints"
+"Refactor user service to use dependency injection"
+"Add unit tests for authentication service"
+```
+
+### Try It Out
+
+Run the basic example:
+```bash
+cd examples/nl-processing
+export ANTHROPIC_API_KEY="sk-ant-api03-xxxxx"
+python basic_usage.py
+```
+
+This will:
+1. Detect project context
+2. Process a sample natural language request
+3. Display the generated GitHub issue
+4. Optionally post to GitHub
 
 ## Configuration
 

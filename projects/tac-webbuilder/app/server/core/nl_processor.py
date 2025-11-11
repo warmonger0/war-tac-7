@@ -9,6 +9,10 @@ async def analyze_intent(nl_input: str) -> dict:
     """
     Use Claude API to understand what user wants to build.
 
+    This function sends the natural language input to Claude API with a structured
+    prompt that instructs the model to classify the request and extract key information.
+    The response is parsed as JSON containing intent classification and metadata.
+
     Args:
         nl_input: Natural language description of the desired feature/bug/chore
 
@@ -17,6 +21,10 @@ async def analyze_intent(nl_input: str) -> dict:
         - intent_type: "feature", "bug", or "chore"
         - summary: Brief summary of the intent
         - technical_area: Technical area (e.g., "authentication", "UI", "database")
+
+    Raises:
+        ValueError: If ANTHROPIC_API_KEY environment variable is not set
+        Exception: If Claude API call fails or response cannot be parsed
     """
     try:
         api_key = os.environ.get("ANTHROPIC_API_KEY")
@@ -70,12 +78,20 @@ def extract_requirements(nl_input: str, intent: dict) -> List[str]:
     """
     Extract technical requirements from the natural language request.
 
+    This function uses Claude API to break down the user's request into concrete,
+    actionable technical requirements. The requirements are returned as a JSON array
+    of strings, each representing a specific implementation step.
+
     Args:
         nl_input: Natural language description
         intent: Intent analysis dictionary from analyze_intent()
 
     Returns:
-        List of technical requirements
+        List of technical requirements (strings)
+
+    Raises:
+        ValueError: If ANTHROPIC_API_KEY environment variable is not set
+        Exception: If Claude API call fails or response cannot be parsed
     """
     try:
         api_key = os.environ.get("ANTHROPIC_API_KEY")
@@ -141,12 +157,22 @@ def suggest_adw_workflow(issue_type: str, complexity: str) -> Tuple[str, str]:
     """
     Recommend ADW workflow and model set based on issue type and complexity.
 
+    This function implements a rule-based workflow recommendation system:
+    - Bugs always use adw_plan_build_test_iso with base model (need thorough testing)
+    - Chores use simpler adw_sdlc_iso with base model (less complexity)
+    - Features are tiered by complexity:
+      * Low complexity: adw_sdlc_iso with base model
+      * Medium complexity: adw_plan_build_test_iso with base model
+      * High complexity: adw_plan_build_test_iso with heavy model (more powerful)
+
     Args:
         issue_type: "feature", "bug", or "chore"
         complexity: "low", "medium", or "high"
 
     Returns:
-        Tuple of (workflow, model_set)
+        Tuple of (workflow, model_set) where:
+        - workflow: ADW workflow identifier (e.g., "adw_sdlc_iso")
+        - model_set: "base" or "heavy"
     """
     # Workflow recommendation logic based on complexity and type
     if issue_type == "bug":
@@ -166,12 +192,36 @@ async def process_request(nl_input: str, project_context: ProjectContext) -> Git
     """
     Main orchestration function that converts natural language to GitHub issue.
 
+    This is the primary entry point for the NL processing pipeline. It coordinates
+    all the steps needed to transform a natural language description into a complete,
+    properly formatted GitHub issue with ADW workflow recommendations.
+
+    Processing Pipeline:
+    1. Analyze intent using Claude API
+    2. Extract technical requirements from the input
+    3. Classify issue type (feature/bug/chore)
+    4. Suggest appropriate ADW workflow based on type and complexity
+    5. Generate issue title from summary
+    6. Assemble issue body with description and requirements
+    7. Create labels based on classification and project context
+    8. Return complete GitHubIssue object
+
     Args:
         nl_input: Natural language description of the desired feature/bug/chore
-        project_context: Project context information
+        project_context: Project context information from detect_project_context()
 
     Returns:
-        GitHubIssue object with all fields populated
+        GitHubIssue object with all fields populated:
+        - title: Brief summary of the request
+        - body: Formatted markdown with description and requirements
+        - labels: List of relevant labels (classification, technical area, framework)
+        - classification: "feature", "bug", or "chore"
+        - workflow: Recommended ADW workflow identifier
+        - model_set: "base" or "heavy"
+
+    Raises:
+        Exception: If any step of the pipeline fails (intent analysis, requirement
+                  extraction, or issue generation)
     """
     try:
         # Step 1: Analyze intent
